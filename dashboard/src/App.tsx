@@ -80,6 +80,7 @@ export default function App() {
     data,
     state: dataState,
     error: dataError,
+    isFetching,
     reload: refetch,
   } = useHistoryData(activeDataPath);
 
@@ -201,6 +202,7 @@ export default function App() {
       {data && (
         <Header
           dataset={data}
+          isFetching={isFetching}
           onRefresh={refetch}
           onExportCsv={() => {
             const timeline = buildTimeline(data.daily.clones, data.daily.views);
@@ -224,13 +226,13 @@ export default function App() {
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-5">
-        {dataState === "loading" && <LoadingSkeleton />}
+        {!data && dataState === "loading" && <LoadingSkeleton />}
 
-        {dataState !== "loading" && dataError && (
+        {!data && dataError && (
           <ErrorState message={dataError} onRetry={refetch} />
         )}
 
-        {dataState !== "loading" && !dataError && data && (() => {
+        {data && (() => {
           const fullTimeline = buildTimeline(data.daily.clones, data.daily.views);
           const filteredTimeline = filterByRange(fullTimeline, range);
           const latestStats = data.repoStats[data.repoStats.length - 1];

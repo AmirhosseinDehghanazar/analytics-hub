@@ -8,13 +8,12 @@ export interface UseHistoryDataResult {
   data: HistoryDataset | null;
   state: LoadState;
   error: string | null;
+  isFetching: boolean;
   reload: () => void;
 }
 
 /** Resolves a relative data path against the Vite base URL. */
 function resolveDataUrl(dataPath: string): string {
-  // dataPath is relative like "data/owner-repo/history.json".
-  // BASE_URL is e.g. "/" locally or "/analytics-hub/" on Pages.
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   return `${base}/${dataPath}`;
 }
@@ -31,13 +30,12 @@ function checkHasAnyData(ds: HistoryDataset): boolean {
 
 /**
  * Fetches the history dataset for a single repository or aggregates multiple datasets.
- *
- * @param dataPath - Single dataPath string, an array of dataPath strings (for "All Repositories"),
- *   or undefined (while manifest is loading).
+ * Implements Stale-While-Revalidate pattern so UI never flickers or unmounts during selection changes.
  */
 export function useHistoryData(dataPath: string | string[] | undefined): UseHistoryDataResult {
   const [data, setData] = useState<HistoryDataset | null>(null);
   const [state, setState] = useState<LoadState>("loading");
+  const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
 
@@ -50,8 +48,16 @@ export function useHistoryData(dataPath: string | string[] | undefined): UseHist
     if (dataPath === undefined || (Array.isArray(dataPath) && dataPath.length === 0)) return;
 
     let cancelled = false;
-    setState("loading");
+    setIsFetching(true);
     setError(null);
+
+    // Stale-While-Revalidate: Only set full-page state="loading" if initial data is null!
+    setData((currentData) => {
+      if (!currentData) {
+        setState("loading");
+      }
+      return currentData;
+    });
 
     const now = Date.now();
 
@@ -71,11 +77,17 @@ export function useHistoryData(dataPath: string | string[] | undefined): UseHist
           setData(aggregated);
           const hasAnyData = checkHasAnyData(aggregated);
           setState(hasAnyData ? "ready" : "empty");
+          setIsFetching(false);
         })
         .catch((err) => {
           if (cancelled) return;
-          setError(err instanceof Error ? err.message : String(err));
-          setState("error");
+          const msg = err instanceof Error ? err.message : String(err);
+          setError(msg);
+          setData((prevData) => {
+            if (!prevData) setState("error");
+            return prevData;
+          });
+          setIsFetching(false);
         });
     } else {
       // Single repo fetch
@@ -91,11 +103,17 @@ export function useHistoryData(dataPath: string | string[] | undefined): UseHist
           setData(json);
           const hasAnyData = checkHasAnyData(json);
           setState(hasAnyData ? "ready" : "empty");
+          setIsFetching(false);
         })
         .catch((err) => {
           if (cancelled) return;
-          setError(err instanceof Error ? err.message : String(err));
-          setState("error");
+          const msg = err instanceof Error ? err.message : String(err);
+          setError(msg);
+          setData((prevData) => {
+            if (!prevData) setState("error");
+            return prevData;
+          });
+          setIsFetching(false);
         });
     }
 
@@ -104,5 +122,5 @@ export function useHistoryData(dataPath: string | string[] | undefined): UseHist
     };
   }, [pathKey, nonce]);
 
-  return { data, state, error, reload };
+  return { data, state, error, isFetching, reload };
 }

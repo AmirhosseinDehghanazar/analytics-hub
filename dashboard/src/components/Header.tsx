@@ -7,11 +7,13 @@ export function Header({
   onExportCsv,
   onExportJson,
   onRefresh,
+  isFetching,
 }: {
   dataset: HistoryDataset;
   onExportCsv: () => void;
   onExportJson: () => void;
   onRefresh: () => void;
+  isFetching?: boolean;
 }) {
   const [syncing, setSyncing] = useState(false);
   const [justSynced, setJustSynced] = useState(false);
@@ -35,7 +37,6 @@ export function Header({
     setSyncing(true);
     setSyncMenuOpen(false);
     await onRefresh();
-    await new Promise((r) => setTimeout(r, 600));
     setSyncing(false);
     setJustSynced(true);
     setTimeout(() => setJustSynced(false), 3000);
@@ -46,7 +47,7 @@ export function Header({
   return (
     <header className="relative z-10">
       {/* Top accent gradient line with smooth 3-theme crossfade */}
-      <div className="accent-line-wrapper">
+      <div className={`accent-line-wrapper ${isFetching ? "animate-pulse" : ""}`}>
         <div className="accent-line-all" />
         <div className="accent-line-github" />
         <div className="accent-line-gitlab" />
