@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { StargazerInfo } from "../lib/types";
+import type { ProviderType, StargazerInfo } from "../lib/types";
 import { Panel } from "./Panel";
 import { StargazerModal } from "./StargazerModal";
 
@@ -8,6 +8,9 @@ const MAX_VISIBLE = 120;
 interface StargazerWallProps {
   stargazers: StargazerInfo[];
   repoSlug: string;
+  starsCount?: number;
+  htmlUrl?: string;
+  provider?: ProviderType;
 }
 
 function formatAvatarUrl(url: string, size = 72): string {
@@ -16,13 +19,16 @@ function formatAvatarUrl(url: string, size = 72): string {
   return `${url}?s=${size}`;
 }
 
-export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
+export function StargazerWall({ stargazers, repoSlug, starsCount, htmlUrl, provider }: StargazerWallProps) {
   const [selected, setSelected] = useState<StargazerInfo | null>(null);
 
   const visible = stargazers.slice(0, MAX_VISIBLE);
   const overflow = Math.max(0, stargazers.length - MAX_VISIBLE);
+  const totalStars = starsCount ?? stargazers.length;
 
-  const stargazersUrl = repoSlug.includes("/")
+  const stargazersUrl = htmlUrl
+    ? (provider === "gitlab" || htmlUrl.includes("gitlab.com") ? `${htmlUrl}/-/stargazers` : `${htmlUrl}/stargazers`)
+    : repoSlug.includes("/")
     ? `https://github.com/${repoSlug}/stargazers`
     : `https://github.com/AmirhosseinDehghanazar`;
 
@@ -44,10 +50,10 @@ export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
               Stargazers
             </h3>
             <p className="text-[11px] text-faint font-mono mt-1">
-              {stargazers.length.toLocaleString()} {stargazers.length === 1 ? "star" : "stars"} · click an avatar to see their profile
+              {totalStars.toLocaleString()} {totalStars === 1 ? "star" : "stars"} · click an avatar to see their profile
             </p>
           </div>
-          {stargazers.length > 0 && (
+          {(stargazers.length > 0 || totalStars > 0) && (
             <a
               href={stargazersUrl}
               target="_blank"
@@ -62,11 +68,13 @@ export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
         {stargazers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <div className="text-3xl mb-3">⭐</div>
-            <p className="text-sm text-faint font-body">
-              No individual stargazer profiles collected.
+            <p className="text-sm font-semibold text-ink font-body">
+              {totalStars > 0 ? `${totalStars.toLocaleString()} ${totalStars === 1 ? "star" : "stars"} recorded in Repo Activity` : "No stargazers collected yet"}
             </p>
             <p className="text-xs text-faint font-mono mt-1 max-w-md">
-              Star counts are tracked in Repo Stats. Detailed user profiles are provided when supported by the provider REST API (GitHub).
+              {totalStars > 0
+                ? "Stargazer avatar profiles will populate here on the next scheduled collector run."
+                : "Run the collector to gather stargazer user data."}
             </p>
           </div>
         ) : (

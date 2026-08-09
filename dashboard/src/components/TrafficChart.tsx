@@ -44,6 +44,18 @@ function Row({ label, value }: { label: string; value: number }) {
 export function TrafficChart({ rows, mode }: TrafficChartProps) {
   const isCombined = mode === "combined";
 
+  if (rows.length === 0) {
+    return (
+      <div className="h-[280px] sm:h-[340px] flex flex-col items-center justify-center text-center p-6 border border-dashed border-hairline notch-sm bg-surface/30">
+        <div className="text-2xl mb-2">📈</div>
+        <p className="text-sm font-semibold text-ink font-display">Awaiting daily traffic timeline data</p>
+        <p className="text-xs text-faint font-body mt-1 max-w-sm">
+          Traffic trends will populate as daily clone or fetch events occur and the collector runs its scheduled cycle.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="h-[280px] sm:h-[340px] -ml-2">
       <ResponsiveContainer width="100%" height="100%">

@@ -9,26 +9,32 @@ interface StargazerModalProps {
 export function StargazerModal({ stargazer, onClose }: StargazerModalProps) {
   const [profile, setProfile] = useState<GithubUserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Fetch public GitHub profile (no auth required)
+  // Fetch public profile for GitHub users; fallback gracefully for GitLab or fetch failures
   useEffect(() => {
+    if (stargazer.htmlUrl.includes("gitlab.com")) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
-    setError(null);
     setProfile(null);
 
     fetch(`https://api.github.com/users/${stargazer.login}`, {
       headers: { Accept: "application/vnd.github+json" },
     })
       .then((r) => {
-        if (!r.ok) throw new Error(`GitHub API error ${r.status}`);
+        if (!r.ok) throw new Error(`API ${r.status}`);
         return r.json();
       })
       .then((data: GithubUserProfile) => setProfile(data))
-      .catch((e: Error) => setError(e.message))
+      .catch(() => {
+        // Degrade gracefully — show basic profile card using stargazer info
+        setProfile(null);
+      })
       .finally(() => setLoading(false));
-  }, [stargazer.login]);
+  }, [stargazer.login, stargazer.htmlUrl]);
 
   // Close on Escape
   useEffect(() => {
@@ -74,21 +80,13 @@ export function StargazerModal({ stargazer, onClose }: StargazerModalProps) {
         <div className="relative p-6 pt-8">
           {loading && <ModalSkeleton />}
 
-          {!loading && error && (
-            <div className="text-center py-6">
-              <div className="text-3xl mb-3">😔</div>
-              <p className="text-sm text-muted font-body mb-1">Could not load profile</p>
-              <p className="text-xs text-faint font-mono">{error}</p>
-            </div>
-          )}
-
-          {!loading && profile && (
+          {!loading && (
             <>
               {/* Avatar + name */}
               <div className="flex items-center gap-4 mb-5">
                 <div className="relative flex-shrink-0">
                   <img
-                    src={`${stargazer.avatarUrl}&s=160`}
+                    src={stargazer.avatarUrl.includes("?") ? `${stargazer.avatarUrl}&s=160` : `${stargazer.avatarUrl}?s=160`}
                     alt={stargazer.login}
                     className="w-16 h-16 rounded-full border-2 border-amber/25"
                     style={{ boxShadow: "0 0 20px rgba(232,168,64,0.2)" }}
@@ -102,9 +100,9 @@ export function StargazerModal({ stargazer, onClose }: StargazerModalProps) {
                     href={stargazer.htmlUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-mono text-muted hover:text-amber transition-colors"
+                    className="text-xs font-mono text-muted hover:text-amber transition-colors flex items-center gap-1"
                   >
-                    @{stargazer.login}
+                    @{stargazer.login} ↗
                   </a>
                   {stargazer.starredAt && (
                     <p className="text-[10px] font-mono text-faint mt-1 flex items-center gap-1">
@@ -121,43 +119,43 @@ export function StargazerModal({ stargazer, onClose }: StargazerModalProps) {
               </div>
 
               {/* Bio */}
-              {profile.bio && (
+              {profile?.bio && (
                 <p className="text-sm text-muted font-body leading-relaxed mb-4 border-l-2 border-amber/30 pl-3">
                   {profile.bio}
                 </p>
               )}
 
               {/* Meta: location, company, blog */}
-              <div className="space-y-1.5 mb-5">
-                {profile.location && (
-                  <MetaRow icon="📍" value={profile.location} />
-                )}
-                {profile.company && (
-                  <MetaRow icon="🏢" value={profile.company.replace(/^@/, "")} />
-                )}
-                {profile.blog && (
-                  <MetaRow
-                    icon="🔗"
-                    value={
-                      <a
-                        href={profile.blog.startsWith("http") ? profile.blog : `https://${profile.blog}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-amber transition-colors truncate"
-                      >
-                        {profile.blog}
-                      </a>
-                    }
-                  />
-                )}
-              </div>
+              {profile && (
+                <div className="space-y-1.5 mb-5">
+                  {profile.location && <MetaRow icon="📍" value={profile.location} />}
+                  {profile.company && <MetaRow icon="🏢" value={profile.company.replace(/^@/, "")} />}
+                  {profile.blog && (
+                    <MetaRow
+                      icon="🔗"
+                      value={
+                        <a
+                          href={profile.blog.startsWith("http") ? profile.blog : `https://${profile.blog}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-amber transition-colors truncate"
+                        >
+                          {profile.blog}
+                        </a>
+                      }
+                    />
+                  )}
+                </div>
+              )}
 
               {/* Stats row */}
-              <div className="grid grid-cols-3 gap-2 mb-5">
-                <StatBadge label="Repos" value={profile.public_repos} />
-                <StatBadge label="Followers" value={profile.followers} />
-                <StatBadge label="Following" value={profile.following} />
-              </div>
+              {profile && (
+                <div className="grid grid-cols-3 gap-2 mb-5">
+                  <StatBadge label="Repos" value={profile.public_repos} />
+                  <StatBadge label="Followers" value={profile.followers} />
+                  <StatBadge label="Following" value={profile.following} />
+                </div>
+              )}
 
               {/* CTA */}
               <a
@@ -166,7 +164,7 @@ export function StargazerModal({ stargazer, onClose }: StargazerModalProps) {
                 rel="noopener noreferrer"
                 className="block w-full text-center notch-sm px-4 py-2.5 text-xs font-mono font-semibold bg-amber text-obsidian hover:bg-amber-deep transition-colors duration-200"
               >
-                View GitHub profile ↗
+                View Profile ↗
               </a>
             </>
           )}

@@ -141,6 +141,7 @@ export default function App() {
         {dataState !== "loading" && !dataError && data && (() => {
           const fullTimeline = buildTimeline(data.daily.clones, data.daily.views);
           const filteredTimeline = filterByRange(fullTimeline, range);
+          const latestStats = data.repoStats[data.repoStats.length - 1];
           const hasData =
             fullTimeline.length > 0 ||
             (data.repoStats ?? []).length > 0 ||
@@ -211,6 +212,9 @@ export default function App() {
               <StargazerWall
                 stargazers={data.stargazers ?? []}
                 repoSlug={selectedSlug === ALL_REPOS_SLUG ? "All Repositories" : data.repository.fullName}
+                starsCount={latestStats?.stars}
+                htmlUrl={data.repository.htmlUrl}
+                provider={data.repository.provider}
               />
 
               {/* Sources + popular content */}
