@@ -26,8 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         target:
-          # ✏️  ADD / REMOVE target repositories here.
-          # Specify `provider: github` or `provider: gitlab`.
+          # ✏️ GitHub Repositories
           - provider: github
             repo: AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension
           - provider: github
@@ -36,9 +35,16 @@ jobs:
             repo: AmirhosseinDehghanazar/2Auth-JS
           - provider: github
             repo: AmirhosseinDehghanazar/3d-404-page
-          # Example GitLab repository:
-          # - provider: gitlab
-          #   repo: gitlab-org/gitlab-runner
+
+          # ✏️ GitLab Repositories
+          - provider: gitlab
+            repo: AmirhosseinDehghaniazar/LinkedIn-AutoClicker-Extension
+          - provider: gitlab
+            repo: AmirhosseinDehghaniazar/Hacker-Terminal-Loading-Screen
+          - provider: gitlab
+            repo: AmirhosseinDehghaniazar/2Auth-JS
+          - provider: gitlab
+            repo: AmirhosseinDehghaniazar/3d-404-page
 
     steps:
       - name: Checkout
@@ -65,7 +71,7 @@ jobs:
           CLEAN_REPO=$(echo "$RAW_REPO" | tr '/' '-')
           echo "provider=$PROV" >> "$GITHUB_OUTPUT"
           echo "repo=$RAW_REPO" >> "$GITHUB_OUTPUT"
-          echo "slug=$CLEAN_REPO" >> "$GITHUB_OUTPUT"
+          echo "slug=${PROV}-${CLEAN_REPO}" >> "$GITHUB_OUTPUT"
 
       - name: Run collector
         working-directory: collector
