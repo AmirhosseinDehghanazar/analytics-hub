@@ -3,7 +3,7 @@ import { useManifest } from "./lib/useManifest";
 import { useHistoryData } from "./lib/useHistoryData";
 import { buildTimeline, filterByRange, periodOverPeriodGrowth } from "./lib/calculations";
 import { exportCsv, exportJson } from "./lib/export";
-import type { RangeKey, ChartMode, ProviderType } from "./lib/types";
+import type { RangeKey, ChartMode } from "./lib/types";
 import { Header } from "./components/Header";
 import { ProviderTabs, type ProviderTabOption } from "./components/ProviderTabs";
 import {
@@ -42,13 +42,20 @@ export default function App() {
     }
   }, [repos, selectedSlug]);
 
-  // Synchronize smooth theme switching with active selection
+  // Synchronize smooth 3-theme switching with active selection
   useEffect(() => {
-    const currentRepo = repos.find((r) => r.slug === selectedSlug);
-    const providerOfSelected = currentRepo?.provider ?? (selectedSlug === ALL_GITLAB_SLUG ? "gitlab" : "github");
+    let effectiveTheme: "all" | "github" | "gitlab" = "all";
 
-    const effectiveTheme: ProviderType =
-      activeProvider === "gitlab" || providerOfSelected === "gitlab" ? "gitlab" : "github";
+    if (activeProvider === "gitlab" || selectedSlug === ALL_GITLAB_SLUG) {
+      effectiveTheme = "gitlab";
+    } else if (activeProvider === "github" || selectedSlug === ALL_GITHUB_SLUG) {
+      effectiveTheme = "github";
+    } else if (selectedSlug === ALL_REPOS_SLUG && activeProvider === "ALL") {
+      effectiveTheme = "all";
+    } else {
+      const currentRepo = repos.find((r) => r.slug === selectedSlug);
+      effectiveTheme = (currentRepo?.provider ?? "github") === "gitlab" ? "gitlab" : "github";
+    }
 
     document.documentElement.setAttribute("data-theme", effectiveTheme);
   }, [activeProvider, selectedSlug, repos]);
@@ -170,7 +177,12 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* 3-Theme Background Radial Layers with 0.8s smooth crossfade */}
+      <div className="bg-layer-all" />
+      <div className="bg-layer-github" />
+      <div className="bg-layer-gitlab" />
+
       {/* Top Provider Switcher Tab Bar */}
       <ProviderTabs
         repos={repos}

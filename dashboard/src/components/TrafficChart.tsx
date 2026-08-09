@@ -43,10 +43,21 @@ function Row({ label, value }: { label: string; value: number }) {
 
 export function TrafficChart({ rows, mode }: TrafficChartProps) {
   const isCombined = mode === "combined";
-  const isGitLabTheme = document.documentElement.getAttribute("data-theme") === "gitlab";
+  const currentTheme = document.documentElement.getAttribute("data-theme") || "all";
 
-  const primaryColor = isGitLabTheme ? "#FC6D26" : "#E8A840";
-  const secondaryColor = isGitLabTheme ? "#6B4F96" : "#8FA6A3";
+  const primaryColor =
+    currentTheme === "gitlab"
+      ? "#FC6D26"
+      : currentTheme === "github"
+      ? "#38BDF8"
+      : "#E8A840";
+
+  const secondaryColor =
+    currentTheme === "gitlab"
+      ? "#6B4F96"
+      : currentTheme === "github"
+      ? "#22C55E"
+      : "#10B981";
 
   if (rows.length === 0) {
     return (

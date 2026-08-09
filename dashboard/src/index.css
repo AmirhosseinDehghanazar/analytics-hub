@@ -8,16 +8,25 @@
                       border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                       color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                       box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Default / ALL Theme (Emerald & Amber Unified Palette) */
   --brand-primary: #E8A840;
-  --brand-secondary: #C8731A;
-  --brand-purple: #6B4F96;
+  --brand-secondary: #10B981;
+  --brand-tertiary: #8B5CF6;
 }
 
-/* 🦊 GitLab Fiery Palette Override (triggered smoothly by data-theme="gitlab") */
+/* 🐙 GitHub Theme (Sky Blue & Git Green) */
+[data-theme="github"] {
+  --brand-primary: #38BDF8;
+  --brand-secondary: #0EA5E9;
+  --brand-tertiary: #22C55E;
+}
+
+/* 🦊 GitLab Theme (Fiery Orange, Gold & Deep Purple from user palette) */
 [data-theme="gitlab"] {
   --brand-primary: #FC6D26;
   --brand-secondary: #FCA326;
-  --brand-purple: #6B4F96;
+  --brand-tertiary: #6B4F96;
 }
 
 /* ── Base ───────────────────────────────────────────────────────────────── */
@@ -36,47 +45,66 @@ body {
               border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 🐙 Default / GitHub Background Glow Crossfade */
-body::before {
-  content: '';
+/* ── 3-Theme Background Radial Glow Crossfade Layers ─────────────────────── */
+
+/* 1. ALL PROVIDERS / UNIFIED GLOWS */
+.bg-layer-all {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
   background-image:
     radial-gradient(ellipse 1100px 700px at 15% -5%,  rgba(232, 168, 64, 0.09), transparent 60%),
-    radial-gradient(ellipse 900px 550px  at 92% 10%,  rgba(196, 105, 79, 0.06), transparent 55%),
-    radial-gradient(ellipse 700px 450px  at 50% 100%, rgba(143, 166, 163, 0.05), transparent 60%);
+    radial-gradient(ellipse 950px 600px  at 92% 10%,  rgba(16, 185, 129, 0.08), transparent 55%),
+    radial-gradient(ellipse 750px 450px  at 50% 100%, rgba(139, 92, 246, 0.07), transparent 60%);
   opacity: 1;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 🦊 GitLab Fiery Background Glow Crossfade */
-body::after {
-  content: '';
+/* 2. GITHUB MIDNIGHT SKY BLUE GLOWS */
+.bg-layer-github {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
   background-image:
-    radial-gradient(ellipse 1100px 700px at 15% -5%,  rgba(252, 109, 38, 0.16), transparent 60%),
-    radial-gradient(ellipse 950px 600px  at 92% 10%,  rgba(107, 79, 150, 0.18), transparent 55%),
-    radial-gradient(ellipse 750px 500px  at 50% 100%, rgba(226, 67, 41, 0.12), transparent 60%);
+    radial-gradient(ellipse 1100px 700px at 15% -5%,  rgba(56, 189, 248, 0.14), transparent 60%),
+    radial-gradient(ellipse 950px 600px  at 92% 10%,  rgba(34, 197, 94, 0.12), transparent 55%),
+    radial-gradient(ellipse 750px 450px  at 50% 100%, rgba(14, 165, 233, 0.10), transparent 60%);
   opacity: 0;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-theme="gitlab"] body::before {
+/* 3. GITLAB FIERY ORANGE & PURPLE GLOWS */
+.bg-layer-gitlab {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(ellipse 1100px 700px at 15% -5%,  rgba(252, 109, 38, 0.18), transparent 60%),
+    radial-gradient(ellipse 950px 600px  at 92% 10%,  rgba(107, 79, 150, 0.20), transparent 55%),
+    radial-gradient(ellipse 750px 450px  at 50% 100%, rgba(226, 67, 41, 0.14), transparent 60%);
   opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-theme="gitlab"] body::after {
-  opacity: 1;
-}
+/* State controls for theme background layers */
+[data-theme="github"] .bg-layer-all { opacity: 0; }
+[data-theme="github"] .bg-layer-github { opacity: 1; }
+[data-theme="github"] .bg-layer-gitlab { opacity: 0; }
+
+[data-theme="gitlab"] .bg-layer-all { opacity: 0; }
+[data-theme="gitlab"] .bg-layer-github { opacity: 0; }
+[data-theme="gitlab"] .bg-layer-gitlab { opacity: 1; }
 
 ::selection {
-  background: rgba(252, 109, 38, 0.3);
+  background: rgba(56, 189, 248, 0.3);
   color: #F2F0EC;
+}
+
+[data-theme="gitlab"] ::selection {
+  background: rgba(252, 109, 38, 0.3);
 }
 
 /* ── Tabular numbers ────────────────────────────────────────────────────── */
@@ -129,14 +157,15 @@ body::after {
   animation: shimmer 1.8s ease-in-out infinite;
 }
 
-/* ── Smooth Animated Accent Line ─────────────────────────────────────────── */
+/* ── Smooth 3-Theme Animated Accent Line ─────────────────────────────────── */
 .accent-line-wrapper {
   position: relative;
-  height: 3px;
+  height: 3.5px;
   width: 100%;
   overflow: hidden;
 }
 
+.accent-line-all,
 .accent-line-github,
 .accent-line-gitlab {
   position: absolute;
@@ -145,15 +174,26 @@ body::after {
   animation: accentShimmer 4s ease-in-out infinite;
 }
 
-.accent-line-github {
+.accent-line-all {
   background: linear-gradient(90deg,
     transparent 0%,
     #E8A840 25%,
-    #C8731A 50%,
-    #E8A840 75%,
+    #10B981 50%,
+    #8B5CF6 75%,
     transparent 100%
   );
   opacity: 1;
+}
+
+.accent-line-github {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #38BDF8 20%,
+    #0EA5E9 50%,
+    #22C55E 80%,
+    transparent 100%
+  );
+  opacity: 0;
 }
 
 .accent-line-gitlab {
@@ -168,55 +208,73 @@ body::after {
   opacity: 0;
 }
 
-[data-theme="gitlab"] .accent-line-github {
-  opacity: 0;
-}
+[data-theme="github"] .accent-line-all { opacity: 0; }
+[data-theme="github"] .accent-line-github { opacity: 1; }
+[data-theme="github"] .accent-line-gitlab { opacity: 0; }
 
-[data-theme="gitlab"] .accent-line-gitlab {
-  opacity: 1;
-}
+[data-theme="gitlab"] .accent-line-all { opacity: 0; }
+[data-theme="gitlab"] .accent-line-github { opacity: 0; }
+[data-theme="gitlab"] .accent-line-gitlab { opacity: 1; }
 
 @keyframes accentShimmer {
   0%, 100% { opacity: 0.75; }
   50%       { opacity: 1; }
 }
 
-/* ── Dynamic Color Overrides for Smooth Theme Transitions ───────────────── */
+/* ── Dynamic Theme Color Overrides ───────────────────────────────────────── */
+
+/* 🐙 GITHUB THEME OVERRIDES (Electric Sky Blue) */
+[data-theme="github"] .text-amber {
+  color: #38BDF8 !important;
+  transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="github"] .bg-amber {
+  background-color: #38BDF8 !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="github"] .border-amber {
+  border-color: #38BDF8 !important;
+  transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="github"] .border-amber\/30,
+[data-theme="github"] .border-amber\/40 {
+  border-color: rgba(56, 189, 248, 0.4) !important;
+  transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="github"] .bg-amber\/10,
+[data-theme="github"] .bg-amber\/15 {
+  background-color: rgba(56, 189, 248, 0.18) !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="github"] .glow-border {
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.35),
+    0 0 30px 0  rgba(14, 165, 233, 0.28);
+}
+
+/* 🦊 GITLAB THEME OVERRIDES (Fiery Red-Orange & Purple) */
 [data-theme="gitlab"] .text-amber {
   color: #FC6D26 !important;
   transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 [data-theme="gitlab"] .bg-amber {
   background-color: #FC6D26 !important;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 [data-theme="gitlab"] .border-amber {
   border-color: #FC6D26 !important;
   transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 [data-theme="gitlab"] .border-amber\/30,
 [data-theme="gitlab"] .border-amber\/40 {
   border-color: rgba(252, 109, 38, 0.4) !important;
   transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 [data-theme="gitlab"] .bg-amber\/10,
 [data-theme="gitlab"] .bg-amber\/15 {
   background-color: rgba(252, 109, 38, 0.18) !important;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* ── Gradient border glow ────────────────────────────────────────────────── */
-.glow-border {
-  box-shadow:
-    0 0 0 1px rgba(232, 168, 64, 0.2),
-    0 0 24px 0  rgba(232, 168, 64, 0.08);
-  transition: box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 [data-theme="gitlab"] .glow-border {
   box-shadow:
     0 0 0 1px rgba(252, 109, 38, 0.35),
@@ -233,6 +291,11 @@ body::after {
   transform: scale(1.14) translateY(-2px);
   box-shadow: 0 4px 20px rgba(232, 168, 64, 0.3);
   border-color: #E8A840 !important;
+}
+
+[data-theme="github"] .avatar-ring:hover {
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45);
+  border-color: #38BDF8 !important;
 }
 
 [data-theme="gitlab"] .avatar-ring:hover {

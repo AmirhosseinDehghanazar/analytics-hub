@@ -45,8 +45,9 @@ export function Header({
 
   return (
     <header className="relative z-50">
-      {/* Top accent gradient line with smooth crossfade */}
+      {/* Top accent gradient line with smooth 3-theme crossfade */}
       <div className="accent-line-wrapper">
+        <div className="accent-line-all" />
         <div className="accent-line-github" />
         <div className="accent-line-gitlab" />
       </div>
