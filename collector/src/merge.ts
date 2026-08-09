@@ -7,6 +7,7 @@ import type {
   WindowSnapshot,
   RepoStatsPoint,
   ReleaseInfo,
+  StargazerInfo,
 } from "./types.js";
 
 /**
@@ -97,6 +98,15 @@ export function mergeReleases(_existing: ReleaseInfo[], incoming: ReleaseInfo[])
   return Array.from(byTag.values()).sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
 }
 
+/**
+ * Stargazers are a live snapshot — the full current list is always authoritative.
+ * We always replace with the latest fetched list (already sorted most-recent-first
+ * by the fetcher). Cap at 200 entries to keep dataset size reasonable.
+ */
+export function mergeStargazers(_existing: StargazerInfo[], incoming: StargazerInfo[]): StargazerInfo[] {
+  return incoming.slice(0, 200);
+}
+
 export interface MergeInput {
   clonesRaw: { timestamp: string; count: number; uniques: number }[];
   viewsRaw: { timestamp: string; count: number; uniques: number }[];
@@ -104,6 +114,7 @@ export interface MergeInput {
   content: ContentEntry[];
   repoStatsPoint: RepoStatsPoint;
   releases: ReleaseInfo[];
+  stargazers?: StargazerInfo[]; // optional for backwards-compat with existing tests
   collectedAt: string;
 }
 
@@ -123,5 +134,6 @@ export function applyCollection(dataset: HistoryDataset, input: MergeInput): His
     releases: mergeReleases(dataset.releases, input.releases),
     referrerSnapshots: appendWindowSnapshot(dataset.referrerSnapshots, input.referrers, input.collectedAt),
     contentSnapshots: appendWindowSnapshot(dataset.contentSnapshots, input.content, input.collectedAt),
+    stargazers: mergeStargazers(dataset.stargazers ?? [], input.stargazers ?? []),
   };
 }

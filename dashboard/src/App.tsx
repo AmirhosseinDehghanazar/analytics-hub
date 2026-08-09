@@ -1,179 +1,227 @@
-import { useMemo, useState } from "react";
+import { useState, useEffect } from "react";
 import { useManifest } from "./lib/useManifest";
 import { useHistoryData } from "./lib/useHistoryData";
-import { EmptyState, ErrorState, LoadingSkeleton } from "./components/States";
+import { buildTimeline, filterByRange, periodOverPeriodGrowth } from "./lib/calculations";
+import { exportCsv, exportJson } from "./lib/export";
+import type { ManifestEntry, RangeKey, ChartMode } from "./lib/types";
 import { Header } from "./components/Header";
-import { Panel } from "./components/Panel";
-import { MetricCard } from "./components/MetricCard";
-import { RangeSelector, ChartModeToggle } from "./components/Selectors";
+import { RepoSwitcher } from "./components/RepoSwitcher";
 import { TrafficChart } from "./components/TrafficChart";
 import { GrowthInsights } from "./components/GrowthInsights";
+import { MetricCard } from "./components/MetricCard";
 import { TrafficSources } from "./components/TrafficSources";
 import { PopularContent } from "./components/PopularContent";
 import { RepoOverview } from "./components/RepoOverview";
-import { buildTimeline, filterByRange, lifetimeTotal, periodOverPeriodGrowth } from "./lib/calculations";
-import { exportCsv, exportJson } from "./lib/export";
-import type { ChartMode, ManifestEntry, RangeKey } from "./lib/types";
+import { StargazerWall } from "./components/StargazerWall";
+import { LoadingSkeleton, EmptyState, ErrorState } from "./components/States";
+import { RangeSelector, ChartModeToggle } from "./components/Selectors";
+import { Panel } from "./components/Panel";
 
 export default function App() {
-  // ── 1. Fetch the manifest (list of all tracked repos) ─────────────────────
-  const { repos, state: manifestState, error: manifestError } = useManifest();
+  const {
+    repos,
+    state: manifestState,
+    error: manifestError,
+  } = useManifest();
 
-  // ── 2. Track which repo is selected (default: first in manifest) ──────────
   const [selectedRepo, setSelectedRepo] = useState<ManifestEntry | null>(null);
-
-  // Derive the effective repo selection: use explicit selection if set,
-  // otherwise fall back to the first repo in the manifest.
-  const activeRepo: ManifestEntry | undefined =
-    selectedRepo ?? repos[0];
-
-  // ── 3. Fetch the history dataset for the currently selected repo ──────────
-  const { data, state: dataState, error: dataError, reload } = useHistoryData(activeRepo?.dataPath);
-
-  // ── 4. UI state ───────────────────────────────────────────────────────────
   const [range, setRange] = useState<RangeKey>("30D");
   const [mode, setMode] = useState<ChartMode>("clones");
 
-  // Reset range/mode when the user switches repos so the chart feels fresh
+  // Auto-select first repo once manifest loads
+  useEffect(() => {
+    if (repos.length > 0 && !selectedRepo) {
+      setSelectedRepo(repos[0]);
+    }
+  }, [repos, selectedRepo]);
+
+  const {
+    data,
+    state: dataState,
+    error: dataError,
+    reload: refetch,
+  } = useHistoryData(selectedRepo?.dataPath);
+
   function handleRepoChange(repo: ManifestEntry) {
     setSelectedRepo(repo);
     setRange("30D");
     setMode("clones");
   }
 
-  const timeline = useMemo(() => (data ? buildTimeline(data.daily.clones, data.daily.views) : []), [data]);
-  const filtered = useMemo(() => filterByRange(timeline, range), [timeline, range]);
-
-  // ── 5. Loading / error states ─────────────────────────────────────────────
-
-  // While the manifest itself is loading
-  if (manifestState === "loading") return <LoadingSkeleton />;
-
-  // Manifest fetch hard-failed
-  if (manifestState === "error") {
-    return <ErrorState message={manifestError ?? "Could not load manifest"} onRetry={() => window.location.reload()} />;
-  }
-
-  // Manifest loaded but no repos configured yet — full empty state
-  if (manifestState === "empty" || repos.length === 0) {
+  // ── Render states ──────────────────────────────────────────────────────────
+  if (manifestState === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="max-w-md text-center px-6">
-          <div className="text-[11px] uppercase tracking-[0.16em] text-muted font-body mb-4">
-            Analytics Hub
-          </div>
-          <h1 className="font-display text-2xl font-semibold text-ink mb-3">No repos tracked yet</h1>
-          <p className="text-sm text-muted font-body leading-relaxed">
-            Add your repos to the <code className="text-amber font-mono text-xs">collect.yml</code> matrix,
-            run the collector workflow, and they'll appear here automatically.
-          </p>
+      <div className="min-h-screen">
+        <div className="accent-line w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <LoadingSkeleton />
         </div>
       </div>
     );
   }
 
-  // Dataset loading for the selected repo
-  if (dataState === "loading" || !activeRepo) return <LoadingSkeleton />;
-
-  // Dataset fetch failed
-  if (dataState === "error") return <ErrorState message={dataError ?? "Unknown error"} onRetry={reload} />;
-
-  // No data loaded yet (shouldn't happen, but guard)
-  if (!data) return null;
-
-  // ── 6. Render ─────────────────────────────────────────────────────────────
-
-  const headerProps = {
-    dataset: data,
-    repos,
-    selectedRepo: activeRepo,
-    onRepoChange: handleRepoChange,
-    onExportCsv: () => exportCsv(timeline, data.repository.name || "repository"),
-    onExportJson: () => exportJson(timeline, data.repository.name || "repository"),
-  };
-
-  if (dataState === "empty") {
+  if (manifestError || manifestState === "error") {
     return (
-      <>
-        <Header {...headerProps} />
-        <EmptyState trackingSince={data.repository.trackingSince} />
-        <Footer />
-      </>
+      <div className="min-h-screen">
+        <div className="accent-line w-full" />
+        <ErrorState message={manifestError ?? "Error loading manifest"} onRetry={() => window.location.reload()} />
+      </div>
     );
   }
 
-  const lifetimeClones   = lifetimeTotal(data.daily.clones, "count");
-  const lifetimeCloners  = lifetimeTotal(data.daily.clones, "uniques");
-  const lifetimeViews    = lifetimeTotal(data.daily.views, "count");
-  const lifetimeVisitors = lifetimeTotal(data.daily.views, "uniques");
-
-  const clonesGrowth   = periodOverPeriodGrowth(timeline, "clones",   30);
-  const cloners30      = periodOverPeriodGrowth(timeline, "cloners",  30);
-  const viewsGrowth    = periodOverPeriodGrowth(timeline, "views",    30);
-  const visitorsGrowth = periodOverPeriodGrowth(timeline, "visitors", 30);
+  if (repos.length === 0) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <div className="accent-line w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex-1 flex items-center justify-center">
+          <Panel glass animateIn className="p-10 max-w-lg text-center">
+            <div className="text-4xl mb-4">🚀</div>
+            <h1 className="font-display text-lg font-semibold text-ink mb-3">No repos tracked yet</h1>
+            <p className="text-sm text-muted font-body leading-relaxed">
+              Open{" "}
+              <code className="font-mono text-xs bg-surface border border-hairline px-1.5 py-0.5 text-amber">
+                .github/workflows/collect.yml
+              </code>{" "}
+              and add your repositories to the matrix list, then push to trigger the first
+              collection run.
+            </p>
+          </Panel>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <Header {...headerProps} />
+    <div className="min-h-screen">
+      {/* Header — shown only once a repo is selected */}
+      {data && selectedRepo && (() => {
+        const timeline = buildTimeline(data.daily.clones, data.daily.views);
+        return (
+          <Header
+            dataset={data}
+            onExportCsv={() => exportCsv(timeline, data.repository.name || "repo")}
+            onExportJson={() => exportJson(timeline, data.repository.name || "repo")}
+          />
+        );
+      })()}
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-        <section aria-labelledby="lifetime-heading">
-          <h2 id="lifetime-heading" className="text-[11px] uppercase tracking-[0.16em] text-muted font-body mb-3">
-            Lifetime
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <MetricCard label="Clones"          value={lifetimeClones}   growthPercent={clonesGrowth.percent}   sublabel="vs prior 30d" accent="amber" />
-            <MetricCard label="Unique cloners"  value={lifetimeCloners}  growthPercent={cloners30.percent}      sublabel="vs prior 30d" />
-            <MetricCard label="Views"           value={lifetimeViews}    growthPercent={viewsGrowth.percent}    sublabel="vs prior 30d" accent="amber" />
-            <MetricCard label="Unique visitors" value={lifetimeVisitors} growthPercent={visitorsGrowth.percent} sublabel="vs prior 30d" />
-          </div>
-        </section>
+      {/* Sticky repo tab bar (only renders when > 1 repo) */}
+      {selectedRepo && (
+        <RepoSwitcher
+          repos={repos}
+          selected={selectedRepo}
+          onChange={handleRepoChange}
+        />
+      )}
 
-        <Panel className="p-5 sm:p-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-5">
-            <div>
-              <h3 className="font-display text-sm font-semibold text-ink">Traffic history</h3>
-              <p className="text-xs text-faint font-body mt-0.5">
-                {range === "ALL" ? "Complete collected history" : `Trailing ${range.toLowerCase()}`}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <ChartModeToggle value={mode} onChange={setMode} />
-              <RangeSelector value={range} onChange={setRange} />
-            </div>
-          </div>
-          {filtered.length === 0 ? (
-            <div className="h-[280px] flex items-center justify-center text-sm text-faint font-body">
-              No data in this range yet.
-            </div>
-          ) : (
-            <TrafficChart rows={filtered} mode={mode} />
-          )}
-        </Panel>
+      {/* Main content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-5">
+        {dataState === "loading" && <LoadingSkeleton />}
 
-        <GrowthInsights timeline={timeline} />
+        {dataState !== "loading" && dataError && (
+          <ErrorState message={dataError} onRetry={refetch} />
+        )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <TrafficSources snapshots={data.referrerSnapshots} />
-          <PopularContent snapshots={data.contentSnapshots} />
-        </div>
+        {dataState !== "loading" && !dataError && data && (() => {
+          const fullTimeline = buildTimeline(data.daily.clones, data.daily.views);
+          const filteredTimeline = filterByRange(fullTimeline, range);
+          const hasData = fullTimeline.length > 0;
+          
+          const clonesGrowth30 = periodOverPeriodGrowth(fullTimeline, "clones", 30).percent;
+          const clonersGrowth30 = periodOverPeriodGrowth(fullTimeline, "cloners", 30).percent;
+          const viewsGrowth30 = periodOverPeriodGrowth(fullTimeline, "views", 30).percent;
+          const visitorsGrowth30 = periodOverPeriodGrowth(fullTimeline, "visitors", 30).percent;
 
-        <RepoOverview dataset={data} />
+          const cloneTotal = Object.values(data.daily.clones).reduce((s, d) => s + d.count, 0);
+          const viewTotal = Object.values(data.daily.views).reduce((s, d) => s + d.count, 0);
+          const uniqueCloners = Object.values(data.daily.clones).reduce((s, d) => s + d.uniques, 0);
+          const uniqueVisitors = Object.values(data.daily.views).reduce((s, d) => s + d.uniques, 0);
+
+          if (!hasData) return <EmptyState trackingSince={data.repository.trackingSince} />;
+
+          return (
+            <>
+              {/* Metric cards */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <MetricCard
+                  label="Total clones"
+                  value={cloneTotal}
+                  growthPercent={clonesGrowth30}
+                  sublabel="30-day trend"
+                  accent="amber"
+                  delay={0}
+                />
+                <MetricCard
+                  label="Unique cloners"
+                  value={uniqueCloners}
+                  growthPercent={clonersGrowth30}
+                  sublabel="30-day trend"
+                  delay={60}
+                />
+                <MetricCard
+                  label="Total views"
+                  value={viewTotal}
+                  growthPercent={viewsGrowth30}
+                  sublabel="30-day trend"
+                  accent="sage"
+                  delay={120}
+                />
+                <MetricCard
+                  label="Unique visitors"
+                  value={uniqueVisitors}
+                  growthPercent={visitorsGrowth30}
+                  sublabel="30-day trend"
+                  delay={180}
+                />
+              </div>
+
+              {/* Chart */}
+              <Panel glass animateIn delay={220} className="p-5 sm:p-6">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-5">
+                  <RangeSelector value={range} onChange={setRange} />
+                  <ChartModeToggle value={mode} onChange={setMode} />
+                </div>
+                <TrafficChart rows={filteredTimeline} mode={mode} />
+              </Panel>
+
+              {/* Growth insights */}
+              <GrowthInsights timeline={fullTimeline} />
+
+              {/* Stargazers — full width */}
+              <StargazerWall
+                stargazers={data.stargazers ?? []}
+                repoSlug={data.repository.fullName}
+              />
+
+              {/* Sources + popular content */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <TrafficSources snapshots={data.referrerSnapshots} />
+                <PopularContent snapshots={data.contentSnapshots} />
+              </div>
+
+              {/* Repo overview */}
+              <RepoOverview dataset={data} />
+            </>
+          );
+        })()}
       </main>
 
-      <Footer />
-    </>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-6 border-t border-hairline">
-      <p className="text-xs text-faint font-body leading-relaxed max-w-2xl">
-        Historical traffic is accumulated from GitHub's available traffic data. Tracking begins when this
-        analytics system is activated, and lifetime totals reflect data collected since then. Clone and view
-        counts are as GitHub reports them and may include automated traffic.
-      </p>
-    </footer>
+      {/* Footer */}
+      <footer className="border-t border-hairline mt-10 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="text-xs font-mono text-faint">
+            Analytics Hub · {selectedRepo ? `tracking ${repos.length} ${repos.length === 1 ? "repo" : "repos"}` : ""}
+          </span>
+          <a
+            href="https://github.com/AmirhosseinDehghanazar/analytics-hub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-faint hover:text-amber transition-colors"
+          >
+            github.com/AmirhosseinDehghanazar/analytics-hub ↗
+          </a>
+        </div>
+      </footer>
+    </div>
   );
 }

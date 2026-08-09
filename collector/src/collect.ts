@@ -26,6 +26,7 @@ import {
   fetchPopularPaths,
   fetchReleases,
   fetchOpenPullRequestCount,
+  fetchStargazers,
   RateLimitError,
   AuthError,
 } from "./github.js";
@@ -95,13 +96,14 @@ async function main() {
   const dataset = await loadDataset(repository);
 
   try {
-    const [clones, views, referrers, content, releasesRaw, openPRs] = await Promise.all([
+    const [clones, views, referrers, content, releasesRaw, openPRs, stargazersRaw] = await Promise.all([
       fetchClones(ctx),
       fetchViews(ctx),
       fetchReferrers(ctx).catch(() => []), // referrers/paths require push access; degrade gracefully
       fetchPopularPaths(ctx).catch(() => []),
       fetchReleases(ctx).catch(() => []),
       fetchOpenPullRequestCount(ctx).catch(() => 0),
+      fetchStargazers(ctx).catch(() => []),  // stargazers; degrade gracefully if unavailable
     ]);
 
     const updated = applyCollection(dataset, {
@@ -124,6 +126,7 @@ async function main() {
         downloadCount: (r.assets ?? []).reduce((sum: number, a: any) => sum + (a.download_count ?? 0), 0),
         htmlUrl: r.html_url,
       })),
+      stargazers: stargazersRaw,
       collectedAt,
     });
 

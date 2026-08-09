@@ -2,15 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Base ───────────────────────────────────────────────────────────────── */
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #0A0A0B;
+  background-color: #0A0A0B;
   background-image:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(232, 168, 64, 0.06), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(196, 105, 79, 0.04), transparent 55%);
+    radial-gradient(ellipse 1000px 600px at 10% -5%,  rgba(232, 168, 64, 0.07), transparent 60%),
+    radial-gradient(ellipse 800px 500px  at 95% 5%,   rgba(196, 105, 79, 0.05), transparent 55%),
+    radial-gradient(ellipse 600px 400px  at 50% 100%, rgba(143, 166, 163, 0.04), transparent 60%);
   background-attachment: fixed;
 }
 
@@ -19,13 +22,13 @@ body {
   color: #F2F0EC;
 }
 
-/* Tabular figures everywhere numbers appear */
+/* ── Tabular numbers ────────────────────────────────────────────────────── */
 .tnum {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
 }
 
-/* Signature notched-corner panel: architectural, deliberately not a rounded card */
+/* ── Notched corners — signature shape ──────────────────────────────────── */
 .notch {
   clip-path: polygon(
     16px 0, 100% 0,
@@ -40,7 +43,86 @@ body {
     0 100%, 0 9px
   );
 }
+.notch-xs {
+  clip-path: polygon(
+    6px 0, 100% 0,
+    100% calc(100% - 6px), calc(100% - 6px) 100%,
+    0 100%, 0 6px
+  );
+}
 
+/* ── Glassmorphism panel ────────────────────────────────────────────────── */
+.glass {
+  background: rgba(19, 19, 22, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(255, 255, 255, 0.055);
+}
+
+/* ── Shimmer loading skeleton ────────────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #1B1B1E 0%,
+    #2A2A2E 40%,
+    #1B1B1E 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* ── Amber accent line (top of header) ──────────────────────────────────── */
+.accent-line {
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #E8A840 30%,
+    #C8731A 60%,
+    transparent 100%
+  );
+  animation: accentShimmer 4s ease-in-out infinite;
+}
+
+@keyframes accentShimmer {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* ── Gradient border glow ────────────────────────────────────────────────── */
+.glow-border {
+  box-shadow:
+    0 0 0 1px rgba(232, 168, 64, 0.2),
+    0 0 24px 0  rgba(232, 168, 64, 0.08);
+}
+
+/* ── Avatar hover ring ───────────────────────────────────────────────────── */
+.avatar-ring {
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.18s ease,
+              border-color 0.15s ease;
+}
+.avatar-ring:hover {
+  transform: scale(1.14) translateY(-2px);
+  box-shadow: 0 4px 20px rgba(232, 168, 64, 0.3);
+  border-color: #E8A840 !important;
+}
+
+/* ── Progress bar fill animation ─────────────────────────────────────────── */
+.bar-fill {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Stagger animation helpers (inline style: animation-delay) ──────────── */
+.animate-stagger { animation-fill-mode: both; }
+
+/* ── Modal backdrop ──────────────────────────────────────────────────────── */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ── Reduce motion ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -49,8 +131,23 @@ body {
   }
 }
 
-/* thin custom scrollbar for a polished feel */
-::-webkit-scrollbar { width: 10px; height: 10px; }
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #2A2A2E; border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: #3A3A3E; }
+
+/* ── Tab indicator slide ─────────────────────────────────────────────────── */
+.tab-active-indicator {
+  position: relative;
+}
+.tab-active-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #E8A840;
+  animation: fadeIn 0.2s ease-out;
+}

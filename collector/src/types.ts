@@ -69,6 +69,14 @@ export interface RepositoryMeta {
   trackingSince: string; // ISO timestamp of the first successful collection
 }
 
+export interface StargazerInfo {
+  login: string;
+  avatarUrl: string;
+  htmlUrl: string;
+  /** ISO timestamp when the user starred the repo (from vnd.github.star+json header), or null. */
+  starredAt: string | null;
+}
+
 export interface HistoryDataset {
   schemaVersion: 1;
   repository: RepositoryMeta;
@@ -86,6 +94,8 @@ export interface HistoryDataset {
    *  rolling log of recent snapshots instead of pretending we have full history. */
   referrerSnapshots: WindowSnapshot<ReferrerEntry>[];
   contentSnapshots: WindowSnapshot<ContentEntry>[];
+  /** Snapshot of all users who have starred the repo (up to 200, most recent first). */
+  stargazers: StargazerInfo[];
 }
 
 export function emptyDataset(repository: RepositoryMeta): HistoryDataset {
@@ -100,5 +110,6 @@ export function emptyDataset(repository: RepositoryMeta): HistoryDataset {
     releases: [],
     referrerSnapshots: [],
     contentSnapshots: [],
+    stargazers: [],
   };
 }

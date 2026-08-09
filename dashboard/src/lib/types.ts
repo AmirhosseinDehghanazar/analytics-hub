@@ -49,6 +49,12 @@ export interface RepositoryMeta {
   defaultBranch: string;
   trackingSince: string;
 }
+export interface StargazerInfo {
+  login: string;
+  avatarUrl: string;
+  htmlUrl: string;
+  starredAt: string | null;
+}
 export interface HistoryDataset {
   schemaVersion: 1;
   repository: RepositoryMeta;
@@ -63,25 +69,35 @@ export interface HistoryDataset {
   releases: ReleaseInfo[];
   referrerSnapshots: WindowSnapshot<ReferrerEntry>[];
   contentSnapshots: WindowSnapshot<ContentEntry>[];
+  stargazers: StargazerInfo[];
 }
 
 export type RangeKey = "7D" | "14D" | "30D" | "90D" | "6M" | "1Y" | "ALL";
 export type ChartMode = "clones" | "cloners" | "views" | "visitors" | "combined";
 
 // ── Multi-repo manifest ────────────────────────────────────────────────────
-
-/** One entry in manifest.json — represents a single tracked repository. */
 export interface ManifestEntry {
-  /** "owner/repo" display slug, e.g. "AmirhosseinDehghanazar/my-repo" */
   slug: string;
-  /** Filesystem-safe directory name used in the data path, e.g. "AmirhosseinDehghanazar-my-repo" */
   dirName: string;
-  /** Relative URL to the history.json for this repo, e.g. "data/AmirhosseinDehghanazar-my-repo/history.json" */
   dataPath: string;
 }
-
-/** Shape of the top-level manifest.json served at the dashboard root. */
 export interface Manifest {
   schemaVersion: 1;
   repos: ManifestEntry[];
+}
+
+// ── GitHub public user profile (fetched client-side for stargazer modal) ──
+export interface GithubUserProfile {
+  login: string;
+  name: string | null;
+  avatar_url: string;
+  html_url: string;
+  bio: string | null;
+  company: string | null;
+  location: string | null;
+  blog: string | null;
+  public_repos: number;
+  followers: number;
+  following: number;
+  created_at: string;
 }
