@@ -57,10 +57,10 @@ export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <div className="text-3xl mb-3">⭐</div>
             <p className="text-sm text-faint font-body">
-              No stargazers collected yet.
+              No individual stargazer profiles collected.
             </p>
-            <p className="text-xs text-faint font-mono mt-1">
-              Run the collector to gather star data.
+            <p className="text-xs text-faint font-mono mt-1 max-w-md">
+              Star counts are tracked in Repo Stats. Detailed user profiles are provided when supported by the provider REST API (GitHub).
             </p>
           </div>
         ) : (

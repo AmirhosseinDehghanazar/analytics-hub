@@ -9,8 +9,11 @@ export function RepoOverview({ dataset }: { dataset: HistoryDataset }) {
     ? new Date(repository.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })
     : "Unknown";
 
+  const isGitLab = repository.provider === "gitlab";
+
   const fields: { label: string; value: string | number | null }[] = [
-    { label: "Owner", value: repository.owner || null },
+    { label: "Provider", value: repository.provider ? (isGitLab ? "GitLab" : "GitHub") : "GitHub" },
+    { label: "Owner / Namespace", value: repository.owner || null },
     { label: "Language", value: repository.language },
     { label: "License", value: repository.license },
     { label: "Created", value: repository.createdAt ? created : null },
@@ -20,7 +23,16 @@ export function RepoOverview({ dataset }: { dataset: HistoryDataset }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <Panel className="p-5 sm:p-6">
-        <h3 className="font-display text-sm font-semibold text-ink mb-1">Repository</h3>
+        <h3 className="font-display text-sm font-semibold text-ink mb-1 flex items-center justify-between">
+          <span>Repository</span>
+          {repository.provider && (
+            <span className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded-xs uppercase ${
+              isGitLab ? "bg-orange-500/20 text-orange-400 border border-orange-500/40" : "bg-sky-500/20 text-sky-400 border border-sky-500/40"
+            }`}>
+              {repository.provider}
+            </span>
+          )}
+        </h3>
         <p className="text-sm text-muted font-body mb-5 break-all">
           {repository.fullName || "Not configured yet"}
         </p>
@@ -48,7 +60,7 @@ export function RepoOverview({ dataset }: { dataset: HistoryDataset }) {
           <Stat label="Forks" value={latestStats?.forks} />
           <Stat label="Watchers" value={latestStats?.watchers} />
           <Stat label="Open issues" value={latestStats?.openIssues} />
-          <Stat label="Open PRs" value={latestStats?.openPRs} />
+          <Stat label={isGitLab ? "Open MRs" : "Open PRs"} value={latestStats?.openPRs} />
           <Stat label="Releases" value={releases.length} />
         </div>
       </Panel>

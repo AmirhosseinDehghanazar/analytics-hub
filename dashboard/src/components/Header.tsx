@@ -55,7 +55,18 @@ export function Header({
             <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
               <div className="text-[10px] uppercase tracking-[0.2em] text-faint font-body mb-1.5 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber animate-glow-pulse" />
-                Analytics Hub
+                <span>Analytics Hub</span>
+                {dataset.repository.provider && (
+                  <span
+                    className={`ml-1 px-1.5 py-0.2 text-[9px] font-mono font-semibold uppercase rounded-xs ${
+                      dataset.repository.provider === "gitlab"
+                        ? "bg-orange-500/20 text-orange-400 border border-orange-500/40"
+                        : "bg-sky-500/20 text-sky-400 border border-sky-500/40"
+                    }`}
+                  >
+                    {dataset.repository.provider}
+                  </span>
+                )}
               </div>
               <h1 className="font-display text-xl sm:text-2xl font-semibold text-ink leading-tight">
                 {dataset.repository.name || "Not configured"}
@@ -68,7 +79,7 @@ export function Header({
                     rel="noopener noreferrer"
                     className="text-xs text-muted font-mono hover:text-amber transition-colors duration-200"
                   >
-                    github.com/{dataset.repository.fullName}
+                    {dataset.repository.htmlUrl.replace(/^https?:\/\//, "")} ↗
                   </a>
                 ) : (
                   <span className="text-xs text-amber font-mono font-semibold">

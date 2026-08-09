@@ -36,7 +36,10 @@ export interface ReleaseInfo {
   downloadCount: number;
   htmlUrl: string;
 }
+export type ProviderType = "github" | "gitlab";
+
 export interface RepositoryMeta {
+  provider?: ProviderType;
   owner: string;
   name: string;
   fullName: string;
@@ -57,6 +60,7 @@ export interface StargazerInfo {
 }
 export interface HistoryDataset {
   schemaVersion: 1;
+  provider?: ProviderType;
   repository: RepositoryMeta;
   lastSyncedAt: string | null;
   lastSyncStatus: "ok" | "error" | "never";
@@ -77,6 +81,7 @@ export type ChartMode = "clones" | "cloners" | "views" | "visitors" | "combined"
 
 // ── Multi-repo manifest ────────────────────────────────────────────────────
 export interface ManifestEntry {
+  provider?: ProviderType;
   slug: string;
   dirName: string;
   dataPath: string;

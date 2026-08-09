@@ -55,7 +55,10 @@ export interface ReleaseInfo {
   htmlUrl: string;
 }
 
+export type ProviderType = "github" | "gitlab";
+
 export interface RepositoryMeta {
+  provider?: ProviderType;
   owner: string;
   name: string;
   fullName: string;
@@ -79,6 +82,7 @@ export interface StargazerInfo {
 
 export interface HistoryDataset {
   schemaVersion: 1;
+  provider?: ProviderType;
   repository: RepositoryMeta;
   lastSyncedAt: string | null;
   lastSyncStatus: "ok" | "error" | "never";
@@ -101,7 +105,11 @@ export interface HistoryDataset {
 export function emptyDataset(repository: RepositoryMeta): HistoryDataset {
   return {
     schemaVersion: 1,
-    repository,
+    provider: repository.provider ?? "github",
+    repository: {
+      ...repository,
+      provider: repository.provider ?? "github",
+    },
     lastSyncedAt: null,
     lastSyncStatus: "never",
     lastSyncError: null,
