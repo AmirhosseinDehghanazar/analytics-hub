@@ -5,6 +5,8 @@ on:
     # GitHub's traffic API only refreshes daily internally, but polling a few times a
     # day catches the data as soon as it updates and keeps "last synchronized" honest.
     - cron: "0 */6 * * *"
+  push:
+    branches: [main]
   workflow_dispatch: {} # "Sync now" from the Actions tab
 
 permissions:
