@@ -18,6 +18,10 @@ export function StargazerWall({ stargazers, repoSlug, totalStars = 0 }: Stargaze
   const visible = stargazers.slice(0, MAX_VISIBLE);
   const overflow = Math.max(0, stargazers.length - MAX_VISIBLE);
 
+  const stargazersUrl = repoSlug.includes("/")
+    ? `https://github.com/${repoSlug}/stargazers`
+    : `https://github.com/AmirhosseinDehghanazar`;
+
   return (
     <>
       <Panel glass animateIn delay={350} className="p-5 sm:p-6">
@@ -42,7 +46,7 @@ export function StargazerWall({ stargazers, repoSlug, totalStars = 0 }: Stargaze
           </div>
           {displayStarsCount > 0 && (
             <a
-              href={`https://github.com/${repoSlug}/stargazers`}
+              href={stargazersUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[11px] font-mono text-muted hover:text-amber transition-colors duration-200 flex-shrink-0"
@@ -67,7 +71,7 @@ export function StargazerWall({ stargazers, repoSlug, totalStars = 0 }: Stargaze
             </p>
             {displayStarsCount > 0 && (
               <a
-                href={`https://github.com/${repoSlug}/stargazers`}
+                href={stargazersUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="notch-xs px-3.5 py-1.5 text-xs font-mono font-medium border border-hairline text-muted hover:text-ink hover:border-amber transition-colors"
@@ -99,7 +103,7 @@ export function StargazerWall({ stargazers, repoSlug, totalStars = 0 }: Stargaze
 
             {overflow > 0 && (
               <a
-                href={`https://github.com/${repoSlug}/stargazers`}
+                href={stargazersUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`${overflow} more stargazers on GitHub`}
