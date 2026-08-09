@@ -44,7 +44,7 @@ export function Header({
   const latestStats = dataset.repoStats[dataset.repoStats.length - 1];
 
   return (
-    <header className="relative z-50">
+    <header className="relative z-10">
       {/* Top accent gradient line with smooth 3-theme crossfade */}
       <div className="accent-line-wrapper">
         <div className="accent-line-all" />

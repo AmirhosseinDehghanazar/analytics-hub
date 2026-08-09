@@ -92,7 +92,7 @@ export function ProviderTabs({ repos, activeProvider, onProviderChange }: Provid
             }`}
           />
           <span className="transition-colors duration-700 text-ink">
-            {activeProvider === "gitlab" ? "GitLab Fiery Theme" : activeProvider === "github" ? "GitHub Sky Blue Theme" : "Unified Multi-Theme"}
+            {activeProvider === "gitlab" ? "GitLab" : activeProvider === "github" ? "GitHub" : "All Providers"}
           </span>
         </div>
 
