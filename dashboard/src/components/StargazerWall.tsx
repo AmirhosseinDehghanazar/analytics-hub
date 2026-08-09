@@ -10,6 +10,12 @@ interface StargazerWallProps {
   repoSlug: string;
 }
 
+function formatAvatarUrl(url: string, size = 72): string {
+  if (!url) return "";
+  if (url.includes("?")) return `${url}&s=${size}`;
+  return `${url}?s=${size}`;
+}
+
 export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
   const [selected, setSelected] = useState<StargazerInfo | null>(null);
 
@@ -73,7 +79,7 @@ export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
                 className="relative group outline-none focus-visible:ring-1 focus-visible:ring-amber"
               >
                 <img
-                  src={`${s.avatarUrl}&s=72`}
+                  src={formatAvatarUrl(s.avatarUrl, 72)}
                   alt={s.login}
                   loading="lazy"
                   width={36}
@@ -89,7 +95,7 @@ export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
                 href={stargazersUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={`${overflow} more stargazers on GitHub`}
+                title={`${overflow} more stargazers`}
                 className="w-9 h-9 rounded-full border border-hairline bg-raised flex items-center justify-center text-[9px] font-mono text-muted hover:border-amber hover:text-amber transition-colors duration-200 flex-shrink-0"
               >
                 +{overflow > 99 ? "99" : overflow}
@@ -102,7 +108,7 @@ export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
         {stargazers.length > 0 && stargazers[0]?.starredAt && (
           <div className="mt-4 pt-4 border-t border-hairline flex items-center gap-2">
             <img
-              src={`${stargazers[0].avatarUrl}&s=32`}
+              src={formatAvatarUrl(stargazers[0].avatarUrl, 32)}
               alt={stargazers[0].login}
               className="w-5 h-5 rounded-full border border-hairline"
             />

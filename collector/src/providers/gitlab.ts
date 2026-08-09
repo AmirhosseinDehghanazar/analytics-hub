@@ -95,14 +95,15 @@ export class GitLabProvider implements AnalyticsProvider {
       trackingSince: collectedAt,
     };
 
-    console.log(`[GitLab] Fetching statistics, releases, and merge requests for ${rawPath}...`);
-    const [clonesRaw, openMRs, releases] = await Promise.all([
+    console.log(`[GitLab] Fetching statistics, releases, merge requests, and starrers for ${rawPath}...`);
+    const [clonesRaw, openMRs, releases, stargazersRaw] = await Promise.all([
       this.fetchStatistics(encodedPath, token).catch((err) => {
         console.warn(`[GitLab] Notice: Project statistics unavailable for ${rawPath}:`, err instanceof Error ? err.message : err);
         return [];
       }),
       this.fetchOpenMergeRequestCount(encodedPath, token).catch(() => 0),
       this.fetchReleases(encodedPath, proj.web_url as string, token).catch(() => []),
+      this.fetchStargazers(encodedPath, token).catch(() => []),
     ]);
 
     return {
@@ -120,7 +121,7 @@ export class GitLabProvider implements AnalyticsProvider {
         openPRs: openMRs,
       },
       releases,
-      stargazers: [], // GitLab REST API does not expose a public timestamped stargazers user list
+      stargazers: stargazersRaw,
       collectedAt,
     };
   }
@@ -173,5 +174,35 @@ export class GitLabProvider implements AnalyticsProvider {
         htmlUrl: links?.self ?? `${projectWebUrl}/-/releases/${r.tag_name}`,
       };
     });
+  }
+
+  /**
+   * Fetches users who starred the project from GET /projects/:id/starrers
+   */
+  private async fetchStargazers(encodedPath: string, token: string) {
+    const results: { login: string; avatarUrl: string; htmlUrl: string; starredAt: string | null }[] = [];
+
+    for (let page = 1; page <= 3; page++) {
+      const res = await gitlabFetch(`/projects/${encodedPath}/starrers?per_page=100&page=${page}`, token);
+      if (!res || !Array.isArray(res.json) || res.json.length === 0) break;
+
+      for (const entry of res.json as Record<string, unknown>[]) {
+        const u = (entry.user as Record<string, unknown> | undefined) ?? entry;
+        const login = (u.username as string) ?? (u.login as string);
+        if (login) {
+          results.push({
+            login,
+            avatarUrl: (u.avatar_url as string) ?? `https://gitlab.com/uploads/-/system/user/avatar/${u.id}/avatar.png`,
+            htmlUrl: (u.web_url as string) ?? `https://gitlab.com/${login}`,
+            starredAt: (entry.starred_since as string | null) ?? null,
+          });
+        }
+      }
+
+      if ((res.json as unknown[]).length < 100) break;
+    }
+
+    results.sort((a, b) => (b.starredAt ?? "").localeCompare(a.starredAt ?? ""));
+    return results;
   }
 }

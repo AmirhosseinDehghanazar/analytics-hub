@@ -19,6 +19,16 @@ function resolveDataUrl(dataPath: string): string {
   return `${base}/${dataPath}`;
 }
 
+function checkHasAnyData(ds: HistoryDataset): boolean {
+  return (
+    Object.keys(ds.daily?.clones ?? {}).length > 0 ||
+    Object.keys(ds.daily?.views ?? {}).length > 0 ||
+    (ds.repoStats ?? []).length > 0 ||
+    (ds.stargazers ?? []).length > 0 ||
+    (ds.releases ?? []).length > 0
+  );
+}
+
 /**
  * Fetches the history dataset for a single repository or aggregates multiple datasets.
  *
@@ -59,9 +69,7 @@ export function useHistoryData(dataPath: string | string[] | undefined): UseHist
           if (cancelled) return;
           const aggregated = aggregateHistoryDatasets(datasets);
           setData(aggregated);
-          const hasAnyData =
-            Object.keys(aggregated.daily?.clones ?? {}).length > 0 ||
-            Object.keys(aggregated.daily?.views ?? {}).length > 0;
+          const hasAnyData = checkHasAnyData(aggregated);
           setState(hasAnyData ? "ready" : "empty");
         })
         .catch((err) => {
@@ -81,9 +89,7 @@ export function useHistoryData(dataPath: string | string[] | undefined): UseHist
         .then((json: HistoryDataset) => {
           if (cancelled) return;
           setData(json);
-          const hasAnyData =
-            Object.keys(json.daily?.clones ?? {}).length > 0 ||
-            Object.keys(json.daily?.views ?? {}).length > 0;
+          const hasAnyData = checkHasAnyData(json);
           setState(hasAnyData ? "ready" : "empty");
         })
         .catch((err) => {

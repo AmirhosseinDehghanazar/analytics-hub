@@ -141,7 +141,11 @@ export default function App() {
         {dataState !== "loading" && !dataError && data && (() => {
           const fullTimeline = buildTimeline(data.daily.clones, data.daily.views);
           const filteredTimeline = filterByRange(fullTimeline, range);
-          const hasData = fullTimeline.length > 0;
+          const hasData =
+            fullTimeline.length > 0 ||
+            (data.repoStats ?? []).length > 0 ||
+            (data.stargazers ?? []).length > 0 ||
+            (data.releases ?? []).length > 0;
 
           const clonesGrowth30 = periodOverPeriodGrowth(fullTimeline, "clones", 30).percent;
           const clonersGrowth30 = periodOverPeriodGrowth(fullTimeline, "cloners", 30).percent;
