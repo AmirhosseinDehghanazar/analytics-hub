@@ -3,10 +3,6 @@ name: Deploy analytics dashboard
 on:
   push:
     branches: [main]
-    paths:
-      - "dashboard/**"
-      - "data/**"              # any change under data/ triggers a redeploy
-      - ".github/workflows/deploy.yml"
   workflow_dispatch: {}
 
 permissions:
@@ -28,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
           cache-dependency-path: dashboard/package-lock.json
 
