@@ -1,4 +1,25 @@
 {
   "schemaVersion": 1,
-  "repos": []
+  "repos": [
+    {
+      "slug": "AmirhosseinDehghanazar/2Auth-JS",
+      "dirName": "AmirhosseinDehghanazar-2Auth-JS",
+      "dataPath": "data/AmirhosseinDehghanazar-2Auth-JS/history.json"
+    },
+    {
+      "slug": "AmirhosseinDehghanazar/3d-404-page",
+      "dirName": "AmirhosseinDehghanazar-3d-404-page",
+      "dataPath": "data/AmirhosseinDehghanazar-3d-404-page/history.json"
+    },
+    {
+      "slug": "AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+      "dirName": "AmirhosseinDehghanazar-Hacker-Terminal-Loading-Screen",
+      "dataPath": "data/AmirhosseinDehghanazar-Hacker-Terminal-Loading-Screen/history.json"
+    },
+    {
+      "slug": "AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+      "dirName": "AmirhosseinDehghanazar-LinkedIn-AutoClicker-Extension",
+      "dataPath": "data/AmirhosseinDehghanazar-LinkedIn-AutoClicker-Extension/history.json"
+    }
+  ]
 }
