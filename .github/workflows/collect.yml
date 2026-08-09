@@ -1,0 +1,159 @@
+name: Collect repository analytics
+
+on:
+  schedule:
+    # GitHub's traffic API only refreshes daily internally, but polling a few times a
+    # day catches the data as soon as it updates and keeps "last synchronized" honest.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {} # "Sync now" from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-analytics-collect
+  cancel-in-progress: false
+
+jobs:
+  # ── One parallel leg per tracked repo ─────────────────────────────────────
+  collect:
+    name: Collect — ${{ matrix.repo }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      # If one repo fails (e.g. token access revoked) the others still run.
+      fail-fast: false
+      matrix:
+        repo:
+          # ✏️  ADD / REMOVE repos here. Format: owner/repo
+          # The token (GH_ANALYTICS_TOKEN) must have traffic read access to each one.
+          - PLACEHOLDER_OWNER/PLACEHOLDER_REPO_1
+          # - AmirhosseinDehghanazar/wandor
+          # - AmirhosseinDehghanazar/another-repo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: collector/package-lock.json
+
+      - name: Install collector dependencies
+        working-directory: collector
+        run: npm ci
+
+      - name: Derive safe directory name (replace / with -)
+        id: slug
+        run: |
+          SLUG=$(echo "${{ matrix.repo }}" | tr '/' '-')
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Run collector
+        working-directory: collector
+        env:
+          GH_ANALYTICS_TOKEN: ${{ secrets.GH_ANALYTICS_TOKEN }}
+          GH_ANALYTICS_REPO: ${{ matrix.repo }}
+          # Each repo gets its own subdirectory under data/
+          HISTORY_PATH: ${{ github.workspace }}/data/${{ steps.slug.outputs.slug }}/history.json
+        run: npm run collect
+
+      - name: Upload dataset as artifact (for the commit step below)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dataset-${{ steps.slug.outputs.slug }}
+          path: data/${{ steps.slug.outputs.slug }}/history.json
+          if-no-files-found: warn
+          retention-days: 1
+
+  # ── After all legs: regenerate manifest and commit ────────────────────────
+  commit:
+    name: Regenerate manifest & commit
+    needs: collect
+    runs-on: ubuntu-latest
+    # Run even if some collect legs failed so we always commit whatever succeeded.
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Download all datasets
+        uses: actions/download-artifact@v4
+        with:
+          # Download all artifacts whose names start with "dataset-"
+          pattern: dataset-*
+          path: data
+          merge-multiple: false
+
+      # actions/download-artifact puts files into data/<artifact-name>/<filename>.
+      # Flatten: move data/dataset-<slug>/history.json → data/<slug>/history.json
+      - name: Flatten artifact directories
+        run: |
+          for dir in data/dataset-*/; do
+            slug="${dir#data/dataset-}"
+            slug="${slug%/}"
+            mkdir -p "data/$slug"
+            mv "$dir/history.json" "data/$slug/history.json" 2>/dev/null || true
+            rmdir "$dir" 2>/dev/null || true
+          done
+
+      - name: Regenerate manifest.json
+        run: |
+          node - <<'EOF'
+          const fs   = require("fs");
+          const path = require("path");
+
+          const dataDir = path.join(process.cwd(), "data");
+          const repos   = [];
+
+          for (const entry of fs.readdirSync(dataDir, { withFileTypes: true })) {
+            if (!entry.isDirectory()) continue;
+            const slug     = entry.name;                // e.g. "AmirhosseinDehghanazar-my-repo"
+            const histPath = path.join(dataDir, slug, "history.json");
+            if (!fs.existsSync(histPath)) continue;
+
+            // Read the history file to extract the repo's fullName for display
+            let repoSlug = slug;
+            try {
+              const hist = JSON.parse(fs.readFileSync(histPath, "utf-8"));
+              if (hist.repository?.fullName) repoSlug = hist.repository.fullName;
+            } catch {}
+
+            repos.push({
+              slug:     repoSlug,           // "owner/repo"  (for display)
+              dirName:  slug,               // "owner-repo"  (for the data path)
+              dataPath: `data/${slug}/history.json`,
+            });
+          }
+
+          // Sort alphabetically for stable diffs
+          repos.sort((a, b) => a.slug.localeCompare(b.slug));
+
+          const manifest = { schemaVersion: 1, repos };
+          fs.writeFileSync(
+            path.join(dataDir, "manifest.json"),
+            JSON.stringify(manifest, null, 2) + "\n",
+            "utf-8"
+          );
+          console.log(`Manifest written with ${repos.length} repo(s):`, repos.map(r => r.slug));
+          EOF
+
+      - name: Commit datasets and manifest if anything changed
+        run: |
+          git config user.name  "repo-analytics-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No changes to commit — skipping."
+            exit 0
+          fi
+          git commit -m "chore(analytics): sync traffic data [skip ci]"
+          git push
