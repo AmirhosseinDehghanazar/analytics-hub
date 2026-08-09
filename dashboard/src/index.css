@@ -4,16 +4,13 @@
 
 /* ── Global Theme Custom Properties ─────────────────────────────────────── */
 :root {
-  --theme-transition: background-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                      border-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                      color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                      box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  --theme-transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                      color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   --brand-primary: #E8A840;
   --brand-secondary: #C8731A;
   --brand-purple: #6B4F96;
-  --bg-radial-1: rgba(232, 168, 64, 0.07);
-  --bg-radial-2: rgba(196, 105, 79, 0.05);
-  --bg-radial-3: rgba(143, 166, 163, 0.04);
 }
 
 /* 🦊 GitLab Fiery Palette Override (triggered smoothly by data-theme="gitlab") */
@@ -21,9 +18,6 @@
   --brand-primary: #FC6D26;
   --brand-secondary: #FCA326;
   --brand-purple: #6B4F96;
-  --bg-radial-1: rgba(252, 109, 38, 0.12);
-  --bg-radial-2: rgba(107, 79, 150, 0.14);
-  --bg-radial-3: rgba(131, 137, 150, 0.08);
 }
 
 /* ── Base ───────────────────────────────────────────────────────────────── */
@@ -33,13 +27,51 @@ html {
 }
 
 body {
+  position: relative;
   background-color: #0A0A0B;
+  min-height: 100vh;
+  color: #F2F0EC;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 🐙 Default / GitHub Background Glow Crossfade */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
   background-image:
-    radial-gradient(ellipse 1000px 600px at 10% -5%,  var(--bg-radial-1), transparent 60%),
-    radial-gradient(ellipse 800px 500px  at 95% 5%,   var(--bg-radial-2), transparent 55%),
-    radial-gradient(ellipse 600px 400px  at 50% 100%, var(--bg-radial-3), transparent 60%);
-  background-attachment: fixed;
-  transition: var(--theme-transition);
+    radial-gradient(ellipse 1100px 700px at 15% -5%,  rgba(232, 168, 64, 0.09), transparent 60%),
+    radial-gradient(ellipse 900px 550px  at 92% 10%,  rgba(196, 105, 79, 0.06), transparent 55%),
+    radial-gradient(ellipse 700px 450px  at 50% 100%, rgba(143, 166, 163, 0.05), transparent 60%);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 🦊 GitLab Fiery Background Glow Crossfade */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(ellipse 1100px 700px at 15% -5%,  rgba(252, 109, 38, 0.16), transparent 60%),
+    radial-gradient(ellipse 950px 600px  at 92% 10%,  rgba(107, 79, 150, 0.18), transparent 55%),
+    radial-gradient(ellipse 750px 500px  at 50% 100%, rgba(226, 67, 41, 0.12), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="gitlab"] body::before {
+  opacity: 0;
+}
+
+[data-theme="gitlab"] body::after {
+  opacity: 1;
 }
 
 ::selection {
@@ -97,9 +129,23 @@ body {
   animation: shimmer 1.8s ease-in-out infinite;
 }
 
-/* ── Accent line (top of header) ────────────────────────────────────────── */
-.accent-line {
-  height: 2.5px;
+/* ── Smooth Animated Accent Line ─────────────────────────────────────────── */
+.accent-line-wrapper {
+  position: relative;
+  height: 3px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.accent-line-github,
+.accent-line-gitlab {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: accentShimmer 4s ease-in-out infinite;
+}
+
+.accent-line-github {
   background: linear-gradient(90deg,
     transparent 0%,
     #E8A840 25%,
@@ -107,11 +153,10 @@ body {
     #E8A840 75%,
     transparent 100%
   );
-  transition: background 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: accentShimmer 4s ease-in-out infinite;
+  opacity: 1;
 }
 
-[data-theme="gitlab"] .accent-line {
+.accent-line-gitlab {
   background: linear-gradient(90deg,
     transparent 0%,
     #E24329 15%,
@@ -120,11 +165,48 @@ body {
     #6B4F96 85%,
     transparent 100%
   );
+  opacity: 0;
+}
+
+[data-theme="gitlab"] .accent-line-github {
+  opacity: 0;
+}
+
+[data-theme="gitlab"] .accent-line-gitlab {
+  opacity: 1;
 }
 
 @keyframes accentShimmer {
-  0%, 100% { opacity: 0.7; }
+  0%, 100% { opacity: 0.75; }
   50%       { opacity: 1; }
+}
+
+/* ── Dynamic Color Overrides for Smooth Theme Transitions ───────────────── */
+[data-theme="gitlab"] .text-amber {
+  color: #FC6D26 !important;
+  transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="gitlab"] .bg-amber {
+  background-color: #FC6D26 !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="gitlab"] .border-amber {
+  border-color: #FC6D26 !important;
+  transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="gitlab"] .border-amber\/30,
+[data-theme="gitlab"] .border-amber\/40 {
+  border-color: rgba(252, 109, 38, 0.4) !important;
+  transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="gitlab"] .bg-amber\/10,
+[data-theme="gitlab"] .bg-amber\/15 {
+  background-color: rgba(252, 109, 38, 0.18) !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Gradient border glow ────────────────────────────────────────────────── */
@@ -132,13 +214,13 @@ body {
   box-shadow:
     0 0 0 1px rgba(232, 168, 64, 0.2),
     0 0 24px 0  rgba(232, 168, 64, 0.08);
-  transition: box-shadow 0.4s ease;
+  transition: box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme="gitlab"] .glow-border {
   box-shadow:
-    0 0 0 1px rgba(252, 109, 38, 0.3),
-    0 0 28px 0  rgba(107, 79, 150, 0.25);
+    0 0 0 1px rgba(252, 109, 38, 0.35),
+    0 0 30px 0  rgba(107, 79, 150, 0.28);
 }
 
 /* ── Avatar hover ring ───────────────────────────────────────────────────── */
@@ -154,7 +236,7 @@ body {
 }
 
 [data-theme="gitlab"] .avatar-ring:hover {
-  box-shadow: 0 4px 20px rgba(252, 109, 38, 0.4);
+  box-shadow: 0 4px 20px rgba(252, 109, 38, 0.45);
   border-color: #FC6D26 !important;
 }
 
@@ -162,9 +244,6 @@ body {
 .bar-fill {
   transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* ── Stagger animation helpers (inline style: animation-delay) ──────────── */
-.animate-stagger { animation-fill-mode: both; }
 
 /* ── Modal backdrop ──────────────────────────────────────────────────────── */
 .modal-backdrop {
@@ -187,22 +266,3 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #2A2A2E; border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: #3A3A3E; }
-
-/* ── Tab indicator slide ─────────────────────────────────────────────────── */
-.tab-active-indicator {
-  position: relative;
-}
-.tab-active-indicator::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #E8A840;
-  animation: fadeIn 0.2s ease-out;
-}
-
-[data-theme="gitlab"] .tab-active-indicator::after {
-  background: #FC6D26;
-}
