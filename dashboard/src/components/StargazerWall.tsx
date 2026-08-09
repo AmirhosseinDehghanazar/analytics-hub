@@ -8,13 +8,11 @@ const MAX_VISIBLE = 120;
 interface StargazerWallProps {
   stargazers: StargazerInfo[];
   repoSlug: string;
-  totalStars?: number;
 }
 
-export function StargazerWall({ stargazers, repoSlug, totalStars = 0 }: StargazerWallProps) {
+export function StargazerWall({ stargazers, repoSlug }: StargazerWallProps) {
   const [selected, setSelected] = useState<StargazerInfo | null>(null);
 
-  const displayStarsCount = Math.max(stargazers.length, totalStars);
   const visible = stargazers.slice(0, MAX_VISIBLE);
   const overflow = Math.max(0, stargazers.length - MAX_VISIBLE);
 
@@ -40,45 +38,30 @@ export function StargazerWall({ stargazers, repoSlug, totalStars = 0 }: Stargaze
               Stargazers
             </h3>
             <p className="text-[11px] text-faint font-mono mt-1">
-              {displayStarsCount.toLocaleString()} {displayStarsCount === 1 ? "star" : "stars"}
-              {stargazers.length > 0 ? " · click an avatar to see their profile" : ""}
+              {stargazers.length.toLocaleString()} {stargazers.length === 1 ? "star" : "stars"} · click an avatar to see their profile
             </p>
           </div>
-          {displayStarsCount > 0 && (
+          {stargazers.length > 0 && (
             <a
               href={stargazersUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[11px] font-mono text-muted hover:text-amber transition-colors duration-200 flex-shrink-0"
             >
-              View on GitHub ↗
+              View all ↗
             </a>
           )}
         </div>
 
         {stargazers.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-8 text-center bg-surface/50 border border-hairline p-6 notch-sm">
-            <div className="text-3xl mb-2">⭐</div>
-            <p className="text-sm font-semibold text-ink font-body mb-1">
-              {displayStarsCount > 0
-                ? `${displayStarsCount} ${displayStarsCount === 1 ? "star" : "stars"} recorded`
-                : "No stargazers collected yet"}
+          <div className="flex flex-col items-center justify-center py-8 text-center">
+            <div className="text-3xl mb-3">⭐</div>
+            <p className="text-sm text-faint font-body">
+              No stargazers collected yet.
             </p>
-            <p className="text-xs text-muted font-body max-w-md leading-relaxed mb-4">
-              {displayStarsCount > 0
-                ? "Individual user profiles will appear here on the next scheduled collector run."
-                : "Star history updates automatically on each scheduled collector run."}
+            <p className="text-xs text-faint font-mono mt-1">
+              Run the collector to gather star data.
             </p>
-            {displayStarsCount > 0 && (
-              <a
-                href={stargazersUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="notch-xs px-3.5 py-1.5 text-xs font-mono font-medium border border-hairline text-muted hover:text-ink hover:border-amber transition-colors"
-              >
-                See stargazers on GitHub ↗
-              </a>
-            )}
           </div>
         ) : (
           <div className="flex flex-wrap gap-2">

@@ -13,16 +13,14 @@ export interface GithubClientOptions {
 }
 
 async function ghFetch(path: string, token: string, accept = "application/vnd.github+json") {
-  const headers: Record<string, string> = {
-    Accept: accept,
-    "X-GitHub-Api-Version": "2022-11-28",
-    "User-Agent": "repo-analytics-collector",
-  };
-  if (token && token.trim()) {
-    headers["Authorization"] = `Bearer ${token.trim()}`;
-  }
-
-  const res = await fetch(`${API}${path}`, { headers });
+  const res = await fetch(`${API}${path}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: accept,
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "repo-analytics-collector",
+    },
+  });
   if (res.status === 403 || res.status === 429) {
     const remaining = res.headers.get("x-ratelimit-remaining");
     if (remaining === "0") {
@@ -94,64 +92,37 @@ export interface StargazerRaw {
 }
 
 /**
- * Fetches stargazers with fallback layers:
- * 1. Tries `application/vnd.github.star+json` (includes `starred_at` timestamp)
- * 2. Fallbacks to standard `application/vnd.github+json`
- * 3. Fallbacks to unauthenticated public API fetch if token fails
+ * Fetches up to 200 stargazers (2 pages × 100) using the star+json accept header
+ * to also retrieve the `starred_at` timestamp for each user.
+ * Sorted most-recent-first so the avatar wall shows the newest fans up front.
  */
 export async function fetchStargazers({ owner, repo, token }: GithubClientOptions): Promise<StargazerRaw[]> {
   const results: StargazerRaw[] = [];
-
-  for (let page = 1; page <= 3; page++) {
+  for (let page = 1; page <= 2; page++) {
     let data: any;
-    
-    // Attempt 1: star+json
     try {
       data = await ghFetch(
         `/repos/${owner}/${repo}/stargazers?per_page=100&page=${page}`,
         token,
+        // Special accept header — turns each entry into { starred_at, user: { login, avatar_url, html_url } }
         "application/vnd.github.star+json"
       );
     } catch {
-      // Attempt 2: standard json fallback
-      try {
-        data = await ghFetch(
-          `/repos/${owner}/${repo}/stargazers?per_page=100&page=${page}`,
-          token,
-          "application/vnd.github+json"
-        );
-      } catch {
-        // Attempt 3: unauthenticated public fetch
-        try {
-          data = await ghFetch(
-            `/repos/${owner}/${repo}/stargazers?per_page=100&page=${page}`,
-            "",
-            "application/vnd.github+json"
-          );
-        } catch {
-          break;
-        }
-      }
+      break; // Degrade gracefully on error
     }
-
     if (!data || !Array.isArray(data) || data.length === 0) break;
-
     for (const entry of data) {
-      const user = entry.user ?? entry;
-      if (user && user.login) {
-        results.push({
-          login: user.login,
-          avatarUrl: user.avatar_url ?? "",
-          htmlUrl: user.html_url ?? `https://github.com/${user.login}`,
-          starredAt: entry.starred_at ?? null,
-        });
-      }
+      const user = entry.user ?? entry; // fallback in case accept header is ignored
+      results.push({
+        login: user.login ?? "",
+        avatarUrl: user.avatar_url ?? "",
+        htmlUrl: user.html_url ?? "",
+        starredAt: entry.starred_at ?? null,
+      });
     }
-
     if (data.length < 100) break;
   }
-
-  // Sort most recent first if timestamps exist
+  // Most recent first
   results.sort((a, b) => (b.starredAt ?? "").localeCompare(a.starredAt ?? ""));
   return results;
 }
