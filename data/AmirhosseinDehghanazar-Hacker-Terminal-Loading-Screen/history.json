@@ -13,7 +13,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:42.516Z"
   },
-  "lastSyncedAt": "2026-08-09T15:56:16.806Z",
+  "lastSyncedAt": "2026-08-09T16:02:37.559Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -275,6 +275,16 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-09T16:02:37.559Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
   "contentSnapshots": [
@@ -420,38 +430,18 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-09T16:02:37.559Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
-  "stargazers": [
-    {
-      "login": "miladshakerdn",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/30466140?v=4",
-      "htmlUrl": "https://github.com/miladshakerdn",
-      "starredAt": "2025-05-11T14:21:28Z"
-    },
-    {
-      "login": "ArashMDN",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54910737?v=4",
-      "htmlUrl": "https://github.com/ArashMDN",
-      "starredAt": "2024-11-27T13:57:07Z"
-    },
-    {
-      "login": "AmirhosseinDehghanazar",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/61588105?v=4",
-      "htmlUrl": "https://github.com/AmirhosseinDehghanazar",
-      "starredAt": "2024-11-17T14:25:34Z"
-    },
-    {
-      "login": "alimashayekhy",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/107800674?v=4",
-      "htmlUrl": "https://github.com/alimashayekhy",
-      "starredAt": "2024-11-16T17:58:43Z"
-    },
-    {
-      "login": "hamidrezafarzin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/60010616?v=4",
-      "htmlUrl": "https://github.com/hamidrezafarzin",
-      "starredAt": "2024-11-16T11:02:27Z"
-    }
-  ]
+  "stargazers": []
 }

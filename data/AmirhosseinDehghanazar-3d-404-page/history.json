@@ -13,7 +13,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:43.074Z"
   },
-  "lastSyncedAt": "2026-08-09T15:56:16.979Z",
+  "lastSyncedAt": "2026-08-09T16:02:40.794Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -388,6 +388,26 @@
     },
     {
       "collectedAt": "2026-08-09T15:56:16.979Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 27,
+          "uniques": 2
+        },
+        {
+          "referrer": "linkedin.com",
+          "count": 22,
+          "uniques": 5
+        },
+        {
+          "referrer": "com.linkedin.android",
+          "count": 4,
+          "uniques": 4
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-09T16:02:40.794Z",
       "items": [
         {
           "referrer": "github.com",
@@ -1252,32 +1272,72 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-09T16:02:40.794Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 34,
+          "uniques": 13
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/actions/runs/31227365481",
+          "title": "/actions/runs/31227365481",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src",
+          "title": "/tree/main/src",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components",
+          "title": "/tree/main/src/components",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/actions/runs/31227436856/job/93024467768",
+          "title": "/actions/runs/31227436856/job/93024467768",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/blob/main/README.md",
+          "title": "/blob/main/README.md",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/edit/main/README.md",
+          "title": "/edit/main/README.md",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/graphs/commit-activity",
+          "title": "/graphs/commit-activity",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/actions",
+          "title": "/actions",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
-  "stargazers": [
-    {
-      "login": "AmirhosseinDehghanazar",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/61588105?v=4",
-      "htmlUrl": "https://github.com/AmirhosseinDehghanazar",
-      "starredAt": "2026-08-09T14:57:55Z"
-    },
-    {
-      "login": "ariaramin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/68683017?v=4",
-      "htmlUrl": "https://github.com/ariaramin",
-      "starredAt": "2026-08-09T07:24:45Z"
-    },
-    {
-      "login": "yeganehha",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/28950019?v=4",
-      "htmlUrl": "https://github.com/yeganehha",
-      "starredAt": "2026-08-08T21:50:40Z"
-    },
-    {
-      "login": "miladshakerdn",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/30466140?v=4",
-      "htmlUrl": "https://github.com/miladshakerdn",
-      "starredAt": "2026-08-08T18:28:27Z"
-    }
-  ]
+  "stargazers": []
 }
