@@ -13,7 +13,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:42.516Z"
   },
-  "lastSyncedAt": "2026-08-09T16:20:05.565Z",
+  "lastSyncedAt": "2026-08-09T16:23:03.549Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -325,6 +325,16 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-09T16:23:03.549Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
   "contentSnapshots": [
@@ -517,6 +527,17 @@
     },
     {
       "collectedAt": "2026-08-09T16:20:05.565Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-09T16:23:03.549Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
