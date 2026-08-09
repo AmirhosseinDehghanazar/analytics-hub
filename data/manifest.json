@@ -9,9 +9,21 @@
     },
     {
       "provider": "github",
+      "slug": "AmirhosseinDehghanazar/2Auth-JS",
+      "dirName": "github-AmirhosseinDehghanazar-2Auth-JS",
+      "dataPath": "data/github-AmirhosseinDehghanazar-2Auth-JS/history.json"
+    },
+    {
+      "provider": "github",
       "slug": "AmirhosseinDehghanazar/3d-404-page",
       "dirName": "AmirhosseinDehghanazar-3d-404-page",
       "dataPath": "data/AmirhosseinDehghanazar-3d-404-page/history.json"
+    },
+    {
+      "provider": "github",
+      "slug": "AmirhosseinDehghanazar/3d-404-page",
+      "dirName": "github-AmirhosseinDehghanazar-3d-404-page",
+      "dataPath": "data/github-AmirhosseinDehghanazar-3d-404-page/history.json"
     },
     {
       "provider": "github",
@@ -21,9 +33,39 @@
     },
     {
       "provider": "github",
+      "slug": "AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+      "dirName": "github-AmirhosseinDehghanazar-Hacker-Terminal-Loading-Screen",
+      "dataPath": "data/github-AmirhosseinDehghanazar-Hacker-Terminal-Loading-Screen/history.json"
+    },
+    {
+      "provider": "github",
       "slug": "AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
       "dirName": "AmirhosseinDehghanazar-LinkedIn-AutoClicker-Extension",
       "dataPath": "data/AmirhosseinDehghanazar-LinkedIn-AutoClicker-Extension/history.json"
+    },
+    {
+      "provider": "github",
+      "slug": "AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+      "dirName": "github-AmirhosseinDehghanazar-LinkedIn-AutoClicker-Extension",
+      "dataPath": "data/github-AmirhosseinDehghanazar-LinkedIn-AutoClicker-Extension/history.json"
+    },
+    {
+      "provider": "gitlab",
+      "slug": "AmirhosseinDehghaniazar/2Auth-JS",
+      "dirName": "gitlab-AmirhosseinDehghaniazar-2Auth-JS",
+      "dataPath": "data/gitlab-AmirhosseinDehghaniazar-2Auth-JS/history.json"
+    },
+    {
+      "provider": "gitlab",
+      "slug": "AmirhosseinDehghaniazar/3d-404-page",
+      "dirName": "gitlab-AmirhosseinDehghaniazar-3d-404-page",
+      "dataPath": "data/gitlab-AmirhosseinDehghaniazar-3d-404-page/history.json"
+    },
+    {
+      "provider": "gitlab",
+      "slug": "AmirhosseinDehghaniazar/Hacker-Terminal-Loading-Screen",
+      "dirName": "gitlab-AmirhosseinDehghaniazar-Hacker-Terminal-Loading-Screen",
+      "dataPath": "data/gitlab-AmirhosseinDehghaniazar-Hacker-Terminal-Loading-Screen/history.json"
     }
   ]
 }

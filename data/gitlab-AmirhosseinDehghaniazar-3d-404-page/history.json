@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "provider": "gitlab",
+  "repository": {
+    "provider": "gitlab",
+    "owner": "AmirhosseinDehghaniazar",
+    "name": "3d-404-page",
+    "fullName": "AmirhosseinDehghaniazar/3d-404-page",
+    "description": "ajesus-3d-404-page",
+    "htmlUrl": "https://gitlab.com/AmirhosseinDehghaniazar/3d-404-page",
+    "homepage": "https://gitlab.com/AmirhosseinDehghaniazar/3d-404-page/-/blob/main/README.md",
+    "language": null,
+    "license": null,
+    "createdAt": "2026-08-09T22:15:50.047Z",
+    "defaultBranch": "main",
+    "trackingSince": "2026-08-09T22:28:19.289Z"
+  },
+  "lastSyncedAt": "2026-08-09T22:28:19.289Z",
+  "lastSyncStatus": "ok",
+  "lastSyncError": null,
+  "daily": {
+    "clones": {},
+    "views": {}
+  },
+  "repoStats": [
+    {
+      "date": "2026-08-09",
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "openIssues": 0,
+      "openPRs": 0
+    }
+  ],
+  "releases": [],
+  "referrerSnapshots": [
+    {
+      "collectedAt": "2026-08-09T22:28:19.289Z",
+      "items": []
+    }
+  ],
+  "contentSnapshots": [
+    {
+      "collectedAt": "2026-08-09T22:28:19.289Z",
+      "items": []
+    }
+  ],
+  "stargazers": []
+}
