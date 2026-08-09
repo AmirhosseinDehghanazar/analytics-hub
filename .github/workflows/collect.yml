@@ -27,9 +27,10 @@ jobs:
         repo:
           # ✏️  ADD / REMOVE repos here. Format: owner/repo
           # The token (GH_ANALYTICS_TOKEN) must have traffic read access to each one.
-          - PLACEHOLDER_OWNER/PLACEHOLDER_REPO_1
-          # - AmirhosseinDehghanazar/wandor
-          # - AmirhosseinDehghanazar/another-repo
+          - AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension
+          - AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen
+          - AmirhosseinDehghanazar/2Auth-JS
+          - AmirhosseinDehghanazar/3d-404-page
 
     steps:
       - name: Checkout
