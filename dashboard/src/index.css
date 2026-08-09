@@ -221,65 +221,97 @@ body {
   50%       { opacity: 1; }
 }
 
-/* ── Dynamic Theme Color Overrides ───────────────────────────────────────── */
+/* ── Dynamic Theme Color Overrides — 100% Synchronized Across Components ── */
 
-/* 🐙 GITHUB THEME OVERRIDES (Electric Sky Blue) */
-[data-theme="github"] .text-amber {
+/* 🐙 GITHUB THEME OVERRIDES (Electric Sky Blue #38BDF8) */
+[data-theme="github"] .text-amber,
+[data-theme="github"] [class*="text-amber"] {
   color: #38BDF8 !important;
   transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="github"] .bg-amber {
+
+[data-theme="github"] [class*="bg-amber"] {
+  background-color: rgba(56, 189, 248, 0.16) !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="github"] .bg-amber,
+[data-theme="github"] .bg-amber.text-obsidian {
   background-color: #38BDF8 !important;
-  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #0A0A0B !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="github"] .border-amber {
-  border-color: #38BDF8 !important;
+
+[data-theme="github"] .border-amber,
+[data-theme="github"] [class*="border-amber"] {
+  border-color: rgba(56, 189, 248, 0.45) !important;
   transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="github"] .border-amber\/30,
-[data-theme="github"] .border-amber\/40 {
-  border-color: rgba(56, 189, 248, 0.4) !important;
-  transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+[data-theme="github"] .from-amber-deep {
+  --tw-gradient-from: #0EA5E9 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #38BDF8 !important;
 }
-[data-theme="github"] .bg-amber\/10,
-[data-theme="github"] .bg-amber\/15 {
-  background-color: rgba(56, 189, 248, 0.18) !important;
-  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+[data-theme="github"] .to-amber {
+  --tw-gradient-to: #38BDF8 !important;
 }
+
+[data-theme="github"] [class*="outline-amber"] {
+  outline-color: #38BDF8 !important;
+}
+
 [data-theme="github"] .glow-border {
   box-shadow:
     0 0 0 1px rgba(56, 189, 248, 0.35),
     0 0 30px 0  rgba(14, 165, 233, 0.28);
 }
 
-/* 🦊 GITLAB THEME OVERRIDES (Fiery Red-Orange & Purple) */
-[data-theme="gitlab"] .text-amber {
+
+/* 🦊 GITLAB THEME OVERRIDES (Fiery Red-Orange #FC6D26 & Purple #6B4F96) */
+[data-theme="gitlab"] .text-amber,
+[data-theme="gitlab"] [class*="text-amber"] {
   color: #FC6D26 !important;
   transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="gitlab"] .bg-amber {
+
+[data-theme="gitlab"] [class*="bg-amber"] {
+  background-color: rgba(252, 109, 38, 0.16) !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="gitlab"] .bg-amber,
+[data-theme="gitlab"] .bg-amber.text-obsidian {
   background-color: #FC6D26 !important;
-  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #0A0A0B !important;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="gitlab"] .border-amber {
-  border-color: #FC6D26 !important;
+
+[data-theme="gitlab"] .border-amber,
+[data-theme="gitlab"] [class*="border-amber"] {
+  border-color: rgba(252, 109, 38, 0.45) !important;
   transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-theme="gitlab"] .border-amber\/30,
-[data-theme="gitlab"] .border-amber\/40 {
-  border-color: rgba(252, 109, 38, 0.4) !important;
-  transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+[data-theme="gitlab"] .from-amber-deep {
+  --tw-gradient-from: #E24329 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #FC6D26 !important;
 }
-[data-theme="gitlab"] .bg-amber\/10,
-[data-theme="gitlab"] .bg-amber\/15 {
-  background-color: rgba(252, 109, 38, 0.18) !important;
-  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+[data-theme="gitlab"] .to-amber {
+  --tw-gradient-to: #FC6D26 !important;
 }
+
+[data-theme="gitlab"] [class*="outline-amber"] {
+  outline-color: #FC6D26 !important;
+}
+
 [data-theme="gitlab"] .glow-border {
   box-shadow:
     0 0 0 1px rgba(252, 109, 38, 0.35),
     0 0 30px 0  rgba(107, 79, 150, 0.28);
 }
+
 
 /* ── Avatar hover ring ───────────────────────────────────────────────────── */
 .avatar-ring {
@@ -305,7 +337,8 @@ body {
 
 /* ── Progress bar fill animation ─────────────────────────────────────────── */
 .bar-fill {
-  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Modal backdrop ──────────────────────────────────────────────────────── */

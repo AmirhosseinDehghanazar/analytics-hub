@@ -67,7 +67,11 @@ export function StargazerWall({ stargazers, repoSlug, starsCount, htmlUrl, provi
 
         {stargazers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
-            <div className="text-3xl mb-3">⭐</div>
+            <div className="w-10 h-10 rounded-full bg-amber/15 border border-amber/30 flex items-center justify-center text-amber mb-3">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 11.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z" />
+              </svg>
+            </div>
             <p className="text-sm font-semibold text-ink font-body">
               {totalStars > 0 ? `${totalStars.toLocaleString()} ${totalStars === 1 ? "star" : "stars"} recorded in Repo Activity` : "No stargazers collected yet"}
             </p>

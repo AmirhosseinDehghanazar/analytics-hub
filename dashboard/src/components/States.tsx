@@ -30,7 +30,15 @@ export function EmptyState({ trackingSince }: { trackingSince?: string | null })
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex justify-center">
       <Panel glass animateIn className="p-10 max-w-lg text-center">
-        <div className="text-4xl mb-4">📡</div>
+        <div className="w-12 h-12 rounded-full bg-amber/15 border border-amber/30 flex items-center justify-center text-amber mx-auto mb-4">
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+            <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+            <circle cx="12" cy="12" r="2" />
+            <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+            <path d="M19.1 4.9c3.9 3.9 3.9 10.3 0 14.2" />
+          </svg>
+        </div>
         <div className="font-display text-lg font-semibold text-ink mb-3">
           Collecting your first dataset…
         </div>
@@ -59,7 +67,13 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry: () 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex justify-center">
       <Panel glass animateIn className="p-10 max-w-lg text-center">
-        <div className="text-4xl mb-4">⚠️</div>
+        <div className="w-12 h-12 rounded-full bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 mx-auto mb-4">
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+        </div>
         <div className="font-display text-lg font-semibold text-ink mb-3">
           Couldn't load analytics
         </div>
