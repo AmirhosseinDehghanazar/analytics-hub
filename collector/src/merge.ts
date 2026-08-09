@@ -103,8 +103,22 @@ export function mergeReleases(_existing: ReleaseInfo[], incoming: ReleaseInfo[])
  * We always replace with the latest fetched list (already sorted most-recent-first
  * by the fetcher). Cap at 200 entries to keep dataset size reasonable.
  */
-export function mergeStargazers(_existing: StargazerInfo[], incoming: StargazerInfo[]): StargazerInfo[] {
-  return incoming.slice(0, 200);
+export function mergeStargazers(existing: StargazerInfo[], incoming: StargazerInfo[]): StargazerInfo[] {
+  if (!incoming || incoming.length === 0) {
+    return existing ?? [];
+  }
+  const map = new Map<string, StargazerInfo>();
+  for (const s of incoming) {
+    if (s && s.login) map.set(s.login, s);
+  }
+  for (const s of existing ?? []) {
+    if (s && s.login && !map.has(s.login)) {
+      map.set(s.login, s);
+    }
+  }
+  return Array.from(map.values())
+    .sort((a, b) => (b.starredAt ?? "").localeCompare(a.starredAt ?? ""))
+    .slice(0, 200);
 }
 
 export interface MergeInput {

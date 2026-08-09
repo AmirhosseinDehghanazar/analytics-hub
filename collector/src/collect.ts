@@ -60,7 +60,8 @@ async function saveDataset(dataset: HistoryDataset) {
 }
 
 async function main() {
-  const token = requireEnv("GH_ANALYTICS_TOKEN");
+  const token = process.env.GH_ANALYTICS_TOKEN || process.env.GITHUB_TOKEN || "";
+  if (!token) throw new Error("Missing required environment variable: GH_ANALYTICS_TOKEN or GITHUB_TOKEN");
   const [owner, repo] = requireEnv("GH_ANALYTICS_REPO").split("/");
   if (!owner || !repo) throw new Error("GH_ANALYTICS_REPO must be in the form owner/repo");
 

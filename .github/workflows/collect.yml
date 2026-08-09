@@ -59,7 +59,7 @@ jobs:
       - name: Run collector
         working-directory: collector
         env:
-          GH_ANALYTICS_TOKEN: ${{ secrets.GH_ANALYTICS_TOKEN }}
+          GH_ANALYTICS_TOKEN: ${{ secrets.GH_ANALYTICS_TOKEN || github.token }}
           GH_ANALYTICS_REPO: ${{ matrix.repo }}
           # Each repo gets its own subdirectory under data/
           HISTORY_PATH: ${{ github.workspace }}/data/${{ steps.slug.outputs.slug }}/history.json

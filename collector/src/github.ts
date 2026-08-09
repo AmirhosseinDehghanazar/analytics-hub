@@ -91,38 +91,47 @@ export interface StargazerRaw {
   starredAt: string | null;
 }
 
-/**
- * Fetches up to 200 stargazers (2 pages × 100) using the star+json accept header
- * to also retrieve the `starred_at` timestamp for each user.
- * Sorted most-recent-first so the avatar wall shows the newest fans up front.
- */
 export async function fetchStargazers({ owner, repo, token }: GithubClientOptions): Promise<StargazerRaw[]> {
   const results: StargazerRaw[] = [];
-  for (let page = 1; page <= 2; page++) {
+  const tokenToUse = token && token.trim() ? token.trim() : process.env.GITHUB_TOKEN || "";
+
+  for (let page = 1; page <= 3; page++) {
     let data: any;
     try {
       data = await ghFetch(
         `/repos/${owner}/${repo}/stargazers?per_page=100&page=${page}`,
-        token,
-        // Special accept header — turns each entry into { starred_at, user: { login, avatar_url, html_url } }
+        tokenToUse,
         "application/vnd.github.star+json"
       );
     } catch {
-      break; // Degrade gracefully on error
+      try {
+        data = await ghFetch(
+          `/repos/${owner}/${repo}/stargazers?per_page=100&page=${page}`,
+          tokenToUse,
+          "application/vnd.github+json"
+        );
+      } catch {
+        break;
+      }
     }
+
     if (!data || !Array.isArray(data) || data.length === 0) break;
+
     for (const entry of data) {
-      const user = entry.user ?? entry; // fallback in case accept header is ignored
-      results.push({
-        login: user.login ?? "",
-        avatarUrl: user.avatar_url ?? "",
-        htmlUrl: user.html_url ?? "",
-        starredAt: entry.starred_at ?? null,
-      });
+      const user = entry.user ?? entry;
+      if (user && user.login) {
+        results.push({
+          login: user.login,
+          avatarUrl: user.avatar_url ?? `https://github.com/${user.login}.png`,
+          htmlUrl: user.html_url ?? `https://github.com/${user.login}`,
+          starredAt: entry.starred_at ?? null,
+        });
+      }
     }
+
     if (data.length < 100) break;
   }
-  // Most recent first
+
   results.sort((a, b) => (b.starredAt ?? "").localeCompare(a.starredAt ?? ""));
   return results;
 }
