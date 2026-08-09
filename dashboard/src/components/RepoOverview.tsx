@@ -10,9 +10,13 @@ export function RepoOverview({ dataset }: { dataset: HistoryDataset }) {
     : "Unknown";
 
   const isGitLab = repository.provider === "gitlab";
+  const isGitHub = repository.provider === "github";
 
   const fields: { label: string; value: string | number | null }[] = [
-    { label: "Provider", value: repository.provider ? (isGitLab ? "GitLab" : "GitHub") : "GitHub" },
+    {
+      label: "Provider",
+      value: isGitLab ? "GitLab" : isGitHub ? "GitHub" : "All Providers (Multi)",
+    },
     { label: "Owner / Namespace", value: repository.owner || null },
     { label: "Language", value: repository.language },
     { label: "License", value: repository.license },
@@ -25,11 +29,17 @@ export function RepoOverview({ dataset }: { dataset: HistoryDataset }) {
       <Panel className="p-5 sm:p-6">
         <h3 className="font-display text-sm font-semibold text-ink mb-1 flex items-center justify-between">
           <span>Repository</span>
-          {repository.provider && (
-            <span className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded-xs uppercase ${
-              isGitLab ? "bg-orange-500/20 text-orange-400 border border-orange-500/40" : "bg-sky-500/20 text-sky-400 border border-sky-500/40"
-            }`}>
-              {repository.provider}
+          {isGitLab ? (
+            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-xs uppercase bg-orange-500/20 text-orange-400 border border-orange-500/40">
+              GitLab
+            </span>
+          ) : isGitHub ? (
+            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-xs uppercase bg-sky-500/20 text-sky-400 border border-sky-500/40">
+              GitHub
+            </span>
+          ) : (
+            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-xs uppercase bg-amber/20 text-amber border border-amber/40">
+              All Providers
             </span>
           )}
         </h3>

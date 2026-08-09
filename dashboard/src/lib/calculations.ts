@@ -1,4 +1,4 @@
-import type { DailySeries, RangeKey, HistoryDataset, StargazerInfo } from "./types";
+import type { DailySeries, RangeKey, HistoryDataset, StargazerInfo, ProviderType } from "./types";
 
 export interface DayRow {
   date: string;
@@ -289,13 +289,27 @@ export function aggregateHistoryDatasets(datasets: HistoryDataset[]): HistoryDat
     (b.starredAt ?? "").localeCompare(a.starredAt ?? "")
   );
 
+  // Determine provider of aggregated datasets
+  const providers = Array.from(new Set(datasets.map((d) => d.repository?.provider ?? "github")));
+  const aggregatedProvider = providers.length === 1 ? (providers[0] as ProviderType) : undefined;
+
+  const title =
+    aggregatedProvider === "gitlab"
+      ? "All GitLab Repositories"
+      : aggregatedProvider === "github"
+      ? "All GitHub Repositories"
+      : "All Repositories";
+
   return {
     schemaVersion: 1,
     repository: {
-      owner: "All Repositories",
-      name: "All Repositories",
-      fullName: `All Repositories (${datasets.length} tracked repos)`,
-      description: `Aggregated traffic, stargazers & activity metrics across ${datasets.length} repositories.`,
+      provider: aggregatedProvider,
+      owner: title,
+      name: title,
+      fullName: `${title} (${datasets.length} tracked repos)`,
+      description: `Aggregated traffic, stargazers & activity metrics across ${datasets.length} ${
+        aggregatedProvider === "gitlab" ? "GitLab" : aggregatedProvider === "github" ? "GitHub" : ""
+      } repositories.`,
       htmlUrl: "",
       homepage: null,
       language: langs.join(" · ") || null,
