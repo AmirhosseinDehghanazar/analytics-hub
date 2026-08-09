@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": {
+    "provider": "github",
     "owner": "AmirhosseinDehghanazar",
     "name": "Hacker-Terminal-Loading-Screen",
     "fullName": "AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
@@ -13,7 +14,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:42.516Z"
   },
-  "lastSyncedAt": "2026-08-09T18:24:09.713Z",
+  "lastSyncedAt": "2026-08-09T22:20:40.095Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -375,6 +376,16 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-09T22:20:40.095Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
   "contentSnapshots": [
@@ -630,6 +641,17 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-09T22:20:40.095Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
   "stargazers": [
@@ -663,5 +685,6 @@
       "htmlUrl": "https://github.com/hamidrezafarzin",
       "starredAt": "2024-11-16T11:02:27Z"
     }
-  ]
+  ],
+  "provider": "github"
 }

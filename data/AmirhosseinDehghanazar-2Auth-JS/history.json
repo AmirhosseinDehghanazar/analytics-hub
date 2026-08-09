@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": {
+    "provider": "github",
     "owner": "AmirhosseinDehghanazar",
     "name": "2Auth-JS",
     "fullName": "AmirhosseinDehghanazar/2Auth-JS",
@@ -13,7 +14,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:40.391Z"
   },
-  "lastSyncedAt": "2026-08-09T18:24:07.893Z",
+  "lastSyncedAt": "2026-08-09T22:20:43.605Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -245,6 +246,10 @@
     {
       "collectedAt": "2026-08-09T18:24:07.893Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T22:20:43.605Z",
+      "items": []
     }
   ],
   "contentSnapshots": [
@@ -339,6 +344,10 @@
     {
       "collectedAt": "2026-08-09T18:24:07.893Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T22:20:43.605Z",
+      "items": []
     }
   ],
   "stargazers": [
@@ -372,5 +381,6 @@
       "htmlUrl": "https://github.com/hamidrezafarzin",
       "starredAt": "2024-11-25T13:49:57Z"
     }
-  ]
+  ],
+  "provider": "github"
 }

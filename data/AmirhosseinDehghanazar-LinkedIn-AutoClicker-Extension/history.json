@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": {
+    "provider": "github",
     "owner": "AmirhosseinDehghanazar",
     "name": "LinkedIn-AutoClicker-Extension",
     "fullName": "AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
@@ -13,7 +14,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:41.498Z"
   },
-  "lastSyncedAt": "2026-08-09T18:24:08.309Z",
+  "lastSyncedAt": "2026-08-09T22:20:38.931Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -237,6 +238,10 @@
     {
       "collectedAt": "2026-08-09T18:24:08.309Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T22:20:38.931Z",
+      "items": []
     }
   ],
   "contentSnapshots": [
@@ -331,6 +336,10 @@
     {
       "collectedAt": "2026-08-09T18:24:08.309Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T22:20:38.931Z",
+      "items": []
     }
   ],
   "stargazers": [
@@ -388,5 +397,6 @@
       "htmlUrl": "https://github.com/amrzhd",
       "starredAt": "2024-09-28T00:34:19Z"
     }
-  ]
+  ],
+  "provider": "github"
 }
