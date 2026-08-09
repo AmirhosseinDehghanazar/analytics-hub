@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:17.349Z"
   },
-  "lastSyncedAt": "2026-08-09T22:33:45.750Z",
+  "lastSyncedAt": "2026-08-09T22:39:14.165Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -57,6 +57,10 @@
     {
       "collectedAt": "2026-08-09T22:33:45.750Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T22:39:14.165Z",
+      "items": []
     }
   ],
   "contentSnapshots": [
@@ -75,7 +79,18 @@
     {
       "collectedAt": "2026-08-09T22:33:45.750Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T22:39:14.165Z",
+      "items": []
     }
   ],
-  "stargazers": []
+  "stargazers": [
+    {
+      "login": "AmirhosseinDehghaniazar",
+      "avatarUrl": "https://gitlab.com/uploads/-/system/user/avatar/6485435/avatar.png",
+      "htmlUrl": "https://gitlab.com/AmirhosseinDehghaniazar",
+      "starredAt": "2026-08-09T22:33:09.275Z"
+    }
+  ]
 }
