@@ -167,20 +167,16 @@ Run all scripts from the repository root:
 # 1. Install dependencies for both packages
 npm run setup
 
-# 2. Configure local environment (for collector)
-cp .env.example collector/.env
-# Add GH_ANALYTICS_TOKEN and GH_ANALYTICS_REPO to collector/.env
-
-# 3. Run unit tests
+# 2. Run unit tests
 npm run test
 
-# 4. Run TypeScript typecheck across all packages
+# 3. Run TypeScript typecheck across all packages
 npm run typecheck
 
-# 5. Start Vite dashboard dev server
+# 4. Start Vite dashboard dev server
 npm run dev
 
-# 6. Build production bundle
+# 5. Build production bundle
 npm run build
 ```
 
