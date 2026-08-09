@@ -16,11 +16,6 @@ export function Header({
   const [syncing, setSyncing] = useState(false);
   const [justSynced, setJustSynced] = useState(false);
   const [syncMenuOpen, setSyncMenuOpen] = useState(false);
-  const [tokenModalOpen, setTokenModalOpen] = useState(false);
-  const [dispatchStatus, setDispatchStatus] = useState<string | null>(null);
-  const [patInput, setPatInput] = useState(() => localStorage.getItem("GH_DISPATCH_PAT") || "");
-  const [dispatching, setDispatching] = useState(false);
-  const [dispatchError, setDispatchError] = useState<string | null>(null);
 
   const syncMenuRef = useRef<HTMLDivElement>(null);
   const isError = dataset.lastSyncStatus === "error";
@@ -46,69 +41,12 @@ export function Header({
     setTimeout(() => setJustSynced(false), 3000);
   }
 
-  async function triggerWorkflowDispatch(tokenToUse: string) {
-    setDispatching(true);
-    setDispatchError(null);
-
-    try {
-      const repoSlug = dataset.repository.fullName.includes("/")
-        ? dataset.repository.fullName
-        : "AmirhosseinDehghanazar/analytics-hub";
-
-      const res = await fetch(
-        `https://api.github.com/repos/${repoSlug}/actions/workflows/collect.yml/dispatches`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${tokenToUse.trim()}`,
-            Accept: "application/vnd.github+json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ref: "main" }),
-        }
-      );
-
-      if (res.status === 204) {
-        // Success! Workflow started on GitHub
-        localStorage.setItem("GH_DISPATCH_PAT", tokenToUse.trim());
-        setDispatchStatus("✓ Action launched on GitHub! Gathering data now...");
-        setTokenModalOpen(false);
-        setTimeout(() => setDispatchStatus(null), 6000);
-      } else {
-        const text = await res.text().catch(() => "");
-        throw new Error(`GitHub API returned ${res.status}. ${text}`);
-      }
-    } catch (err) {
-      setDispatchError(err instanceof Error ? err.message : String(err));
-    } finally {
-      setDispatching(false);
-    }
-  }
-
-  function handleTriggerActionClick() {
-    setSyncMenuOpen(false);
-    const savedToken = localStorage.getItem("GH_DISPATCH_PAT");
-    if (savedToken) {
-      triggerWorkflowDispatch(savedToken);
-    } else {
-      setTokenModalOpen(true);
-    }
-  }
-
   const latestStats = dataset.repoStats[dataset.repoStats.length - 1];
 
   return (
     <header className="relative z-50">
       {/* Top amber accent gradient line */}
       <div className="accent-line w-full" />
-
-      {/* Notification banner for workflow dispatch */}
-      {dispatchStatus && (
-        <div className="bg-amber/15 border-b border-amber/30 text-amber text-xs font-mono py-2 px-4 text-center animate-fade-in flex items-center justify-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber animate-ping" />
-          {dispatchStatus}
-        </div>
-      )}
 
       <div className="border-b border-hairline bg-obsidian/95 backdrop-blur-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
@@ -184,15 +122,10 @@ export function Header({
               <div ref={syncMenuRef} className="relative">
                 <button
                   onClick={() => setSyncMenuOpen((o) => !o)}
-                  disabled={syncing || dispatching}
+                  disabled={syncing}
                   className="notch-sm px-4 py-2 text-xs font-mono font-semibold bg-amber text-obsidian hover:bg-amber-deep transition-colors duration-200 disabled:opacity-60 flex items-center gap-1.5"
                 >
-                  {dispatching ? (
-                    <>
-                      <SpinnerIcon />
-                      Triggering Action…
-                    </>
-                  ) : syncing ? (
+                  {syncing ? (
                     <>
                       <SpinnerIcon />
                       Fetching Data…
@@ -212,44 +145,33 @@ export function Header({
                     className="absolute right-0 mt-1.5 w-64 bg-raised border border-hairline notch-sm shadow-2xl z-50 animate-scale-in py-1.5"
                     style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.9)" }}
                   >
-                    {/* Action 1: Direct API Dispatch */}
-                    <button
-                      onClick={handleTriggerActionClick}
-                      className="w-full text-left px-4 py-2.5 text-xs font-mono text-ink hover:bg-surface hover:text-amber transition-colors flex items-center gap-2"
-                    >
-                      <span className="text-amber text-sm">⚡</span>
-                      <div>
-                        <div className="font-semibold text-amber">Run Action Collector Now</div>
-                        <div className="text-[10px] text-faint font-body">Triggers GitHub Action on servers to gather data</div>
-                      </div>
-                    </button>
-
-                    <div className="my-1 border-t border-hairline" />
-
-                    {/* Action 2: Refresh Website View */}
+                    {/* Refresh Data */}
                     <button
                       onClick={handleRefreshClick}
                       className="w-full text-left px-4 py-2.5 text-xs font-mono text-ink hover:bg-surface hover:text-amber transition-colors flex items-center gap-2"
                     >
                       <span className="text-amber">↻</span>
                       <div>
-                        <div className="font-semibold">Refresh Website View</div>
-                        <div className="text-[10px] text-faint font-body">Fetch latest dataset committed to GitHub</div>
+                        <div className="font-semibold text-amber">Refresh Live Data</div>
+                        <div className="text-[10px] text-faint font-body">Re-fetch latest dataset from GitHub Pages</div>
                       </div>
                     </button>
 
                     <div className="my-1 border-t border-hairline" />
 
-                    {/* Action 3: Open Actions tab */}
+                    {/* Open GitHub Actions */}
                     <a
                       href="https://github.com/AmirhosseinDehghanazar/analytics-hub/actions/workflows/collect.yml"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setSyncMenuOpen(false)}
-                      className="w-full text-left px-4 py-2 text-[11px] font-mono text-muted hover:text-ink hover:bg-surface transition-colors flex items-center justify-between"
+                      className="w-full text-left px-4 py-2.5 text-xs font-mono text-ink hover:bg-surface hover:text-amber transition-colors flex items-center gap-2 block"
                     >
-                      <span>GitHub Actions Tab</span>
-                      <span>↗</span>
+                      <span className="text-amber">⚡</span>
+                      <div>
+                        <div className="font-semibold">Open GitHub Actions ↗</div>
+                        <div className="text-[10px] text-faint font-body">Run workflow on GitHub Actions</div>
+                      </div>
                     </a>
                   </div>
                 )}
@@ -258,72 +180,6 @@ export function Header({
           </div>
         </div>
       </div>
-
-      {/* Modal for Token Entry */}
-      {tokenModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop animate-fade-in">
-          <div className="notch bg-raised border border-hairline p-6 max-w-md w-full animate-scale-in relative">
-            <button
-              onClick={() => setTokenModalOpen(false)}
-              className="absolute top-3 right-3 text-faint hover:text-ink text-lg leading-none"
-            >
-              ×
-            </button>
-            <div className="text-2xl mb-2">⚡</div>
-            <h3 className="font-display text-base font-semibold text-ink mb-1">
-              Trigger GitHub Action Collector
-            </h3>
-            <p className="text-xs text-muted font-body leading-relaxed mb-4">
-              To launch the data collector workflow directly from your browser, enter a GitHub Personal Access Token (PAT).
-              It is stored <strong>only in your browser's local storage</strong>.
-            </p>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (patInput.trim()) triggerWorkflowDispatch(patInput);
-              }}
-              className="space-y-3"
-            >
-              <div>
-                <label className="block text-[11px] font-mono text-faint mb-1 uppercase tracking-wider">
-                  GitHub Personal Access Token (PAT)
-                </label>
-                <input
-                  type="password"
-                  value={patInput}
-                  onChange={(e) => setPatInput(e.target.value)}
-                  placeholder="ghp_... or github_pat_..."
-                  className="w-full notch-xs bg-surface border border-hairline px-3 py-2 text-xs font-mono text-ink focus:border-amber outline-none"
-                />
-              </div>
-
-              {dispatchError && (
-                <p className="text-xs font-mono text-clay">{dispatchError}</p>
-              )}
-
-              <div className="flex items-center justify-between gap-3 pt-2">
-                <a
-                  href="https://github.com/AmirhosseinDehghanazar/analytics-hub/actions/workflows/collect.yml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-mono text-muted hover:text-amber transition-colors"
-                >
-                  Or run on GitHub ↗
-                </a>
-
-                <button
-                  type="submit"
-                  disabled={dispatching || !patInput.trim()}
-                  className="notch-sm px-4 py-2 text-xs font-mono font-semibold bg-amber text-obsidian hover:bg-amber-deep disabled:opacity-50 transition-colors"
-                >
-                  {dispatching ? "Launching…" : "Launch Action ⚡"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </header>
   );
 }

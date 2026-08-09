@@ -2,8 +2,8 @@ name: Collect repository analytics
 
 on:
   schedule:
-    # Set to every 2 minutes for testing automated collection
-    - cron: "*/2 * * * *"
+    # Minimum interval supported by GitHub Actions scheduler (runs every ~5 min)
+    - cron: "*/5 * * * *"
   push:
     branches: [main]
   workflow_dispatch: {} # "Sync now" from the Actions tab
