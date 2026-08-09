@@ -2,9 +2,8 @@ name: Collect repository analytics
 
 on:
   schedule:
-    # GitHub's traffic API only refreshes daily internally, but polling a few times a
-    # day catches the data as soon as it updates and keeps "last synchronized" honest.
-    - cron: "0 */6 * * *"
+    # Set to every 2 minutes for testing automated collection
+    - cron: "*/2 * * * *"
   push:
     branches: [main]
   workflow_dispatch: {} # "Sync now" from the Actions tab

@@ -48,6 +48,14 @@ export default function App() {
     reload: refetch,
   } = useHistoryData(activeDataPath);
 
+  // Auto-refresh live data in background every 2 minutes (120,000 ms)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 120000);
+    return () => clearInterval(interval);
+  }, [refetch]);
+
   function handleSlugChange(slug: string) {
     setSelectedSlug(slug);
     setRange("30D");

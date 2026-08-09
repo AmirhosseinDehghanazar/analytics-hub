@@ -44,7 +44,7 @@ export function Header({
   const latestStats = dataset.repoStats[dataset.repoStats.length - 1];
 
   return (
-    <header className="relative">
+    <header className="relative z-50">
       {/* Top amber accent gradient line */}
       <div className="accent-line w-full" />
 
