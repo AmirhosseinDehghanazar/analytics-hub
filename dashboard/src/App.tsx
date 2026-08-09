@@ -3,9 +3,9 @@ import { useManifest } from "./lib/useManifest";
 import { useHistoryData } from "./lib/useHistoryData";
 import { buildTimeline, filterByRange, periodOverPeriodGrowth } from "./lib/calculations";
 import { exportCsv, exportJson } from "./lib/export";
-import type { ManifestEntry, RangeKey, ChartMode } from "./lib/types";
+import type { RangeKey, ChartMode } from "./lib/types";
 import { Header } from "./components/Header";
-import { RepoSwitcher } from "./components/RepoSwitcher";
+import { RepoSwitcher, ALL_REPOS_SLUG } from "./components/RepoSwitcher";
 import { TrafficChart } from "./components/TrafficChart";
 import { GrowthInsights } from "./components/GrowthInsights";
 import { MetricCard } from "./components/MetricCard";
@@ -24,26 +24,32 @@ export default function App() {
     error: manifestError,
   } = useManifest();
 
-  const [selectedRepo, setSelectedRepo] = useState<ManifestEntry | null>(null);
+  const [selectedSlug, setSelectedSlug] = useState<string>(ALL_REPOS_SLUG);
   const [range, setRange] = useState<RangeKey>("30D");
   const [mode, setMode] = useState<ChartMode>("clones");
 
-  // Auto-select first repo once manifest loads
+  // Default to ALL_REPOS if multiple repos, or first repo if single repo
   useEffect(() => {
-    if (repos.length > 0 && !selectedRepo) {
-      setSelectedRepo(repos[0]);
+    if (repos.length === 1 && selectedSlug === ALL_REPOS_SLUG) {
+      setSelectedSlug(repos[0].slug);
     }
-  }, [repos, selectedRepo]);
+  }, [repos, selectedSlug]);
+
+  // Determine active data path (array for ALL_REPOS, string for single repo)
+  const activeDataPath =
+    selectedSlug === ALL_REPOS_SLUG
+      ? repos.map((r) => r.dataPath)
+      : repos.find((r) => r.slug === selectedSlug)?.dataPath;
 
   const {
     data,
     state: dataState,
     error: dataError,
     reload: refetch,
-  } = useHistoryData(selectedRepo?.dataPath);
+  } = useHistoryData(activeDataPath);
 
-  function handleRepoChange(repo: ManifestEntry) {
-    setSelectedRepo(repo);
+  function handleSlugChange(slug: string) {
+    setSelectedSlug(slug);
     setRange("30D");
     setMode("clones");
   }
@@ -93,26 +99,27 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      {/* Header — shown only once a repo is selected */}
-      {data && selectedRepo && (() => {
-        const timeline = buildTimeline(data.daily.clones, data.daily.views);
-        return (
-          <Header
-            dataset={data}
-            onExportCsv={() => exportCsv(timeline, data.repository.name || "repo")}
-            onExportJson={() => exportJson(timeline, data.repository.name || "repo")}
-          />
-        );
-      })()}
-
-      {/* Sticky repo tab bar (only renders when > 1 repo) */}
-      {selectedRepo && (
-        <RepoSwitcher
-          repos={repos}
-          selected={selectedRepo}
-          onChange={handleRepoChange}
+      {/* Header */}
+      {data && (
+        <Header
+          dataset={data}
+          onExportCsv={() => {
+            const timeline = buildTimeline(data.daily.clones, data.daily.views);
+            exportCsv(timeline, data.repository.name || "analytics");
+          }}
+          onExportJson={() => {
+            const timeline = buildTimeline(data.daily.clones, data.daily.views);
+            exportJson(timeline, data.repository.name || "analytics");
+          }}
         />
       )}
+
+      {/* Sticky Custom Dropdown Repository Switcher */}
+      <RepoSwitcher
+        repos={repos}
+        selectedSlug={selectedSlug}
+        onChange={handleSlugChange}
+      />
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-5">
@@ -126,7 +133,7 @@ export default function App() {
           const fullTimeline = buildTimeline(data.daily.clones, data.daily.views);
           const filteredTimeline = filterByRange(fullTimeline, range);
           const hasData = fullTimeline.length > 0;
-          
+
           const clonesGrowth30 = periodOverPeriodGrowth(fullTimeline, "clones", 30).percent;
           const clonersGrowth30 = periodOverPeriodGrowth(fullTimeline, "cloners", 30).percent;
           const viewsGrowth30 = periodOverPeriodGrowth(fullTimeline, "views", 30).percent;
@@ -190,7 +197,7 @@ export default function App() {
               {/* Stargazers — full width */}
               <StargazerWall
                 stargazers={data.stargazers ?? []}
-                repoSlug={data.repository.fullName}
+                repoSlug={selectedSlug === ALL_REPOS_SLUG ? "All Repositories" : data.repository.fullName}
                 totalStars={data.repoStats[data.repoStats.length - 1]?.stars ?? 0}
               />
 
@@ -211,7 +218,7 @@ export default function App() {
       <footer className="border-t border-hairline mt-10 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-xs font-mono text-faint">
-            Analytics Hub · {selectedRepo ? `tracking ${repos.length} ${repos.length === 1 ? "repo" : "repos"}` : ""}
+            Analytics Hub · tracking {repos.length} {repos.length === 1 ? "repo" : "repos"}
           </span>
           <a
             href="https://github.com/AmirhosseinDehghanazar/analytics-hub"

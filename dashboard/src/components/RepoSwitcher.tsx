@@ -1,108 +1,193 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ManifestEntry } from "../lib/types";
 
-interface RepoTabBarProps {
+export const ALL_REPOS_SLUG = "ALL_REPOS";
+
+interface RepoSwitcherProps {
   repos: ManifestEntry[];
-  selected: ManifestEntry;
-  onChange: (repo: ManifestEntry) => void;
+  selectedSlug: string; // "ALL_REPOS" or specific repo.slug
+  onChange: (slug: string) => void;
 }
 
 /**
- * Full-width repository switcher tab bar with:
- * 1. Horizontal scrollable tabs with arrow controls (‹ and ›)
- * 2. Quick-select dropdown menu for fast jumping between repos
- * 3. Dot status indicators for each repo
+ * Customized high-end repository dropdown menu.
+ * Replaces scrolling tabs with a sleek popover selector.
+ * Includes "All Repositories (Aggregated)" view as the primary option.
  */
-export function RepoSwitcher({ repos, selected, onChange }: RepoTabBarProps) {
-  const navRef = useRef<HTMLDivElement>(null);
+export function RepoSwitcher({ repos, selectedSlug, onChange }: RepoSwitcherProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  if (repos.length <= 1) return null;
+  const isAllSelected = selectedSlug === ALL_REPOS_SLUG;
+  const currentRepo = repos.find((r) => r.slug === selectedSlug);
 
-  function scroll(direction: "left" | "right") {
-    if (!navRef.current) return;
-    const amount = direction === "left" ? -240 : 240;
-    navRef.current.scrollBy({ left: amount, behavior: "smooth" });
-  }
+  // Close on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close on Escape key
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setIsOpen(false);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  if (repos.length === 0) return null;
 
   return (
-    <div className="border-b border-hairline bg-obsidian/90 backdrop-blur-xs sticky top-0 z-20 animate-slide-down">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 py-1">
-        {/* Left arrow */}
-        <button
-          onClick={() => scroll("left")}
-          className="hidden sm:flex w-7 h-7 items-center justify-center text-muted hover:text-amber border border-hairline hover:border-faint rounded-none bg-surface/50 transition-colors flex-shrink-0"
-          title="Scroll left"
-          aria-label="Scroll left"
-        >
-          ‹
-        </button>
+    <div className="border-b border-hairline bg-obsidian/90 backdrop-blur-xs sticky top-0 z-30 animate-slide-down">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
+        
+        {/* Label indicator */}
+        <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-faint">
+          <span className="w-1.5 h-1.5 rounded-full bg-amber" />
+          <span>Active View</span>
+        </div>
 
-        {/* Scrollable Tab Container */}
-        <div
-          ref={navRef}
-          className="flex-1 flex overflow-x-auto gap-1 py-1 scroll-smooth"
-          style={{ scrollbarWidth: "thin", scrollbarColor: "#2A2A2E transparent" }}
-        >
-          {repos.map((repo) => {
-            const [owner, name] = repo.slug.split("/");
-            const isSelected = repo.slug === selected.slug;
-            return (
+        {/* Custom Dropdown Trigger */}
+        <div ref={containerRef} className="relative w-full sm:w-auto min-w-[280px]">
+          <button
+            type="button"
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-expanded={isOpen}
+            aria-haspopup="listbox"
+            className={[
+              "w-full flex items-center justify-between gap-3 px-4 py-2.5 text-xs font-mono",
+              "bg-surface border transition-all duration-200 notch-xs outline-none",
+              isOpen
+                ? "border-amber text-ink ring-1 ring-amber/30 shadow-lg shadow-amber/5"
+                : "border-hairline text-ink hover:border-faint hover:bg-raised",
+            ].join(" ")}
+          >
+            <div className="flex items-center gap-2.5 truncate">
+              {isAllSelected ? (
+                <span className="text-amber text-sm flex-shrink-0">🌐</span>
+              ) : (
+                <span className="w-2 h-2 rounded-full bg-amber flex-shrink-0" />
+              )}
+              <span className="truncate font-semibold">
+                {isAllSelected
+                  ? `All Repositories (${repos.length})`
+                  : currentRepo?.slug ?? selectedSlug}
+              </span>
+            </div>
+
+            {/* Chevron Arrow */}
+            <svg
+              className={`w-3.5 h-3.5 text-muted transition-transform duration-300 flex-shrink-0 ${
+                isOpen ? "rotate-180 text-amber" : ""
+              }`}
+              viewBox="0 0 16 16"
+              fill="currentColor"
+            >
+              <path d="M4.427 6.427a.75.75 0 0 1 1.06 0L8 8.939l2.513-2.512a.75.75 0 1 1 1.061 1.06l-3.043 3.043a.75.75 0 0 1-1.06 0L4.427 7.487a.75.75 0 0 1 0-1.06Z" />
+            </svg>
+          </button>
+
+          {/* Custom Popover Dropdown Menu */}
+          {isOpen && (
+            <div
+              role="listbox"
+              className="absolute left-0 right-0 mt-1.5 bg-raised border border-hairline notch-sm shadow-2xl z-40 animate-scale-in py-1 max-h-[380px] overflow-y-auto"
+              style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.8), 0 0 0 1px rgba(232,168,64,0.12)" }}
+            >
+              {/* Option 1: ALL REPOSITORIES (AGGREGATED) */}
               <button
-                key={repo.slug}
-                role="tab"
-                aria-selected={isSelected}
-                id={`repo-tab-${repo.dirName}`}
-                onClick={() => onChange(repo)}
+                type="button"
+                role="option"
+                aria-selected={isAllSelected}
+                onClick={() => {
+                  onChange(ALL_REPOS_SLUG);
+                  setIsOpen(false);
+                }}
                 className={[
-                  "group flex-shrink-0 flex items-center gap-2 px-3.5 py-2 text-xs font-mono border transition-all duration-200 whitespace-nowrap outline-none",
-                  isSelected
-                    ? "bg-amber/10 border-amber/50 text-ink font-semibold shadow-sm"
-                    : "bg-surface/40 border-hairline text-muted hover:text-ink hover:border-faint hover:bg-surface",
+                  "w-full flex items-center justify-between px-4 py-3 text-xs font-mono text-left transition-colors",
+                  isAllSelected
+                    ? "bg-amber/10 text-amber font-semibold border-l-2 border-amber"
+                    : "text-ink hover:bg-surface hover:text-amber",
                 ].join(" ")}
               >
-                {/* Repo icon dot */}
-                <span
-                  className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-200 ${
-                    isSelected ? "bg-amber" : "bg-faint group-hover:bg-muted"
-                  }`}
-                />
-                <span className={`transition-colors ${isSelected ? "text-faint" : "text-faint/60"}`}>
-                  {owner}/
-                </span>
-                <span className={isSelected ? "text-amber font-semibold" : "text-muted"}>{name}</span>
+                <div className="flex items-center gap-2.5">
+                  <span className="text-base leading-none">🌐</span>
+                  <div>
+                    <div className="font-semibold text-ink">All Repositories</div>
+                    <div className="text-[10px] text-faint font-body mt-0.5">
+                      Combined metrics across {repos.length} repositories
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="notch-xs px-2 py-0.5 text-[10px] font-mono bg-amber/15 text-amber border border-amber/30">
+                    {repos.length} repos
+                  </span>
+                  {isAllSelected && <span className="text-amber text-sm font-bold">✓</span>}
+                </div>
               </button>
-            );
-          })}
+
+              {/* Divider */}
+              <div className="my-1 border-t border-hairline px-4 py-1">
+                <span className="text-[9px] uppercase tracking-[0.18em] text-faint font-body font-medium">
+                  Tracked Repositories
+                </span>
+              </div>
+
+              {/* Individual Repositories List */}
+              {repos.map((repo) => {
+                const [owner, name] = repo.slug.split("/");
+                const isSelected = repo.slug === selectedSlug;
+                return (
+                  <button
+                    key={repo.slug}
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      onChange(repo.slug);
+                      setIsOpen(false);
+                    }}
+                    className={[
+                      "w-full flex items-center justify-between px-4 py-2.5 text-xs font-mono text-left transition-colors",
+                      isSelected
+                        ? "bg-amber/10 text-ink font-semibold border-l-2 border-amber"
+                        : "text-muted hover:text-ink hover:bg-surface",
+                    ].join(" ")}
+                  >
+                    <div className="flex items-center gap-2.5 truncate">
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                          isSelected ? "bg-amber" : "bg-faint"
+                        }`}
+                      />
+                      <span className="truncate">
+                        <span className="text-faint">{owner}/</span>
+                        <span className={isSelected ? "text-amber font-semibold" : "text-ink"}>
+                          {name}
+                        </span>
+                      </span>
+                    </div>
+
+                    {isSelected && <span className="text-amber text-sm font-bold ml-2">✓</span>}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
-        {/* Right arrow */}
-        <button
-          onClick={() => scroll("right")}
-          className="hidden sm:flex w-7 h-7 items-center justify-center text-muted hover:text-amber border border-hairline hover:border-faint rounded-none bg-surface/50 transition-colors flex-shrink-0"
-          title="Scroll right"
-          aria-label="Scroll right"
-        >
-          ›
-        </button>
-
-        {/* Quick select dropdown for fast navigation */}
-        <div className="flex-shrink-0 ml-2">
-          <select
-            value={selected.slug}
-            onChange={(e) => {
-              const target = repos.find((r) => r.slug === e.target.value);
-              if (target) onChange(target);
-            }}
-            className="notch-xs bg-raised text-xs font-mono text-muted border border-hairline px-2.5 py-1.5 focus:border-amber focus:text-ink outline-none cursor-pointer"
-            aria-label="Select repository"
-          >
-            {repos.map((r) => (
-              <option key={r.slug} value={r.slug} className="bg-surface text-ink">
-                {r.slug}
-              </option>
-            ))}
-          </select>
+        {/* Quick info right badge */}
+        <div className="hidden md:flex items-center gap-2 text-[11px] font-mono text-faint">
+          <span>{isAllSelected ? "Aggregated View" : "Single Repo View"}</span>
         </div>
+
       </div>
     </div>
   );

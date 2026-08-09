@@ -1,4 +1,4 @@
-import type { DailySeries, RangeKey } from "./types";
+import type { DailySeries, RangeKey, HistoryDataset, StargazerInfo } from "./types";
 
 export interface DayRow {
   date: string;
@@ -152,4 +152,169 @@ export function formatRelativeTime(iso: string | null): string {
 
 export function formatNumber(n: number): string {
   return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+export function aggregateHistoryDatasets(datasets: HistoryDataset[]): HistoryDataset {
+  if (datasets.length === 0) {
+    throw new Error("No datasets to aggregate");
+  }
+  if (datasets.length === 1) {
+    return datasets[0];
+  }
+
+  // 1. Earliest trackingSince
+  const trackingDates = datasets.map((d) => d.repository?.trackingSince).filter(Boolean);
+  const earliestTracking = trackingDates.length > 0 ? trackingDates.sort()[0] : new Date().toISOString();
+
+  // 2. Unique languages
+  const langs = Array.from(new Set(datasets.map((d) => d.repository?.language).filter(Boolean))) as string[];
+
+  // 3. Aggregate daily clones & views
+  const dailyClones: Record<string, { count: number; uniques: number }> = {};
+  const dailyViews: Record<string, { count: number; uniques: number }> = {};
+
+  for (const ds of datasets) {
+    for (const [date, point] of Object.entries(ds.daily?.clones ?? {})) {
+      if (!dailyClones[date]) dailyClones[date] = { count: 0, uniques: 0 };
+      dailyClones[date].count += point.count ?? 0;
+      dailyClones[date].uniques += point.uniques ?? 0;
+    }
+    for (const [date, point] of Object.entries(ds.daily?.views ?? {})) {
+      if (!dailyViews[date]) dailyViews[date] = { count: 0, uniques: 0 };
+      dailyViews[date].count += point.count ?? 0;
+      dailyViews[date].uniques += point.uniques ?? 0;
+    }
+  }
+
+  // 4. Aggregate repoStats by date
+  const repoStatsByDate = new Map<
+    string,
+    { stars: number; forks: number; watchers: number; openIssues: number; openPRs: number }
+  >();
+  for (const ds of datasets) {
+    for (const p of ds.repoStats ?? []) {
+      const prev = repoStatsByDate.get(p.date) ?? { stars: 0, forks: 0, watchers: 0, openIssues: 0, openPRs: 0 };
+      repoStatsByDate.set(p.date, {
+        stars: prev.stars + (p.stars ?? 0),
+        forks: prev.forks + (p.forks ?? 0),
+        watchers: prev.watchers + (p.watchers ?? 0),
+        openIssues: prev.openIssues + (p.openIssues ?? 0),
+        openPRs: prev.openPRs + (p.openPRs ?? 0),
+      });
+    }
+  }
+  const repoStats = Array.from(repoStatsByDate.entries())
+    .map(([date, stats]) => ({ date, ...stats }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  // 5. Combine & tag releases
+  const releases = datasets
+    .flatMap((d) =>
+      (d.releases ?? []).map((r) => ({
+        ...r,
+        name: r.name
+          ? `[${d.repository?.name || d.repository?.fullName}] ${r.name}`
+          : `[${d.repository?.name || d.repository?.fullName}] ${r.tagName}`,
+      }))
+    )
+    .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
+
+  // 6. Combine referrers (group by referrer name across repos)
+  const referrerCounts = new Map<string, { count: number; uniques: number }>();
+  let latestCollectedAt = "";
+  for (const ds of datasets) {
+    const latestRef = ds.referrerSnapshots?.[ds.referrerSnapshots.length - 1];
+    if (latestRef) {
+      if (!latestCollectedAt || latestRef.collectedAt > latestCollectedAt) {
+        latestCollectedAt = latestRef.collectedAt;
+      }
+      for (const item of latestRef.items ?? []) {
+        const prev = referrerCounts.get(item.referrer) ?? { count: 0, uniques: 0 };
+        referrerCounts.set(item.referrer, {
+          count: prev.count + item.count,
+          uniques: prev.uniques + item.uniques,
+        });
+      }
+    }
+  }
+  const referrerSnapshots = latestCollectedAt
+    ? [
+        {
+          collectedAt: latestCollectedAt,
+          items: Array.from(referrerCounts.entries()).map(([referrer, val]) => ({
+            referrer,
+            count: val.count,
+            uniques: val.uniques,
+          })),
+        },
+      ]
+    : [];
+
+  // 7. Combine popular content (prefix path with repo name: owner/repo: /path)
+  const contentCounts = new Map<string, { path: string; title: string; count: number; uniques: number }>();
+  for (const ds of datasets) {
+    const latestContent = ds.contentSnapshots?.[ds.contentSnapshots.length - 1];
+    if (latestContent) {
+      for (const item of latestContent.items ?? []) {
+        const repoLabel = ds.repository?.name || ds.repository?.fullName;
+        const key = `${repoLabel}: ${item.path}`;
+        contentCounts.set(key, {
+          path: `${repoLabel}: ${item.path}`,
+          title: item.title,
+          count: item.count,
+          uniques: item.uniques,
+        });
+      }
+    }
+  }
+  const contentSnapshots = latestCollectedAt
+    ? [
+        {
+          collectedAt: latestCollectedAt,
+          items: Array.from(contentCounts.values()),
+        },
+      ]
+    : [];
+
+  // 8. Combine stargazers across all repos, deduplicating by login
+  const stargazerMap = new Map<string, StargazerInfo>();
+  for (const ds of datasets) {
+    for (const sg of ds.stargazers ?? []) {
+      if (!stargazerMap.has(sg.login)) {
+        stargazerMap.set(sg.login, sg);
+      }
+    }
+  }
+  const stargazers = Array.from(stargazerMap.values()).sort((a, b) =>
+    (b.starredAt ?? "").localeCompare(a.starredAt ?? "")
+  );
+
+  return {
+    schemaVersion: 1,
+    repository: {
+      owner: "All Repositories",
+      name: "All Repositories",
+      fullName: `All Repositories (${datasets.length} tracked repos)`,
+      description: `Aggregated traffic, stargazers & activity metrics across ${datasets.length} repositories.`,
+      htmlUrl: "",
+      homepage: null,
+      language: langs.join(" · ") || null,
+      license: null,
+      createdAt: null,
+      defaultBranch: "main",
+      trackingSince: earliestTracking,
+    },
+    lastSyncedAt: latestCollectedAt || datasets[0]?.lastSyncedAt || null,
+    lastSyncStatus: "ok",
+    lastSyncError: null,
+    daily: {
+      clones: dailyClones,
+      views: dailyViews,
+    },
+    repoStats,
+    releases,
+    referrerSnapshots,
+    contentSnapshots,
+    stargazers,
+  };
 }

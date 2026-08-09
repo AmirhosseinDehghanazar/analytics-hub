@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { HistoryDataset } from "./types";
+import { aggregateHistoryDatasets } from "./calculations";
 
 export type LoadState = "loading" | "ready" | "empty" | "error";
 
@@ -19,14 +20,12 @@ function resolveDataUrl(dataPath: string): string {
 }
 
 /**
- * Fetches the history dataset for a single repository.
+ * Fetches the history dataset for a single repository or aggregates multiple datasets.
  *
- * @param dataPath - The relative path to the history.json file for this repo,
- *   as provided by the ManifestEntry. Defaults to `manifest.json`-driven path.
- *   When undefined the hook is in a "not-yet-selected" state and returns
- *   { state: "loading" } without making any fetch call.
+ * @param dataPath - Single dataPath string, an array of dataPath strings (for "All Repositories"),
+ *   or undefined (while manifest is loading).
  */
-export function useHistoryData(dataPath: string | undefined): UseHistoryDataResult {
+export function useHistoryData(dataPath: string | string[] | undefined): UseHistoryDataResult {
   const [data, setData] = useState<HistoryDataset | null>(null);
   const [state, setState] = useState<LoadState>("loading");
   const [error, setError] = useState<string | null>(null);
@@ -34,39 +33,70 @@ export function useHistoryData(dataPath: string | undefined): UseHistoryDataResu
 
   const reload = useCallback(() => setNonce((n) => n + 1), []);
 
+  const pathKey = Array.isArray(dataPath) ? dataPath.join(",") : dataPath;
+
   useEffect(() => {
     // No path yet (manifest still loading) — stay in loading state.
-    if (dataPath === undefined) return;
+    if (dataPath === undefined || (Array.isArray(dataPath) && dataPath.length === 0)) return;
 
     let cancelled = false;
     setState("loading");
     setError(null);
 
-    const url = `${resolveDataUrl(dataPath)}?t=${Date.now()}`;
+    const now = Date.now();
 
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw new Error(`Failed to load dataset (${res.status})`);
-        return res.json();
-      })
-      .then((json: HistoryDataset) => {
-        if (cancelled) return;
-        setData(json);
-        const hasAnyData =
-          Object.keys(json.daily?.clones ?? {}).length > 0 ||
-          Object.keys(json.daily?.views ?? {}).length > 0;
-        setState(hasAnyData ? "ready" : "empty");
-      })
-      .catch((err) => {
-        if (cancelled) return;
-        setError(err instanceof Error ? err.message : String(err));
-        setState("error");
-      });
+    if (Array.isArray(dataPath)) {
+      // Multi-repo aggregate fetch
+      const fetchPromises = dataPath.map((path) =>
+        fetch(`${resolveDataUrl(path)}?t=${now}`).then((res) => {
+          if (!res.ok) throw new Error(`Failed to load dataset for ${path} (${res.status})`);
+          return res.json() as Promise<HistoryDataset>;
+        })
+      );
+
+      Promise.all(fetchPromises)
+        .then((datasets) => {
+          if (cancelled) return;
+          const aggregated = aggregateHistoryDatasets(datasets);
+          setData(aggregated);
+          const hasAnyData =
+            Object.keys(aggregated.daily?.clones ?? {}).length > 0 ||
+            Object.keys(aggregated.daily?.views ?? {}).length > 0;
+          setState(hasAnyData ? "ready" : "empty");
+        })
+        .catch((err) => {
+          if (cancelled) return;
+          setError(err instanceof Error ? err.message : String(err));
+          setState("error");
+        });
+    } else {
+      // Single repo fetch
+      const url = `${resolveDataUrl(dataPath)}?t=${now}`;
+
+      fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error(`Failed to load dataset (${res.status})`);
+          return res.json();
+        })
+        .then((json: HistoryDataset) => {
+          if (cancelled) return;
+          setData(json);
+          const hasAnyData =
+            Object.keys(json.daily?.clones ?? {}).length > 0 ||
+            Object.keys(json.daily?.views ?? {}).length > 0;
+          setState(hasAnyData ? "ready" : "empty");
+        })
+        .catch((err) => {
+          if (cancelled) return;
+          setError(err instanceof Error ? err.message : String(err));
+          setState("error");
+        });
+    }
 
     return () => {
       cancelled = true;
     };
-  }, [dataPath, nonce]);
+  }, [pathKey, nonce]);
 
   return { data, state, error, reload };
 }

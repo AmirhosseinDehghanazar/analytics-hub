@@ -43,14 +43,20 @@ export function Header({
                 {dataset.repository.name || "Not configured"}
               </h1>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
-                <a
-                  href={dataset.repository.htmlUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-muted font-mono hover:text-amber transition-colors duration-200"
-                >
-                  github.com/{dataset.repository.fullName}
-                </a>
+                {dataset.repository.htmlUrl ? (
+                  <a
+                    href={dataset.repository.htmlUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-muted font-mono hover:text-amber transition-colors duration-200"
+                  >
+                    github.com/{dataset.repository.fullName}
+                  </a>
+                ) : (
+                  <span className="text-xs text-amber font-mono font-semibold">
+                    {dataset.repository.fullName}
+                  </span>
+                )}
                 {dataset.repository.language && (
                   <span className="text-xs text-faint font-mono flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-sage/70" />
