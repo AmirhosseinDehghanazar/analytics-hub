@@ -13,7 +13,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T12:00:40.391Z"
   },
-  "lastSyncedAt": "2026-08-09T16:24:23.591Z",
+  "lastSyncedAt": "2026-08-09T16:25:37.814Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -233,6 +233,10 @@
     {
       "collectedAt": "2026-08-09T16:24:23.591Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T16:25:37.814Z",
+      "items": []
     }
   ],
   "contentSnapshots": [
@@ -315,7 +319,42 @@
     {
       "collectedAt": "2026-08-09T16:24:23.591Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-09T16:25:37.814Z",
+      "items": []
     }
   ],
-  "stargazers": []
+  "stargazers": [
+    {
+      "login": "bugsounet",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/30669209?v=4",
+      "htmlUrl": "https://github.com/bugsounet",
+      "starredAt": "2025-07-27T21:45:25Z"
+    },
+    {
+      "login": "AmirhosseinDehghanazar",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/61588105?v=4",
+      "htmlUrl": "https://github.com/AmirhosseinDehghanazar",
+      "starredAt": "2024-12-26T10:59:10Z"
+    },
+    {
+      "login": "alimashayekhy",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/107800674?v=4",
+      "htmlUrl": "https://github.com/alimashayekhy",
+      "starredAt": "2024-11-30T10:51:18Z"
+    },
+    {
+      "login": "ArashMDN",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54910737?v=4",
+      "htmlUrl": "https://github.com/ArashMDN",
+      "starredAt": "2024-11-27T13:57:07Z"
+    },
+    {
+      "login": "hamidrezafarzin",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60010616?v=4",
+      "htmlUrl": "https://github.com/hamidrezafarzin",
+      "starredAt": "2024-11-25T13:49:57Z"
+    }
+  ]
 }
