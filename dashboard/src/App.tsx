@@ -191,6 +191,7 @@ export default function App() {
               <StargazerWall
                 stargazers={data.stargazers ?? []}
                 repoSlug={data.repository.fullName}
+                totalStars={data.repoStats[data.repoStats.length - 1]?.stars ?? 0}
               />
 
               {/* Sources + popular content */}
