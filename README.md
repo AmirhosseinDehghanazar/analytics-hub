@@ -220,11 +220,20 @@ All datasets are stored in plain, version-controlled JSON inside the `data/` dir
 
 ---
 
-## 🔒 Security & Privacy
+## 🔒 Security & Privacy Guarantees
 
-- **Zero Token Leakage**: The `GH_ANALYTICS_TOKEN` secret is accessed strictly inside GitHub Actions server runners. It is **never** written into JSON data files or included in the frontend JS bundle.
-- **Static & Client-Side**: The dashboard is a 100% static site hosted on GitHub Pages with no backend server or database required.
-- **Public Profile API**: The stargazer profile modal uses GitHub's public `/users/:login` REST endpoint client-side without requiring authentication.
+> [!IMPORTANT]
+> **Zero Token Leakage & 100% Read-Only Web Interface**
+> Your Personal Access Token is used **exclusively inside GitHub's encrypted Actions runners**. It is never exposed in client JS bundles, never written to dataset JSON files, and never sent to any third-party server.
+
+| Security Pillar | Guarantee |
+|---|---|
+| 🔐 **Encrypted Token Vault** | `GH_ANALYTICS_TOKEN` lives strictly in GitHub Secrets (`Settings → Secrets → Actions`). It is read inside GitHub's isolated Linux runner VMs and never exposed publicly. |
+| 🌐 **100% Static & Read-Only** | The published GitHub Pages dashboard is a pure static single-page application (SPA). It has **no backend server, no database, and zero administrative write permissions**. |
+| 🙈 **Zero Code / File Storage** | The `data/` directory only contains aggregated numerical counts (clones, views, star counts, referrer domains) and public stargazer avatars. Your source code files, commit histories, and private data are **never stored or accessed**. |
+| 🎯 **Fine-Grained Scope Isolation** | Uses GitHub's fine-grained PAT system scoped exclusively to the specific target repositories you choose, with strictly minimum necessary permissions (`Contents: Read/Write`, `Administration: Read-only`). |
+| 🚫 **No Third-Party Telemetry** | Zero Google Analytics, zero ad trackers, zero telemetry scripts. All browser requests go exclusively to your own GitHub Pages domain and GitHub's public API for user avatars. |
+| 🛡️ **`.gitignore` Safety Net** | Strict gitignore rules prevent local `.env` configuration files or secret tokens from ever being accidentally committed to Git. |
 
 ---
 
