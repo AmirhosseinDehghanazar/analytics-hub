@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { formatRelativeTime } from "../lib/calculations";
 import type { HistoryDataset } from "../lib/types";
 
@@ -6,21 +6,39 @@ export function Header({
   dataset,
   onExportCsv,
   onExportJson,
+  onRefresh,
 }: {
   dataset: HistoryDataset;
   onExportCsv: () => void;
   onExportJson: () => void;
+  onRefresh: () => void;
 }) {
   const [syncing, setSyncing] = useState(false);
   const [justSynced, setJustSynced] = useState(false);
+  const [syncMenuOpen, setSyncMenuOpen] = useState(false);
+  const syncMenuRef = useRef<HTMLDivElement>(null);
+
   const isError = dataset.lastSyncStatus === "error";
 
-  async function handleSync() {
+  // Close sync menu on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (syncMenuRef.current && !syncMenuRef.current.contains(e.target as Node)) {
+        setSyncMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  async function handleRefreshClick() {
     setSyncing(true);
-    await new Promise((r) => setTimeout(r, 750));
+    setSyncMenuOpen(false);
+    await onRefresh();
+    await new Promise((r) => setTimeout(r, 600));
     setSyncing(false);
     setJustSynced(true);
-    window.location.reload();
+    setTimeout(() => setJustSynced(false), 3000);
   }
 
   const latestStats = dataset.repoStats[dataset.repoStats.length - 1];
@@ -99,22 +117,63 @@ export function Header({
             {/* Right: actions */}
             <div className="flex items-center gap-2 animate-fade-up" style={{ animationDelay: "80ms" }}>
               <ExportMenu onCsv={onExportCsv} onJson={onExportJson} />
-              <button
-                onClick={handleSync}
-                disabled={syncing}
-                className="notch-sm px-4 py-2 text-xs font-mono font-semibold bg-amber text-obsidian hover:bg-amber-deep transition-colors duration-200 disabled:opacity-60 flex items-center gap-1.5"
-              >
-                {syncing ? (
-                  <>
-                    <SpinnerIcon />
-                    Syncing…
-                  </>
-                ) : justSynced ? (
-                  "✓ Updated"
-                ) : (
-                  "↻ Sync now"
+
+              {/* Sync Button & Menu */}
+              <div ref={syncMenuRef} className="relative">
+                <button
+                  onClick={() => setSyncMenuOpen((o) => !o)}
+                  disabled={syncing}
+                  className="notch-sm px-4 py-2 text-xs font-mono font-semibold bg-amber text-obsidian hover:bg-amber-deep transition-colors duration-200 disabled:opacity-60 flex items-center gap-1.5"
+                >
+                  {syncing ? (
+                    <>
+                      <SpinnerIcon />
+                      Syncing…
+                    </>
+                  ) : justSynced ? (
+                    "✓ Updated"
+                  ) : (
+                    <>
+                      ↻ Sync options
+                      <span className="text-[10px] ml-0.5">▼</span>
+                    </>
+                  )}
+                </button>
+
+                {syncMenuOpen && (
+                  <div
+                    className="absolute right-0 mt-1.5 w-64 bg-raised border border-hairline notch-sm shadow-2xl z-40 animate-scale-in py-1.5"
+                    style={{ boxShadow: "0 16px 40px rgba(0,0,0,0.8)" }}
+                  >
+                    <button
+                      onClick={handleRefreshClick}
+                      className="w-full text-left px-4 py-2.5 text-xs font-mono text-ink hover:bg-surface hover:text-amber transition-colors flex items-center gap-2"
+                    >
+                      <span className="text-amber">↻</span>
+                      <div>
+                        <div className="font-semibold">Refresh Live Data</div>
+                        <div className="text-[10px] text-faint font-body">Fetch latest published dataset</div>
+                      </div>
+                    </button>
+
+                    <div className="my-1 border-t border-hairline" />
+
+                    <a
+                      href="https://github.com/AmirhosseinDehghanazar/analytics-hub/actions/workflows/collect.yml"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setSyncMenuOpen(false)}
+                      className="w-full text-left px-4 py-2.5 text-xs font-mono text-ink hover:bg-surface hover:text-amber transition-colors flex items-center gap-2 block"
+                    >
+                      <span className="text-amber">⚡</span>
+                      <div>
+                        <div className="font-semibold">Trigger Collector Action ↗</div>
+                        <div className="text-[10px] text-faint font-body">Run manual sync on GitHub Actions</div>
+                      </div>
+                    </a>
+                  </div>
                 )}
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -138,7 +197,7 @@ function StarIcon() {
 function ForkIcon() {
   return (
     <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" className="opacity-60">
-      <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z" />
+      <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 1 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z" />
     </svg>
   );
 }
@@ -160,8 +219,20 @@ function SpinnerIcon() {
 
 function ExportMenu({ onCsv, onJson }: { onCsv: () => void; onJson: () => void }) {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="relative">
+    <div ref={menuRef} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
         className="notch-sm px-4 py-2 text-xs font-mono font-medium border border-hairline text-muted hover:text-ink hover:border-faint transition-colors duration-200"
@@ -169,7 +240,7 @@ function ExportMenu({ onCsv, onJson }: { onCsv: () => void; onJson: () => void }
         ↓ Export
       </button>
       {open && (
-        <div className="absolute right-0 mt-1.5 w-36 bg-raised border border-hairline z-30 animate-slide-down py-1 shadow-xl shadow-black/50">
+        <div className="absolute right-0 mt-1.5 w-36 bg-raised border border-hairline z-30 animate-slide-down py-1 shadow-xl shadow-black/50 notch-xs">
           <button
             onClick={() => { onCsv(); setOpen(false); }}
             className="block w-full text-left px-3 py-2 text-xs font-mono text-muted hover:text-ink hover:bg-surface transition-colors"

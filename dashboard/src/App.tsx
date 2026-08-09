@@ -103,6 +103,7 @@ export default function App() {
       {data && (
         <Header
           dataset={data}
+          onRefresh={refetch}
           onExportCsv={() => {
             const timeline = buildTimeline(data.daily.clones, data.daily.views);
             exportCsv(timeline, data.repository.name || "analytics");
