@@ -43,6 +43,10 @@ function Row({ label, value }: { label: string; value: number }) {
 
 export function TrafficChart({ rows, mode }: TrafficChartProps) {
   const isCombined = mode === "combined";
+  const isGitLabTheme = document.documentElement.getAttribute("data-theme") === "gitlab";
+
+  const primaryColor = isGitLabTheme ? "#FC6D26" : "#E8A840";
+  const secondaryColor = isGitLabTheme ? "#6B4F96" : "#8FA6A3";
 
   if (rows.length === 0) {
     return (
@@ -61,13 +65,13 @@ export function TrafficChart({ rows, mode }: TrafficChartProps) {
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={rows} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <defs>
-            <linearGradient id="fillAmber" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#E8A840" stopOpacity={0.28} />
-              <stop offset="100%" stopColor="#E8A840" stopOpacity={0} />
+            <linearGradient id="fillPrimary" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={primaryColor} stopOpacity={0.32} />
+              <stop offset="100%" stopColor={primaryColor} stopOpacity={0} />
             </linearGradient>
-            <linearGradient id="fillSage" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#8FA6A3" stopOpacity={0.22} />
-              <stop offset="100%" stopColor="#8FA6A3" stopOpacity={0} />
+            <linearGradient id="fillSecondary" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={secondaryColor} stopOpacity={0.25} />
+              <stop offset="100%" stopColor={secondaryColor} stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid stroke="#2A2A2E" strokeDasharray="0" vertical={false} />
@@ -94,21 +98,21 @@ export function TrafficChart({ rows, mode }: TrafficChartProps) {
                 type="monotone"
                 dataKey="clones"
                 name="Clones"
-                stroke="#E8A840"
+                stroke={primaryColor}
                 strokeWidth={2}
-                fill="url(#fillAmber)"
+                fill="url(#fillPrimary)"
                 dot={false}
-                activeDot={{ r: 3.5, fill: "#E8A840", stroke: "#0A0A0B", strokeWidth: 2 }}
+                activeDot={{ r: 3.5, fill: primaryColor, stroke: "#0A0A0B", strokeWidth: 2 }}
               />
               <Area
                 type="monotone"
                 dataKey="views"
                 name="Views"
-                stroke="#8FA6A3"
+                stroke={secondaryColor}
                 strokeWidth={2}
-                fill="url(#fillSage)"
+                fill="url(#fillSecondary)"
                 dot={false}
-                activeDot={{ r: 3.5, fill: "#8FA6A3", stroke: "#0A0A0B", strokeWidth: 2 }}
+                activeDot={{ r: 3.5, fill: secondaryColor, stroke: "#0A0A0B", strokeWidth: 2 }}
               />
             </>
           ) : (
@@ -116,19 +120,24 @@ export function TrafficChart({ rows, mode }: TrafficChartProps) {
               type="monotone"
               dataKey={SERIES_META[mode].field as string}
               name={SERIES_META[mode].label}
-              stroke={SERIES_META[mode].color}
+              stroke={SERIES_META[mode].color === "#E8A840" ? primaryColor : secondaryColor}
               strokeWidth={2}
-              fill={SERIES_META[mode].color === "#E8A840" ? "url(#fillAmber)" : "url(#fillSage)"}
+              fill={SERIES_META[mode].color === "#E8A840" ? "url(#fillPrimary)" : "url(#fillSecondary)"}
               dot={false}
-              activeDot={{ r: 3.5, fill: SERIES_META[mode].color, stroke: "#0A0A0B", strokeWidth: 2 }}
+              activeDot={{
+                r: 3.5,
+                fill: SERIES_META[mode].color === "#E8A840" ? primaryColor : secondaryColor,
+                stroke: "#0A0A0B",
+                strokeWidth: 2,
+              }}
             />
           )}
         </AreaChart>
       </ResponsiveContainer>
       {isCombined ? (
         <div className="flex gap-4 mt-2 justify-end pr-2">
-          <Legend swatch="#E8A840" label="Clones" />
-          <Legend swatch="#8FA6A3" label="Views" />
+          <Legend swatch={primaryColor} label="Clones" />
+          <Legend swatch={secondaryColor} label="Views" />
         </div>
       ) : null}
     </div>

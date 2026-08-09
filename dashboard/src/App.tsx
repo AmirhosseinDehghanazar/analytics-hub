@@ -3,9 +3,15 @@ import { useManifest } from "./lib/useManifest";
 import { useHistoryData } from "./lib/useHistoryData";
 import { buildTimeline, filterByRange, periodOverPeriodGrowth } from "./lib/calculations";
 import { exportCsv, exportJson } from "./lib/export";
-import type { RangeKey, ChartMode } from "./lib/types";
+import type { RangeKey, ChartMode, ProviderType } from "./lib/types";
 import { Header } from "./components/Header";
-import { RepoSwitcher, ALL_REPOS_SLUG } from "./components/RepoSwitcher";
+import { ProviderTabs, type ProviderTabOption } from "./components/ProviderTabs";
+import {
+  RepoSwitcher,
+  ALL_REPOS_SLUG,
+  ALL_GITHUB_SLUG,
+  ALL_GITLAB_SLUG,
+} from "./components/RepoSwitcher";
 import { TrafficChart } from "./components/TrafficChart";
 import { GrowthInsights } from "./components/GrowthInsights";
 import { MetricCard } from "./components/MetricCard";
@@ -24,22 +30,44 @@ export default function App() {
     error: manifestError,
   } = useManifest();
 
+  const [activeProvider, setActiveProvider] = useState<ProviderTabOption>("ALL");
   const [selectedSlug, setSelectedSlug] = useState<string>(ALL_REPOS_SLUG);
   const [range, setRange] = useState<RangeKey>("30D");
   const [mode, setMode] = useState<ChartMode>("clones");
 
-  // Default to ALL_REPOS if multiple repos, or first repo if single repo
+  // Default selection when manifest loads
   useEffect(() => {
     if (repos.length === 1 && selectedSlug === ALL_REPOS_SLUG) {
       setSelectedSlug(repos[0].slug);
     }
   }, [repos, selectedSlug]);
 
-  // Determine active data path (array for ALL_REPOS, string for single repo)
-  const activeDataPath =
-    selectedSlug === ALL_REPOS_SLUG
-      ? repos.map((r) => r.dataPath)
-      : repos.find((r) => r.slug === selectedSlug)?.dataPath;
+  // Synchronize smooth theme switching with active selection
+  useEffect(() => {
+    const currentRepo = repos.find((r) => r.slug === selectedSlug);
+    const providerOfSelected = currentRepo?.provider ?? (selectedSlug === ALL_GITLAB_SLUG ? "gitlab" : "github");
+
+    const effectiveTheme: ProviderType =
+      activeProvider === "gitlab" || providerOfSelected === "gitlab" ? "gitlab" : "github";
+
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+  }, [activeProvider, selectedSlug, repos]);
+
+  // Determine active data paths for useHistoryData
+  const activeDataPath = (() => {
+    if (selectedSlug === ALL_REPOS_SLUG) {
+      return repos.map((r) => r.dataPath);
+    }
+    if (selectedSlug === ALL_GITHUB_SLUG) {
+      const githubData = repos.filter((r) => (r.provider ?? "github") === "github").map((r) => r.dataPath);
+      return githubData.length > 0 ? githubData : repos.map((r) => r.dataPath);
+    }
+    if (selectedSlug === ALL_GITLAB_SLUG) {
+      const gitlabData = repos.filter((r) => (r.provider ?? "github") === "gitlab").map((r) => r.dataPath);
+      return gitlabData.length > 0 ? gitlabData : repos.map((r) => r.dataPath);
+    }
+    return repos.find((r) => r.slug === selectedSlug)?.dataPath;
+  })();
 
   const {
     data,
@@ -56,10 +84,46 @@ export default function App() {
     return () => clearInterval(interval);
   }, [refetch]);
 
+  function handleProviderTabChange(provider: ProviderTabOption) {
+    setActiveProvider(provider);
+    setRange("30D");
+    setMode("clones");
+
+    const githubRepos = repos.filter((r) => (r.provider ?? "github") === "github");
+    const gitlabRepos = repos.filter((r) => (r.provider ?? "github") === "gitlab");
+
+    if (provider === "gitlab") {
+      if (gitlabRepos.length === 1) {
+        setSelectedSlug(gitlabRepos[0].slug);
+      } else {
+        setSelectedSlug(ALL_GITLAB_SLUG);
+      }
+    } else if (provider === "github") {
+      if (githubRepos.length === 1) {
+        setSelectedSlug(githubRepos[0].slug);
+      } else {
+        setSelectedSlug(ALL_GITHUB_SLUG);
+      }
+    } else {
+      setSelectedSlug(ALL_REPOS_SLUG);
+    }
+  }
+
   function handleSlugChange(slug: string) {
     setSelectedSlug(slug);
     setRange("30D");
     setMode("clones");
+
+    const repoObj = repos.find((r) => r.slug === slug);
+    if (repoObj) {
+      setActiveProvider(repoObj.provider ?? "github");
+    } else if (slug === ALL_GITLAB_SLUG) {
+      setActiveProvider("gitlab");
+    } else if (slug === ALL_GITHUB_SLUG) {
+      setActiveProvider("github");
+    } else {
+      setActiveProvider("ALL");
+    }
   }
 
   // ── Render states ──────────────────────────────────────────────────────────
@@ -107,6 +171,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Top Provider Switcher Tab Bar */}
+      <ProviderTabs
+        repos={repos}
+        activeProvider={activeProvider}
+        onProviderChange={handleProviderTabChange}
+      />
+
       {/* Header */}
       {data && (
         <Header
@@ -128,6 +199,8 @@ export default function App() {
         repos={repos}
         selectedSlug={selectedSlug}
         onChange={handleSlugChange}
+        activeProvider={activeProvider}
+        onProviderTabChange={handleProviderTabChange}
       />
 
       {/* Main content */}
@@ -231,19 +304,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-hairline mt-10 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-xs font-mono text-faint">
-            Analytics Hub · tracking {repos.length} {repos.length === 1 ? "repo" : "repos"}
-          </span>
-          <a
-            href="https://github.com/AmirhosseinDehghanazar/analytics-hub"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-mono text-faint hover:text-amber transition-colors"
-          >
-            github.com/AmirhosseinDehghanazar/analytics-hub ↗
-          </a>
+      <footer className="border-t border-hairline bg-obsidian py-8 mt-12 text-center text-xs font-mono text-faint">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span>Analytics Hub · Self-Hosted & Version-Controlled JSON Archive</span>
+          <span>Zero Telemetry · 100% Client-Side Privacy</span>
         </div>
       </footer>
     </div>

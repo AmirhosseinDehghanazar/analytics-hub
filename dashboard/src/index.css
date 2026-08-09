@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Global Theme Custom Properties ─────────────────────────────────────── */
+:root {
+  --theme-transition: background-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                      color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  --brand-primary: #E8A840;
+  --brand-secondary: #C8731A;
+  --brand-purple: #6B4F96;
+  --bg-radial-1: rgba(232, 168, 64, 0.07);
+  --bg-radial-2: rgba(196, 105, 79, 0.05);
+  --bg-radial-3: rgba(143, 166, 163, 0.04);
+}
+
+/* 🦊 GitLab Fiery Palette Override (triggered smoothly by data-theme="gitlab") */
+[data-theme="gitlab"] {
+  --brand-primary: #FC6D26;
+  --brand-secondary: #FCA326;
+  --brand-purple: #6B4F96;
+  --bg-radial-1: rgba(252, 109, 38, 0.12);
+  --bg-radial-2: rgba(107, 79, 150, 0.14);
+  --bg-radial-3: rgba(131, 137, 150, 0.08);
+}
+
 /* ── Base ───────────────────────────────────────────────────────────────── */
 html {
   color-scheme: dark;
@@ -11,14 +35,15 @@ html {
 body {
   background-color: #0A0A0B;
   background-image:
-    radial-gradient(ellipse 1000px 600px at 10% -5%,  rgba(232, 168, 64, 0.07), transparent 60%),
-    radial-gradient(ellipse 800px 500px  at 95% 5%,   rgba(196, 105, 79, 0.05), transparent 55%),
-    radial-gradient(ellipse 600px 400px  at 50% 100%, rgba(143, 166, 163, 0.04), transparent 60%);
+    radial-gradient(ellipse 1000px 600px at 10% -5%,  var(--bg-radial-1), transparent 60%),
+    radial-gradient(ellipse 800px 500px  at 95% 5%,   var(--bg-radial-2), transparent 55%),
+    radial-gradient(ellipse 600px 400px  at 50% 100%, var(--bg-radial-3), transparent 60%);
   background-attachment: fixed;
+  transition: var(--theme-transition);
 }
 
 ::selection {
-  background: rgba(232, 168, 64, 0.28);
+  background: rgba(252, 109, 38, 0.3);
   color: #F2F0EC;
 }
 
@@ -53,10 +78,11 @@ body {
 
 /* ── Glassmorphism panel ────────────────────────────────────────────────── */
 .glass {
-  background: rgba(19, 19, 22, 0.75);
+  background: rgba(19, 19, 22, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-color: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.06);
+  transition: var(--theme-transition);
 }
 
 /* ── Shimmer loading skeleton ────────────────────────────────────────────── */
@@ -71,20 +97,33 @@ body {
   animation: shimmer 1.8s ease-in-out infinite;
 }
 
-/* ── Amber accent line (top of header) ──────────────────────────────────── */
+/* ── Accent line (top of header) ────────────────────────────────────────── */
 .accent-line {
-  height: 2px;
+  height: 2.5px;
   background: linear-gradient(90deg,
     transparent 0%,
-    #E8A840 30%,
-    #C8731A 60%,
+    #E8A840 25%,
+    #C8731A 50%,
+    #E8A840 75%,
     transparent 100%
   );
+  transition: background 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   animation: accentShimmer 4s ease-in-out infinite;
 }
 
+[data-theme="gitlab"] .accent-line {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #E24329 15%,
+    #FC6D26 40%,
+    #FCA326 65%,
+    #6B4F96 85%,
+    transparent 100%
+  );
+}
+
 @keyframes accentShimmer {
-  0%, 100% { opacity: 0.6; }
+  0%, 100% { opacity: 0.7; }
   50%       { opacity: 1; }
 }
 
@@ -93,6 +132,13 @@ body {
   box-shadow:
     0 0 0 1px rgba(232, 168, 64, 0.2),
     0 0 24px 0  rgba(232, 168, 64, 0.08);
+  transition: box-shadow 0.4s ease;
+}
+
+[data-theme="gitlab"] .glow-border {
+  box-shadow:
+    0 0 0 1px rgba(252, 109, 38, 0.3),
+    0 0 28px 0  rgba(107, 79, 150, 0.25);
 }
 
 /* ── Avatar hover ring ───────────────────────────────────────────────────── */
@@ -107,6 +153,11 @@ body {
   border-color: #E8A840 !important;
 }
 
+[data-theme="gitlab"] .avatar-ring:hover {
+  box-shadow: 0 4px 20px rgba(252, 109, 38, 0.4);
+  border-color: #FC6D26 !important;
+}
+
 /* ── Progress bar fill animation ─────────────────────────────────────────── */
 .bar-fill {
   transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -117,7 +168,7 @@ body {
 
 /* ── Modal backdrop ──────────────────────────────────────────────────────── */
 .modal-backdrop {
-  background: rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
@@ -150,4 +201,8 @@ body {
   height: 2px;
   background: #E8A840;
   animation: fadeIn 0.2s ease-out;
+}
+
+[data-theme="gitlab"] .tab-active-indicator::after {
+  background: #FC6D26;
 }
