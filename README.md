@@ -80,7 +80,7 @@ Analytics Hub natively supports **GitHub** and **GitLab** projects in the same i
 | **Unique Cloners** | ✅ | ❌ | GitHub exposes unique cloners; GitLab exposes total fetch count |
 | **Daily Page Views** | ✅ | ❌ | GitHub exposes page views traffic; GitLab public REST API omits daily page views |
 | **Traffic Referrers & Content**| ✅ | ❌ | GitHub exposes traffic endpoints; GitLab REST API omits referrer logs |
-| **Stargazer Avatars & History** | ✅ | ❌ | GitHub exposes `star+json` media type; GitLab tracks star count without public user list |
+| **Stargazer Avatars & History** | ✅ | ✅ | Both exposes `star+json` media type; |
 
 ---
 
