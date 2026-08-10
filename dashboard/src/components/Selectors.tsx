@@ -1,13 +1,6 @@
 import type { ChartMode, RangeKey } from "../lib/types";
 
 const RANGES: RangeKey[] = ["7D", "14D", "30D", "90D", "6M", "1Y", "ALL"];
-const MODES: { key: ChartMode; label: string }[] = [
-  { key: "clones", label: "Clones" },
-  { key: "cloners", label: "Unique Cloners" },
-  { key: "views", label: "Views" },
-  { key: "visitors", label: "Unique Visitors" },
-  { key: "combined", label: "Combined" },
-];
 
 export function RangeSelector({ value, onChange }: { value: RangeKey; onChange: (r: RangeKey) => void }) {
   return (
@@ -31,10 +24,27 @@ export function RangeSelector({ value, onChange }: { value: RangeKey; onChange: 
   );
 }
 
-export function ChartModeToggle({ value, onChange }: { value: ChartMode; onChange: (m: ChartMode) => void }) {
+export function ChartModeToggle({
+  value,
+  onChange,
+  provider,
+}: {
+  value: ChartMode;
+  onChange: (m: ChartMode) => void;
+  provider?: string;
+}) {
+  const isGitLab = provider === "gitlab";
+  const modes: { key: ChartMode; label: string }[] = [
+    { key: "clones", label: isGitLab ? "Fetches & Activity" : "Clones" },
+    { key: "cloners", label: "Unique Cloners" },
+    { key: "views", label: "Views" },
+    { key: "visitors", label: "Unique Visitors" },
+    { key: "combined", label: "Combined" },
+  ];
+
   return (
     <div className="flex flex-wrap gap-1" role="tablist" aria-label="Chart mode">
-      {MODES.map((m) => (
+      {modes.map((m) => (
         <button
           key={m.key}
           role="tab"

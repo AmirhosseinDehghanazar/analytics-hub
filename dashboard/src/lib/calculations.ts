@@ -8,9 +8,9 @@ export interface DayRow {
   visitors: number;
 }
 
-/** Merges the two daily series (clones, views) into one row-per-date table, sorted ascending. */
-export function buildTimeline(clones: DailySeries, views: DailySeries): DayRow[] {
-  const dates = new Set([...Object.keys(clones), ...Object.keys(views)]);
+/** Merges daily series (clones, views, and extra tracked dates) into one row-per-date table, sorted ascending. */
+export function buildTimeline(clones: DailySeries, views: DailySeries, extraDates?: string[]): DayRow[] {
+  const dates = new Set([...Object.keys(clones ?? {}), ...Object.keys(views ?? {}), ...(extraDates ?? [])]);
   return Array.from(dates)
     .sort()
     .map((date) => ({

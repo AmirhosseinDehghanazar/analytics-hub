@@ -152,10 +152,20 @@ export function TrafficChart({ rows, mode }: TrafficChartProps) {
       </ResponsiveContainer>
       {isCombined ? (
         <div className="flex gap-4 mt-2 justify-end pr-2">
-          <Legend swatch={primaryColor} label="Clones" />
+          <Legend swatch={primaryColor} label={currentTheme === "gitlab" ? "Fetches & Activity" : "Clones"} />
           <Legend swatch={secondaryColor} label="Views" />
         </div>
       ) : null}
+
+      {currentTheme === "gitlab" && (
+        <div className="mt-2 pt-2 border-t border-hairline/50 text-[11px] font-mono text-faint flex flex-wrap items-center justify-between gap-2">
+          <span className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <span>GitLab tracks HTTP fetches & daily project events</span>
+          </span>
+          <span className="opacity-70">(Web page views are unexposed by GitLab REST API)</span>
+        </div>
+      )}
     </div>
   );
 }

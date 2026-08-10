@@ -95,16 +95,23 @@ export class GitLabProvider implements AnalyticsProvider {
       trackingSince: collectedAt,
     };
 
-    console.log(`[GitLab] Fetching statistics, releases, merge requests, and starrers for ${rawPath}...`);
-    const [clonesRaw, openMRs, releases, stargazersRaw] = await Promise.all([
+    console.log(`[GitLab] Fetching statistics, events, releases, merge requests, and starrers for ${rawPath}...`);
+    const [statsResult, openMRs, releases, stargazersRaw, eventsRaw] = await Promise.all([
       this.fetchStatistics(encodedPath, token).catch((err) => {
-        console.warn(`[GitLab] Notice: Project statistics unavailable for ${rawPath}:`, err instanceof Error ? err.message : err);
+        console.warn(`[GitLab] Notice: Project statistics (GET /projects/:id/statistics) requires GITLAB_ANALYTICS_TOKEN with read_api scope:`, err instanceof Error ? err.message : err);
         return [];
       }),
       this.fetchOpenMergeRequestCount(encodedPath, token).catch(() => 0),
       this.fetchReleases(encodedPath, proj.web_url as string, token).catch(() => []),
       this.fetchStargazers(encodedPath, token).catch(() => []),
+      this.fetchEvents(encodedPath, token).catch(() => []),
     ]);
+
+    let clonesRaw = statsResult;
+    if (clonesRaw.length === 0 && eventsRaw.length > 0) {
+      console.log(`[GitLab] Using ${eventsRaw.length} daily project event points for activity timeline.`);
+      clonesRaw = eventsRaw;
+    }
 
     return {
       repository,
@@ -139,6 +146,30 @@ export class GitLabProvider implements AnalyticsProvider {
       timestamp: `${d.date}T00:00:00Z`,
       count: d.count ?? 0,
       uniques: 0, // GitLab fetch statistics provide total count without unique cloners
+    }));
+  }
+
+  /**
+   * Fetches project activity events from GET /projects/:id/events
+   * Returns aggregated daily event counts.
+   */
+  private async fetchEvents(encodedPath: string, token: string) {
+    const res = await gitlabFetch(`/projects/${encodedPath}/events?per_page=100`, token);
+    if (!res || !Array.isArray(res.json)) return [];
+
+    const dateCounts = new Map<string, number>();
+    for (const evt of res.json as Record<string, unknown>[]) {
+      const createdAt = evt.created_at as string | undefined;
+      if (createdAt) {
+        const date = createdAt.slice(0, 10);
+        dateCounts.set(date, (dateCounts.get(date) ?? 0) + 1);
+      }
+    }
+
+    return Array.from(dateCounts.entries()).map(([date, count]) => ({
+      timestamp: `${date}T00:00:00Z`,
+      count,
+      uniques: 0,
     }));
   }
 

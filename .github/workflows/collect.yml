@@ -172,5 +172,5 @@ jobs:
             echo "No changes to commit — skipping."
             exit 0
           fi
-          git commit -m "chore(analytics): sync traffic data [skip ci]"
+          git commit -m "chore(analytics): sync traffic data"
           git push

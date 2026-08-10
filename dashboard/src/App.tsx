@@ -205,11 +205,13 @@ export default function App() {
           isFetching={isFetching}
           onRefresh={refetch}
           onExportCsv={() => {
-            const timeline = buildTimeline(data.daily.clones, data.daily.views);
+            const extraDates = (data.repoStats ?? []).map((s) => s.date);
+            const timeline = buildTimeline(data.daily.clones, data.daily.views, extraDates);
             exportCsv(timeline, data.repository.name || "analytics");
           }}
           onExportJson={() => {
-            const timeline = buildTimeline(data.daily.clones, data.daily.views);
+            const extraDates = (data.repoStats ?? []).map((s) => s.date);
+            const timeline = buildTimeline(data.daily.clones, data.daily.views, extraDates);
             exportJson(timeline, data.repository.name || "analytics");
           }}
         />
@@ -233,7 +235,8 @@ export default function App() {
         )}
 
         {data && (() => {
-          const fullTimeline = buildTimeline(data.daily.clones, data.daily.views);
+          const repoStatsDates = (data.repoStats ?? []).map((s) => s.date);
+          const fullTimeline = buildTimeline(data.daily.clones, data.daily.views, repoStatsDates);
           const filteredTimeline = filterByRange(fullTimeline, range);
           const latestStats = data.repoStats[data.repoStats.length - 1];
           const hasData =
@@ -294,7 +297,7 @@ export default function App() {
               <Panel glass animateIn delay={220} className="p-5 sm:p-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-5">
                   <RangeSelector value={range} onChange={setRange} />
-                  <ChartModeToggle value={mode} onChange={setMode} />
+                  <ChartModeToggle value={mode} onChange={setMode} provider={activeProvider} />
                 </div>
                 <TrafficChart rows={filteredTimeline} mode={mode} />
               </Panel>
