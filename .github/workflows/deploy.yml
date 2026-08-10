@@ -1,11 +1,11 @@
 name: Deploy analytics dashboard
 
 on:
-  push:
-    branches: [main]
   workflow_run:
     workflows: ["Collect repository analytics"]
     types: [completed]
+    branches: [main]
+  push:
     branches: [main]
   workflow_dispatch: {}
 
@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "npm"
           cache-dependency-path: dashboard/package-lock.json
 
