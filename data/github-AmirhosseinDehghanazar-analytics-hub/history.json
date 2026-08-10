@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "provider": "github",
+  "repository": {
+    "provider": "github",
+    "owner": "AmirhosseinDehghanazar",
+    "name": "analytics-hub",
+    "fullName": "AmirhosseinDehghanazar/analytics-hub",
+    "description": null,
+    "htmlUrl": "https://github.com/AmirhosseinDehghanazar/analytics-hub",
+    "homepage": null,
+    "language": "TypeScript",
+    "license": "MIT",
+    "createdAt": "2026-08-09T11:56:10Z",
+    "defaultBranch": "main",
+    "trackingSince": "2026-08-10T17:37:50.413Z"
+  },
+  "lastSyncedAt": "2026-08-10T17:37:50.413Z",
+  "lastSyncStatus": "ok",
+  "lastSyncError": null,
+  "daily": {
+    "clones": {
+      "2026-07-27": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-28": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-29": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-30": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-31": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-01": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-02": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-03": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-04": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-05": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-06": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-07": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-08": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-09": {
+        "count": 483,
+        "uniques": 95
+      }
+    },
+    "views": {
+      "2026-07-27": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-28": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-29": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-30": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-07-31": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-01": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-02": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-03": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-04": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-05": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-06": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-07": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-08": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-09": {
+        "count": 199,
+        "uniques": 5
+      }
+    }
+  },
+  "repoStats": [
+    {
+      "date": "2026-08-10",
+      "stars": 5,
+      "forks": 0,
+      "watchers": 0,
+      "openIssues": 0,
+      "openPRs": 0
+    }
+  ],
+  "releases": [],
+  "referrerSnapshots": [
+    {
+      "collectedAt": "2026-08-10T17:37:50.413Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 6,
+          "uniques": 2
+        },
+        {
+          "referrer": "com.linkedin.android",
+          "count": 3,
+          "uniques": 3
+        }
+      ]
+    }
+  ],
+  "contentSnapshots": [
+    {
+      "collectedAt": "2026-08-10T17:37:50.413Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 30,
+          "uniques": 5
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/workflows/collect.yml",
+          "title": "/actions/workflows/collect.yml",
+          "count": 27,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions",
+          "title": "/actions",
+          "count": 24,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/data",
+          "title": "/tree/main/data",
+          "count": 12,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/workflows/deploy.yml",
+          "title": "/actions/workflows/deploy.yml",
+          "count": 6,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31312198097",
+          "title": "/actions/runs/31312198097",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31339465010",
+          "title": "/actions/runs/31339465010",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31339465010/job/93310742044",
+          "title": "/actions/runs/31339465010/job/93310742044",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/blob/main/data/gitlab-AmirhosseinDehghaniazar-2Auth-JS/history.json",
+          "title": "/blob/main/data/gitlab-AmirhosseinDehghaniazar-2Auth-JS/history.json",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector",
+          "title": "/tree/main/collector",
+          "count": 3,
+          "uniques": 1
+        }
+      ]
+    }
+  ],
+  "stargazers": [
+    {
+      "login": "miladshakerdn",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/30466140?v=4",
+      "htmlUrl": "https://github.com/miladshakerdn",
+      "starredAt": "2026-08-10T14:09:57Z"
+    },
+    {
+      "login": "imami",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/638917?v=4",
+      "htmlUrl": "https://github.com/imami",
+      "starredAt": "2026-08-10T08:05:01Z"
+    },
+    {
+      "login": "tavallaie",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10198108?v=4",
+      "htmlUrl": "https://github.com/tavallaie",
+      "starredAt": "2026-08-10T07:58:24Z"
+    },
+    {
+      "login": "sabaw02",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/133888147?v=4",
+      "htmlUrl": "https://github.com/sabaw02",
+      "starredAt": "2026-08-10T06:00:14Z"
+    },
+    {
+      "login": "MohsenDastaran",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/75578797?v=4",
+      "htmlUrl": "https://github.com/MohsenDastaran",
+      "starredAt": "2026-08-09T21:39:10Z"
+    }
+  ]
+}

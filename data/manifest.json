@@ -15,6 +15,12 @@
     },
     {
       "provider": "github",
+      "slug": "AmirhosseinDehghanazar/analytics-hub",
+      "dirName": "github-AmirhosseinDehghanazar-analytics-hub",
+      "dataPath": "data/github-AmirhosseinDehghanazar-analytics-hub/history.json"
+    },
+    {
+      "provider": "github",
       "slug": "AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
       "dirName": "github-AmirhosseinDehghanazar-Hacker-Terminal-Loading-Screen",
       "dataPath": "data/github-AmirhosseinDehghanazar-Hacker-Terminal-Loading-Screen/history.json"
