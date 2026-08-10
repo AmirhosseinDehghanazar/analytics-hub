@@ -15,11 +15,16 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:17.349Z"
   },
-  "lastSyncedAt": "2026-08-10T16:05:48.509Z",
+  "lastSyncedAt": "2026-08-10T16:17:46.499Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
-    "clones": {},
+    "clones": {
+      "2026-08-09": {
+        "count": 1,
+        "uniques": 0
+      }
+    },
     "views": {}
   },
   "repoStats": [
@@ -125,6 +130,10 @@
     {
       "collectedAt": "2026-08-10T16:05:48.509Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-08-10T16:17:46.499Z",
+      "items": []
     }
   ],
   "contentSnapshots": [
@@ -202,6 +211,10 @@
     },
     {
       "collectedAt": "2026-08-10T16:05:48.509Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-10T16:17:46.499Z",
       "items": []
     }
   ],
