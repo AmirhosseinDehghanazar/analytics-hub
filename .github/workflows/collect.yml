@@ -35,6 +35,8 @@ jobs:
             repo: AmirhosseinDehghanazar/2Auth-JS
           - provider: github
             repo: AmirhosseinDehghanazar/3d-404-page
+          - provider: github
+            repo: AmirhosseinDehghanazar/analytics-hub
 
           # ✏️ GitLab Repositories
           - provider: gitlab
