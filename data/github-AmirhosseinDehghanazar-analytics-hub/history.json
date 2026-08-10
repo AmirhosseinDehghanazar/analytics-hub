@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-08-10T17:37:50.413Z",
+  "lastSyncedAt": "2026-08-10T18:41:39.972Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -162,11 +162,91 @@
           "uniques": 3
         }
       ]
+    },
+    {
+      "collectedAt": "2026-08-10T18:41:39.972Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 6,
+          "uniques": 2
+        },
+        {
+          "referrer": "com.linkedin.android",
+          "count": 3,
+          "uniques": 3
+        }
+      ]
     }
   ],
   "contentSnapshots": [
     {
       "collectedAt": "2026-08-10T17:37:50.413Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 30,
+          "uniques": 5
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/workflows/collect.yml",
+          "title": "/actions/workflows/collect.yml",
+          "count": 27,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions",
+          "title": "/actions",
+          "count": 24,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/data",
+          "title": "/tree/main/data",
+          "count": 12,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/workflows/deploy.yml",
+          "title": "/actions/workflows/deploy.yml",
+          "count": 6,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31312198097",
+          "title": "/actions/runs/31312198097",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31339465010",
+          "title": "/actions/runs/31339465010",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31339465010/job/93310742044",
+          "title": "/actions/runs/31339465010/job/93310742044",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/blob/main/data/gitlab-AmirhosseinDehghaniazar-2Auth-JS/history.json",
+          "title": "/blob/main/data/gitlab-AmirhosseinDehghaniazar-2Auth-JS/history.json",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector",
+          "title": "/tree/main/collector",
+          "count": 3,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-10T18:41:39.972Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub",
