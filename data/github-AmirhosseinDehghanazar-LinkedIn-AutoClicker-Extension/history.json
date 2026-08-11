@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-08-11T00:55:37.274Z",
+  "lastSyncedAt": "2026-08-11T06:46:20.355Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -318,6 +318,16 @@
     },
     {
       "collectedAt": "2026-08-11T00:55:37.274Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 6,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-11T06:46:20.355Z",
       "items": [
         {
           "referrer": "github.com",
@@ -722,6 +732,47 @@
     },
     {
       "collectedAt": "2026-08-11T00:55:37.274Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/community",
+          "title": "/community",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/community",
+          "title": "/graphs/community",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/contributors",
+          "title": "/graphs/contributors",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/pulse",
+          "title": "/pulse",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-11T06:46:20.355Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
