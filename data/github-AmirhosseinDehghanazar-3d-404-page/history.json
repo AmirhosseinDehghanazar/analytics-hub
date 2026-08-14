@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-08-14T01:02:54.760Z",
+  "lastSyncedAt": "2026-08-14T07:07:51.868Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -91,6 +91,10 @@
       "2026-08-12": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-08-13": {
+        "count": 2,
+        "uniques": 2
       }
     },
     "views": {
@@ -165,6 +169,10 @@
       "2026-08-12": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-08-13": {
+        "count": 1,
+        "uniques": 1
       }
     }
   },
@@ -932,6 +940,26 @@
           "referrer": "linkedin.com",
           "count": 40,
           "uniques": 11
+        },
+        {
+          "referrer": "com.linkedin.android",
+          "count": 10,
+          "uniques": 8
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-14T07:07:51.868Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 56,
+          "uniques": 4
+        },
+        {
+          "referrer": "linkedin.com",
+          "count": 41,
+          "uniques": 12
         },
         {
           "referrer": "com.linkedin.android",
@@ -3225,6 +3253,71 @@
           "title": "Overview",
           "count": 61,
           "uniques": 26
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/stargazers",
+          "title": "/stargazers",
+          "count": 5,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src",
+          "title": "/tree/main/src",
+          "count": 4,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components",
+          "title": "/tree/main/src/components",
+          "count": 4,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/actions/runs/31227365481",
+          "title": "/actions/runs/31227365481",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/edit/main/README.md",
+          "title": "/edit/main/README.md",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/commits",
+          "title": "/commits",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components/common",
+          "title": "/tree/main/src/components/common",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/actions",
+          "title": "/actions",
+          "count": 2,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-14T07:07:51.868Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 62,
+          "uniques": 27
         },
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page/stargazers",
