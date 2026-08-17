@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.978Z"
   },
-  "lastSyncedAt": "2026-08-17T06:32:43.262Z",
+  "lastSyncedAt": "2026-08-17T12:21:20.687Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -672,6 +672,16 @@
     },
     {
       "collectedAt": "2026-08-17T06:32:43.262Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 8,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-17T12:21:20.687Z",
       "items": [
         {
           "referrer": "github.com",
@@ -2299,6 +2309,53 @@
     },
     {
       "collectedAt": "2026-08-17T06:32:43.262Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/actions/metrics/performance",
+          "title": "/actions/metrics/performance",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/actions/metrics/usage",
+          "title": "/actions/metrics/usage",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/network",
+          "title": "/network",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/network/dependencies",
+          "title": "/network/dependencies",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/pulse",
+          "title": "/pulse",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-17T12:21:20.687Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/2Auth-JS/graphs/traffic",
