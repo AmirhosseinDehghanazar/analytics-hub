@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.978Z"
   },
-  "lastSyncedAt": "2026-08-22T06:20:55.743Z",
+  "lastSyncedAt": "2026-08-22T12:17:53.409Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -123,6 +123,10 @@
       "2026-08-20": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-08-21": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -227,6 +231,10 @@
         "uniques": 0
       },
       "2026-08-20": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-21": {
         "count": 0,
         "uniques": 0
       }
@@ -357,10 +365,6 @@
   ],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-09T23:05:20.441Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-09T23:09:23.797Z",
       "items": []
     },
@@ -912,6 +916,16 @@
     },
     {
       "collectedAt": "2026-08-22T06:20:55.743Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 8,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-22T12:17:53.409Z",
       "items": [
         {
           "referrer": "github.com",
@@ -923,10 +937,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-09T23:05:20.441Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-09T23:09:23.797Z",
       "items": []
     },
@@ -3439,6 +3449,53 @@
     },
     {
       "collectedAt": "2026-08-22T06:20:55.743Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/actions/metrics/performance",
+          "title": "/actions/metrics/performance",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/actions/metrics/usage",
+          "title": "/actions/metrics/usage",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/network",
+          "title": "/network",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/network/dependencies",
+          "title": "/network/dependencies",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS/pulse",
+          "title": "/pulse",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-22T12:17:53.409Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/2Auth-JS/graphs/traffic",
