@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-08-22T00:37:29.380Z",
+  "lastSyncedAt": "2026-08-22T06:20:54.591Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -349,10 +349,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-09T23:01:09.566Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-09T23:05:17.435Z",
       "items": []
     },
@@ -898,6 +894,16 @@
     },
     {
       "collectedAt": "2026-08-22T00:37:29.380Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 6,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-22T06:20:54.591Z",
       "items": [
         {
           "referrer": "github.com",
@@ -909,10 +915,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-09T23:01:09.566Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-09T23:05:17.435Z",
       "items": []
     },
@@ -3070,6 +3072,47 @@
     },
     {
       "collectedAt": "2026-08-22T00:37:29.380Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/community",
+          "title": "/community",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/community",
+          "title": "/graphs/community",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/contributors",
+          "title": "/graphs/contributors",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/pulse",
+          "title": "/pulse",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-22T06:20:54.591Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
