@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-08-23T06:22:26.339Z",
+  "lastSyncedAt": "2026-08-23T12:18:05.611Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -127,6 +127,10 @@
       "2026-08-21": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-08-22": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -235,6 +239,10 @@
         "uniques": 0
       },
       "2026-08-21": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-08-22": {
         "count": 0,
         "uniques": 0
       }
@@ -365,16 +373,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-09T23:25:57.516Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-10T00:55:38.577Z",
       "items": [
         {
@@ -961,23 +959,22 @@
           "referrer": "github.com",
           "count": 9,
           "uniques": 5
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-23T12:18:05.611Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 8,
+          "uniques": 4
         }
       ]
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-09T23:25:57.516Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-10T00:55:38.577Z",
       "items": [
         {
@@ -4593,6 +4590,71 @@
           "title": "Overview",
           "count": 13,
           "uniques": 7
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453",
+          "title": "/actions/runs/31309710453",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/graphs/traffic",
+          "title": "/graphs/traffic",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/network",
+          "title": "/network",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/pulse",
+          "title": "/pulse",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/new",
+          "title": "/actions/new",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453/job/93235499400",
+          "title": "/actions/runs/31309710453/job/93235499400",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453/job/93235757956",
+          "title": "/actions/runs/31309710453/job/93235757956",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453/workflow",
+          "title": "/actions/runs/31309710453/workflow",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/branches",
+          "title": "/branches",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-23T12:18:05.611Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 12,
+          "uniques": 6
         },
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453",
