@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-08-24T06:35:32.441Z",
+  "lastSyncedAt": "2026-08-24T12:25:36.611Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -127,6 +127,10 @@
       "2026-08-22": {
         "count": 55,
         "uniques": 10
+      },
+      "2026-08-23": {
+        "count": 68,
+        "uniques": 14
       }
     },
     "views": {
@@ -237,6 +241,10 @@
       "2026-08-22": {
         "count": 6,
         "uniques": 4
+      },
+      "2026-08-23": {
+        "count": 0,
+        "uniques": 0
       }
     }
   },
@@ -1716,6 +1724,31 @@
           "referrer": "com.linkedin.android",
           "count": 15,
           "uniques": 8
+        },
+        {
+          "referrer": "lnkd.in",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-24T12:25:36.611Z",
+      "items": [
+        {
+          "referrer": "linkedin.com",
+          "count": 23,
+          "uniques": 10
+        },
+        {
+          "referrer": "github.com",
+          "count": 16,
+          "uniques": 4
+        },
+        {
+          "referrer": "com.linkedin.android",
+          "count": 12,
+          "uniques": 5
         },
         {
           "referrer": "lnkd.in",
@@ -5362,6 +5395,71 @@
           "path": "/AmirhosseinDehghanazar/analytics-hub/actions/runs/31339465010/job/93310742044",
           "title": "/actions/runs/31339465010/job/93310742044",
           "count": 3,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-24T12:25:36.611Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 48,
+          "uniques": 20
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions",
+          "title": "/actions",
+          "count": 5,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/data",
+          "title": "/tree/main/data",
+          "count": 3,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/workflows/collect.yml",
+          "title": "/actions/workflows/collect.yml",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/pulse",
+          "title": "/pulse",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/workflows/deploy.yml",
+          "title": "/actions/workflows/deploy.yml",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/releases/tag/v1.1.0",
+          "title": "/releases/tag/v1.1.0",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/stargazers",
+          "title": "/stargazers",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tags",
+          "title": "/tags",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/actions/metrics/usage",
+          "title": "/actions/metrics/usage",
+          "count": 1,
           "uniques": 1
         }
       ]
