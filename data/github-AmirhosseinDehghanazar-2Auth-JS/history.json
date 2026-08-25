@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.978Z"
   },
-  "lastSyncedAt": "2026-08-25T00:38:35.327Z",
+  "lastSyncedAt": "2026-08-25T06:26:32.738Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -405,16 +405,6 @@
   ],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-10T17:33:44.218Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 8,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-10T17:37:53.787Z",
       "items": [
         {
@@ -984,58 +974,15 @@
     },
     {
       "collectedAt": "2026-08-25T00:38:35.327Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-25T06:26:32.738Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-10T17:33:44.218Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS/graphs/traffic",
-          "title": "/graphs/traffic",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS/actions/metrics/performance",
-          "title": "/actions/metrics/performance",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS/actions/metrics/usage",
-          "title": "/actions/metrics/usage",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS/network",
-          "title": "/network",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS/network/dependencies",
-          "title": "/network/dependencies",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/2Auth-JS/pulse",
-          "title": "/pulse",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-10T17:37:53.787Z",
       "items": [
         {
@@ -3677,6 +3624,10 @@
     },
     {
       "collectedAt": "2026-08-25T00:38:35.327Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-25T06:26:32.738Z",
       "items": []
     }
   ],
