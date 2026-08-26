@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-08-26T06:29:32.336Z",
+  "lastSyncedAt": "2026-08-26T12:28:48.792Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -139,6 +139,10 @@
       "2026-08-24": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-08-25": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -261,6 +265,10 @@
       "2026-08-24": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-08-25": {
+        "count": 11,
+        "uniques": 2
       }
     }
   },
@@ -413,26 +421,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-11T06:46:29.809Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 56,
-          "uniques": 4
-        },
-        {
-          "referrer": "linkedin.com",
-          "count": 37,
-          "uniques": 8
-        },
-        {
-          "referrer": "com.linkedin.android",
-          "count": 8,
-          "uniques": 7
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-11T12:39:50.433Z",
       "items": [
         {
@@ -1569,77 +1557,37 @@
           "referrer": "com.linkedin.android",
           "count": 2,
           "uniques": 2
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-26T12:28:48.792Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 9,
+          "uniques": 1
+        },
+        {
+          "referrer": "linkedin.com",
+          "count": 3,
+          "uniques": 3
+        },
+        {
+          "referrer": "github.com",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "referrer": "com.linkedin.android",
+          "count": 1,
+          "uniques": 1
         }
       ]
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-11T06:46:29.809Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 56,
-          "uniques": 22
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/stargazers",
-          "title": "/stargazers",
-          "count": 5,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src",
-          "title": "/tree/main/src",
-          "count": 4,
-          "uniques": 2
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components",
-          "title": "/tree/main/src/components",
-          "count": 4,
-          "uniques": 2
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/actions/runs/31227365481",
-          "title": "/actions/runs/31227365481",
-          "count": 3,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/edit/main/README.md",
-          "title": "/edit/main/README.md",
-          "count": 3,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/graphs/traffic",
-          "title": "/graphs/traffic",
-          "count": 3,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components/common",
-          "title": "/tree/main/src/components/common",
-          "count": 2,
-          "uniques": 2
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/actions",
-          "title": "/actions",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/actions/runs/31227436856/job/93024467768",
-          "title": "/actions/runs/31227436856/job/93024467768",
-          "count": 2,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-11T12:39:50.433Z",
       "items": [
         {
@@ -5063,6 +5011,65 @@
           "title": "Overview",
           "count": 7,
           "uniques": 7
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-08-26T12:28:48.792Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 8,
+          "uniques": 7
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/blob/main/public/racoon.mp4",
+          "title": "/blob/main/public/racoon.mp4",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/blob/main/public/shark.mp4",
+          "title": "/blob/main/public/shark.mp4",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/public",
+          "title": "/tree/main/public",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src",
+          "title": "/tree/main/src",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components",
+          "title": "/tree/main/src/components",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components/common",
+          "title": "/tree/main/src/components/common",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components/sections",
+          "title": "/tree/main/src/components/sections",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/data",
+          "title": "/tree/main/src/data",
+          "count": 1,
+          "uniques": 1
         }
       ]
     }
