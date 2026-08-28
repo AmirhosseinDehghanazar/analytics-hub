@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:17.349Z"
   },
-  "lastSyncedAt": "2026-08-28T01:53:11.438Z",
+  "lastSyncedAt": "2026-08-28T17:51:39.556Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -200,10 +200,6 @@
   ],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-12T18:46:46.710Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-13T01:03:12.713Z",
       "items": []
     },
@@ -437,15 +433,15 @@
     },
     {
       "collectedAt": "2026-08-28T01:53:11.438Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-28T17:51:39.556Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-12T18:46:46.710Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-13T01:03:12.713Z",
       "items": []
     },
@@ -679,13 +675,17 @@
     },
     {
       "collectedAt": "2026-08-28T01:53:11.438Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-28T17:51:39.556Z",
       "items": []
     }
   ],
   "stargazers": [
     {
       "login": "AmirhosseinDehghaniazar",
-      "avatarUrl": "https://gitlab.com/uploads/-/system/user/avatar/6485435/avatar.png",
+      "avatarUrl": "https://gitlab.com/uploads/-/system/user/avatar/6485435/avatar.png?v=1787881991",
       "htmlUrl": "https://gitlab.com/AmirhosseinDehghaniazar",
       "starredAt": "2026-08-09T22:33:09.275Z"
     }
