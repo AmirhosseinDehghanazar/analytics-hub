@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:17.349Z"
   },
-  "lastSyncedAt": "2026-08-31T02:14:24.329Z",
+  "lastSyncedAt": "2026-08-31T12:06:29.369Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -213,12 +213,16 @@
       "openPRs": 0
     }
   ],
-  "releases": [],
-  "referrerSnapshots": [
+  "releases": [
     {
-      "collectedAt": "2026-08-15T06:19:46.322Z",
-      "items": []
-    },
+      "tagName": "v1.0.0",
+      "name": " 2Auth-js v1.0.0 - SecureLaunch",
+      "publishedAt": "2024-11-25T14:14:18.000Z",
+      "downloadCount": 4,
+      "htmlUrl": "https://gitlab.com/AmirhosseinDehghaniazar/2Auth-JS/-/releases/v1.0.0"
+    }
+  ],
+  "referrerSnapshots": [
     {
       "collectedAt": "2026-08-15T12:17:07.116Z",
       "items": []
@@ -453,15 +457,15 @@
     },
     {
       "collectedAt": "2026-08-31T02:14:24.329Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-31T12:06:29.369Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-15T06:19:46.322Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-15T12:17:07.116Z",
       "items": []
     },
@@ -695,6 +699,10 @@
     },
     {
       "collectedAt": "2026-08-31T02:14:24.329Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-08-31T12:06:29.369Z",
       "items": []
     }
   ],
