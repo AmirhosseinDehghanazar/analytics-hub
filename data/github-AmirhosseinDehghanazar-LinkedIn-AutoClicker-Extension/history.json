@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-09-03T10:20:47.001Z",
+  "lastSyncedAt": "2026-09-03T15:26:51.879Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -549,16 +549,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-18T06:24:13.205Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 6,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-18T12:23:01.718Z",
       "items": [
         {
@@ -936,52 +926,15 @@
     },
     {
       "collectedAt": "2026-09-03T10:20:47.001Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-03T15:26:51.879Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-18T06:24:13.205Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/community",
-          "title": "/community",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/community",
-          "title": "/graphs/community",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/contributors",
-          "title": "/graphs/contributors",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/graphs/traffic",
-          "title": "/graphs/traffic",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/pulse",
-          "title": "/pulse",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-18T12:23:01.718Z",
       "items": [
         {
@@ -2103,6 +2056,10 @@
     },
     {
       "collectedAt": "2026-09-03T10:20:47.001Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-03T15:26:51.879Z",
       "items": []
     }
   ],
