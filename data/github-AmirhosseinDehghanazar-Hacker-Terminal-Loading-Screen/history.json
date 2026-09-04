@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-09-04T15:24:07.920Z",
+  "lastSyncedAt": "2026-09-04T20:01:03.413Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -565,16 +565,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-19T12:22:37.520Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 9,
-          "uniques": 5
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-19T18:18:11.654Z",
       "items": [
         {
@@ -1083,6 +1073,21 @@
     },
     {
       "collectedAt": "2026-09-04T15:24:07.920Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "referrer": "chatgpt.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-04T20:01:03.413Z",
       "items": [
         {
           "referrer": "Google",
@@ -1099,71 +1104,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-19T12:22:37.520Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 13,
-          "uniques": 7
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453",
-          "title": "/actions/runs/31309710453",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/graphs/traffic",
-          "title": "/graphs/traffic",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/network",
-          "title": "/network",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/pulse",
-          "title": "/pulse",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/new",
-          "title": "/actions/new",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453/job/93235499400",
-          "title": "/actions/runs/31309710453/job/93235499400",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453/job/93235757956",
-          "title": "/actions/runs/31309710453/job/93235757956",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/actions/runs/31309710453/workflow",
-          "title": "/actions/runs/31309710453/workflow",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/branches",
-          "title": "/branches",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-19T18:18:11.654Z",
       "items": [
         {
@@ -2949,6 +2889,23 @@
     },
     {
       "collectedAt": "2026-09-04T15:24:07.920Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 3,
+          "uniques": 3
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
+          "title": "/blob/main/README.md",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-04T20:01:03.413Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
