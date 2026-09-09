@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-09-09T15:31:29.040Z",
+  "lastSyncedAt": "2026-09-09T20:10:32.967Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -195,6 +195,10 @@
       "2026-09-07": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-09-08": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -371,6 +375,10 @@
         "uniques": 0
       },
       "2026-09-07": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-08": {
         "count": 0,
         "uniques": 0
       }
@@ -637,21 +645,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-24T12:25:37.593Z",
-      "items": [
-        {
-          "referrer": "linkedin.com",
-          "count": 6,
-          "uniques": 6
-        },
-        {
-          "referrer": "com.linkedin.android",
-          "count": 3,
-          "uniques": 3
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-24T18:23:54.471Z",
       "items": [
         {
@@ -1939,6 +1932,16 @@
           "count": 2,
           "uniques": 1
         },
+        {
+          "referrer": "linkedin.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-09T20:10:32.967Z",
+      "items": [
         {
           "referrer": "linkedin.com",
           "count": 1,
@@ -1949,23 +1952,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-24T12:25:37.593Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 9,
-          "uniques": 9
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/commits",
-          "title": "/commits",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-24T18:23:54.471Z",
       "items": [
         {
@@ -5123,6 +5109,17 @@
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/data",
           "title": "/tree/main/src/data",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-09T20:10:32.967Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
           "count": 1,
           "uniques": 1
         }
