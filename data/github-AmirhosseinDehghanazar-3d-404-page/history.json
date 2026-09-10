@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-09-10T10:14:13.144Z",
+  "lastSyncedAt": "2026-09-10T15:27:08.059Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -661,21 +661,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-25T06:26:37.189Z",
-      "items": [
-        {
-          "referrer": "linkedin.com",
-          "count": 6,
-          "uniques": 6
-        },
-        {
-          "referrer": "com.linkedin.android",
-          "count": 3,
-          "uniques": 3
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-25T12:25:58.301Z",
       "items": [
         {
@@ -1947,6 +1932,16 @@
     },
     {
       "collectedAt": "2026-09-10T10:14:13.144Z",
+      "items": [
+        {
+          "referrer": "linkedin.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-10T15:27:08.059Z",
       "items": [
         {
           "referrer": "linkedin.com",
@@ -1958,23 +1953,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-25T06:26:37.189Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 9,
-          "uniques": 9
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/commits",
-          "title": "/commits",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-25T12:25:58.301Z",
       "items": [
         {
@@ -5110,6 +5088,17 @@
     },
     {
       "collectedAt": "2026-09-10T10:14:13.144Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-10T15:27:08.059Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
