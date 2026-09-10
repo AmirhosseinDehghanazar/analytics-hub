@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-09-10T15:27:08.059Z",
+  "lastSyncedAt": "2026-09-10T20:12:38.332Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -661,21 +661,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-25T12:25:58.301Z",
-      "items": [
-        {
-          "referrer": "linkedin.com",
-          "count": 4,
-          "uniques": 4
-        },
-        {
-          "referrer": "com.linkedin.android",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-25T18:23:07.042Z",
       "items": [
         {
@@ -1942,6 +1927,16 @@
     },
     {
       "collectedAt": "2026-09-10T15:27:08.059Z",
+      "items": [
+        {
+          "referrer": "linkedin.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-10T20:12:38.332Z",
       "items": [
         {
           "referrer": "linkedin.com",
@@ -1953,17 +1948,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-25T12:25:58.301Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 7,
-          "uniques": 7
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-25T18:23:07.042Z",
       "items": [
         {
@@ -5099,6 +5083,17 @@
     },
     {
       "collectedAt": "2026-09-10T15:27:08.059Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-10T20:12:38.332Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
