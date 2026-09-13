@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:17.349Z"
   },
-  "lastSyncedAt": "2026-09-12T19:50:30.642Z",
+  "lastSyncedAt": "2026-09-13T01:59:05.664Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -307,6 +307,14 @@
       "watchers": 1,
       "openIssues": 0,
       "openPRs": 0
+    },
+    {
+      "date": "2026-09-13",
+      "stars": 1,
+      "forks": 1,
+      "watchers": 1,
+      "openIssues": 0,
+      "openPRs": 0
     }
   ],
   "releases": [
@@ -320,10 +328,6 @@
   ],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-28T17:51:39.556Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-29T01:17:33.913Z",
       "items": []
     },
@@ -557,15 +561,15 @@
     },
     {
       "collectedAt": "2026-09-12T19:50:30.642Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-13T01:59:05.664Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-28T17:51:39.556Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-08-29T01:17:33.913Z",
       "items": []
     },
@@ -799,13 +803,17 @@
     },
     {
       "collectedAt": "2026-09-12T19:50:30.642Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-13T01:59:05.664Z",
       "items": []
     }
   ],
   "stargazers": [
     {
       "login": "AmirhosseinDehghaniazar",
-      "avatarUrl": "https://gitlab.com/uploads/-/system/user/avatar/6485435/avatar.png?v=1789178657",
+      "avatarUrl": "https://gitlab.com/uploads/-/system/user/avatar/6485435/avatar.png?v=1789264745",
       "htmlUrl": "https://gitlab.com/AmirhosseinDehghaniazar",
       "starredAt": "2026-08-09T22:33:09.275Z"
     }
