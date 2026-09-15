@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-09-15T10:39:26.234Z",
+  "lastSyncedAt": "2026-09-15T15:53:02.932Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -741,16 +741,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-08-31T12:06:30.747Z",
-      "items": [
-        {
-          "referrer": "chatgpt.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-31T22:10:08.145Z",
       "items": [
         {
@@ -1592,6 +1582,16 @@
     },
     {
       "collectedAt": "2026-09-15T10:39:26.234Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-15T15:53:02.932Z",
       "items": [
         {
           "referrer": "Google",
@@ -1603,23 +1603,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-08-31T12:06:30.747Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 3,
-          "uniques": 3
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
-          "title": "/blob/main/README.md",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-08-31T22:10:08.145Z",
       "items": [
         {
@@ -2559,6 +2542,17 @@
     },
     {
       "collectedAt": "2026-09-15T10:39:26.234Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-15T15:53:02.932Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
