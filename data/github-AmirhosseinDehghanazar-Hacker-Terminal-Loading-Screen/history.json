@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-09-17T02:20:26.270Z",
+  "lastSyncedAt": "2026-09-17T10:37:30.887Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -225,6 +225,10 @@
         "uniques": 1
       },
       "2026-09-15": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-16": {
         "count": 0,
         "uniques": 0
       }
@@ -437,6 +441,10 @@
       "2026-09-15": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-09-16": {
+        "count": 0,
+        "uniques": 0
       }
     }
   },
@@ -765,21 +773,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-02T10:09:16.925Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "referrer": "chatgpt.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-02T15:34:52.871Z",
       "items": [
         {
@@ -1596,6 +1589,16 @@
     },
     {
       "collectedAt": "2026-09-17T02:20:26.270Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-17T10:37:30.887Z",
       "items": [
         {
           "referrer": "Google",
@@ -1607,23 +1610,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-02T10:09:16.925Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 3,
-          "uniques": 3
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
-          "title": "/blob/main/README.md",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-02T15:34:52.871Z",
       "items": [
         {
@@ -2539,6 +2525,23 @@
     },
     {
       "collectedAt": "2026-09-17T02:20:26.270Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
+          "title": "/blob/main/README.md",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-17T10:37:30.887Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
