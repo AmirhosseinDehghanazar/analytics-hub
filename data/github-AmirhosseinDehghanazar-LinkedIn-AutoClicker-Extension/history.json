@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-09-18T02:06:08.191Z",
+  "lastSyncedAt": "2026-09-18T10:13:23.611Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -229,6 +229,10 @@
         "uniques": 2
       },
       "2026-09-16": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-17": {
         "count": 0,
         "uniques": 0
       }
@@ -445,6 +449,10 @@
       "2026-09-16": {
         "count": 5,
         "uniques": 1
+      },
+      "2026-09-17": {
+        "count": 0,
+        "uniques": 0
       }
     }
   },
@@ -781,10 +789,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-03T01:59:50.317Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-09-03T10:20:47.001Z",
       "items": []
     },
@@ -1036,6 +1040,16 @@
     },
     {
       "collectedAt": "2026-09-18T02:06:08.191Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-18T10:13:23.611Z",
       "items": [
         {
           "referrer": "github.com",
@@ -1047,10 +1061,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-03T01:59:50.317Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-09-03T10:20:47.001Z",
       "items": []
     },
@@ -1377,6 +1387,41 @@
     },
     {
       "collectedAt": "2026-09-18T02:06:08.191Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/LinkedIn-AutoClicker-Extension/background.js",
+          "title": "/blob/main/LinkedIn-AutoClicker-Extension/background.js",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/LinkedIn-AutoClicker-Extension/icon128.png",
+          "title": "/blob/main/LinkedIn-AutoClicker-Extension/icon128.png",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/LinkedIn-AutoClicker-Extension/icon16.png",
+          "title": "/blob/main/LinkedIn-AutoClicker-Extension/icon16.png",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/tree/main/LinkedIn-AutoClicker-Extension",
+          "title": "/tree/main/LinkedIn-AutoClicker-Extension",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-18T10:13:23.611Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
