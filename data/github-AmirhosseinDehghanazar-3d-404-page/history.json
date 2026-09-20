@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-09-20T15:03:49.664Z",
+  "lastSyncedAt": "2026-09-20T19:57:09.443Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -821,26 +821,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-05T19:40:56.492Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 9,
-          "uniques": 1
-        },
-        {
-          "referrer": "github.com",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "referrer": "linkedin.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-06T01:50:39.785Z",
       "items": [
         {
@@ -1446,70 +1426,15 @@
     },
     {
       "collectedAt": "2026-09-20T15:03:49.664Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-20T19:57:09.443Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-05T19:40:56.492Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 5,
-          "uniques": 4
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/blob/main/public/racoon.mp4",
-          "title": "/blob/main/public/racoon.mp4",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/blob/main/public/shark.mp4",
-          "title": "/blob/main/public/shark.mp4",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/public",
-          "title": "/tree/main/public",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src",
-          "title": "/tree/main/src",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components",
-          "title": "/tree/main/src/components",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components/common",
-          "title": "/tree/main/src/components/common",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/components/sections",
-          "title": "/tree/main/src/components/sections",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page/tree/main/src/data",
-          "title": "/tree/main/src/data",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-06T01:50:39.785Z",
       "items": [
         {
@@ -2869,6 +2794,17 @@
     },
     {
       "collectedAt": "2026-09-20T15:03:49.664Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-20T19:57:09.443Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
