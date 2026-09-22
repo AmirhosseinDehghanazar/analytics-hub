@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-09-22T02:20:36.182Z",
+  "lastSyncedAt": "2026-09-22T10:32:38.963Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -243,6 +243,10 @@
       "2026-09-20": {
         "count": 68,
         "uniques": 13
+      },
+      "2026-09-21": {
+        "count": 85,
+        "uniques": 24
       }
     },
     "views": {
@@ -467,6 +471,10 @@
         "uniques": 0
       },
       "2026-09-20": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-21": {
         "count": 0,
         "uniques": 0
       }
@@ -829,16 +837,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-07T10:59:40.811Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 3,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-07T16:49:40.952Z",
       "items": [
         {
@@ -1675,6 +1673,21 @@
     },
     {
       "collectedAt": "2026-09-22T02:20:36.182Z",
+      "items": [
+        {
+          "referrer": "com.linkedin.android",
+          "count": 5,
+          "uniques": 1
+        },
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-22T10:32:38.963Z",
       "items": [
         {
           "referrer": "com.linkedin.android",
@@ -1691,17 +1704,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-07T10:59:40.811Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 3,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-07T16:49:40.952Z",
       "items": [
         {
@@ -3259,6 +3261,35 @@
     },
     {
       "collectedAt": "2026-09-22T02:20:36.182Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 3,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/blob/main/collector/src/merge.test.ts",
+          "title": "/blob/main/collector/src/merge.test.ts",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector",
+          "title": "/tree/main/collector",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector/src",
+          "title": "/tree/main/collector/src",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-22T10:32:38.963Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub",
