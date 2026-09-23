@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-09-23T02:21:25.002Z",
+  "lastSyncedAt": "2026-09-23T10:26:39.604Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -247,6 +247,10 @@
       "2026-09-21": {
         "count": 85,
         "uniques": 24
+      },
+      "2026-09-22": {
+        "count": 81,
+        "uniques": 20
       }
     },
     "views": {
@@ -475,6 +479,10 @@
         "uniques": 0
       },
       "2026-09-21": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-22": {
         "count": 0,
         "uniques": 0
       }
@@ -845,16 +853,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-08T10:15:34.842Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 3,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-08T15:37:40.636Z",
       "items": [
         {
@@ -1717,6 +1715,16 @@
           "count": 5,
           "uniques": 1
         },
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-23T10:26:39.604Z",
+      "items": [
         {
           "referrer": "github.com",
           "count": 1,
@@ -1727,17 +1735,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-08T10:15:34.842Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 3,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-08T15:37:40.636Z",
       "items": [
         {
@@ -3389,6 +3386,17 @@
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector/src",
           "title": "/tree/main/collector/src",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-23T10:26:39.604Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
           "count": 1,
           "uniques": 1
         }
