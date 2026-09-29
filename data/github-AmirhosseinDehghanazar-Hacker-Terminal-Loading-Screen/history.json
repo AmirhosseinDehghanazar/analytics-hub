@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-09-29T11:46:21.183Z",
+  "lastSyncedAt": "2026-09-29T17:14:01.084Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -925,16 +925,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-14T11:12:13.850Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-14T17:13:04.143Z",
       "items": [
         {
@@ -1516,6 +1506,16 @@
     },
     {
       "collectedAt": "2026-09-29T11:46:21.183Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-29T17:14:01.084Z",
       "items": [
         {
           "referrer": "Google",
@@ -1527,17 +1527,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-14T11:12:13.850Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-14T17:13:04.143Z",
       "items": [
         {
@@ -2483,6 +2472,23 @@
     },
     {
       "collectedAt": "2026-09-29T11:46:21.183Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
+          "title": "/blob/main/README.md",
+          "count": 4,
+          "uniques": 4
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-29T17:14:01.084Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
