@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-09-29T17:14:02.876Z",
+  "lastSyncedAt": "2026-09-29T21:37:58.870Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -259,6 +259,26 @@
       "2026-09-23": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-09-24": {
+        "count": 2,
+        "uniques": 1
+      },
+      "2026-09-25": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-26": {
+        "count": 1,
+        "uniques": 1
+      },
+      "2026-09-27": {
+        "count": 1,
+        "uniques": 1
+      },
+      "2026-09-28": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -499,6 +519,26 @@
         "uniques": 0
       },
       "2026-09-23": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-24": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-25": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-26": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-27": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-28": {
         "count": 0,
         "uniques": 0
       }
@@ -925,10 +965,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-14T17:13:10.860Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-09-14T21:09:35.453Z",
       "items": []
     },
@@ -1450,6 +1486,16 @@
     },
     {
       "collectedAt": "2026-09-29T17:14:02.876Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-29T21:37:58.870Z",
       "items": [
         {
           "referrer": "github.com",
@@ -1461,10 +1507,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-14T17:13:10.860Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-09-14T21:09:35.453Z",
       "items": []
     },
@@ -3186,6 +3228,41 @@
     },
     {
       "collectedAt": "2026-09-29T17:14:02.876Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/LinkedIn-AutoClicker-Extension/background.js",
+          "title": "/blob/main/LinkedIn-AutoClicker-Extension/background.js",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/LinkedIn-AutoClicker-Extension/icon128.png",
+          "title": "/blob/main/LinkedIn-AutoClicker-Extension/icon128.png",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/LinkedIn-AutoClicker-Extension/icon16.png",
+          "title": "/blob/main/LinkedIn-AutoClicker-Extension/icon16.png",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/tree/main/LinkedIn-AutoClicker-Extension",
+          "title": "/tree/main/LinkedIn-AutoClicker-Extension",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-29T21:37:58.870Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
