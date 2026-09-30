@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-09-30T17:11:57.918Z",
+  "lastSyncedAt": "2026-09-30T21:38:39.011Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -965,21 +965,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-15T15:53:08.235Z",
-      "items": [
-        {
-          "referrer": "com.linkedin.android",
-          "count": 5,
-          "uniques": 1
-        },
-        {
-          "referrer": "github.com",
-          "count": 3,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-15T20:37:20.142Z",
       "items": [
         {
@@ -1693,40 +1678,15 @@
     },
     {
       "collectedAt": "2026-09-30T17:11:57.918Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-30T21:38:39.011Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-15T15:53:08.235Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 5,
-          "uniques": 3
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub/blob/main/collector/src/merge.test.ts",
-          "title": "/blob/main/collector/src/merge.test.ts",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector",
-          "title": "/tree/main/collector",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector/src",
-          "title": "/tree/main/collector/src",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-15T20:37:20.142Z",
       "items": [
         {
@@ -2885,6 +2845,10 @@
     },
     {
       "collectedAt": "2026-09-30T17:11:57.918Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-09-30T21:38:39.011Z",
       "items": []
     }
   ],
