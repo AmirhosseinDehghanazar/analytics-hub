@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-09-30T02:55:16.130Z",
+  "lastSyncedAt": "2026-09-30T11:32:56.545Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -279,6 +279,10 @@
       "2026-09-28": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-09-29": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -539,6 +543,10 @@
         "uniques": 0
       },
       "2026-09-28": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-09-29": {
         "count": 0,
         "uniques": 0
       }
@@ -973,16 +981,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-15T02:22:42.476Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-15T10:39:26.234Z",
       "items": [
         {
@@ -1564,6 +1562,16 @@
     },
     {
       "collectedAt": "2026-09-30T02:55:16.130Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 2,
+          "uniques": 2
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-30T11:32:56.545Z",
       "items": [
         {
           "referrer": "Google",
@@ -1575,17 +1583,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-15T02:22:42.476Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-15T10:39:26.234Z",
       "items": [
         {
@@ -2559,6 +2556,23 @@
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
           "title": "Overview",
+          "count": 3,
+          "uniques": 3
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-09-30T11:32:56.545Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 3,
+          "uniques": 3
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/README.md",
+          "title": "/blob/main/README.md",
           "count": 3,
           "uniques": 3
         }
