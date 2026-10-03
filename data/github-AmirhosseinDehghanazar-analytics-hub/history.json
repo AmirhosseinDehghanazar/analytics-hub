@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-10-03T02:50:20.352Z",
+  "lastSyncedAt": "2026-10-03T10:47:29.200Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -287,6 +287,10 @@
       "2026-10-01": {
         "count": 56,
         "uniques": 14
+      },
+      "2026-10-02": {
+        "count": 88,
+        "uniques": 24
       }
     },
     "views": {
@@ -555,6 +559,10 @@
         "uniques": 0
       },
       "2026-10-01": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-10-02": {
         "count": 0,
         "uniques": 0
       }
@@ -1005,21 +1013,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-17T20:43:43.055Z",
-      "items": [
-        {
-          "referrer": "com.linkedin.android",
-          "count": 5,
-          "uniques": 1
-        },
-        {
-          "referrer": "github.com",
-          "count": 2,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-18T02:06:02.794Z",
       "items": [
         {
@@ -1634,40 +1627,15 @@
     },
     {
       "collectedAt": "2026-10-03T02:50:20.352Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-10-03T10:47:29.200Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-17T20:43:43.055Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 4,
-          "uniques": 2
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub/blob/main/collector/src/merge.test.ts",
-          "title": "/blob/main/collector/src/merge.test.ts",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector",
-          "title": "/tree/main/collector",
-          "count": 1,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub/tree/main/collector/src",
-          "title": "/tree/main/collector/src",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-18T02:06:02.794Z",
       "items": [
         {
@@ -2601,6 +2569,10 @@
     },
     {
       "collectedAt": "2026-10-03T02:50:20.352Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-10-03T10:47:29.200Z",
       "items": []
     }
   ],
