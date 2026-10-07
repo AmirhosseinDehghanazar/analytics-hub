@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-10-07T03:14:11.559Z",
+  "lastSyncedAt": "2026-10-07T12:16:29.542Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -307,6 +307,10 @@
       "2026-10-05": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-10-06": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -595,6 +599,10 @@
         "uniques": 0
       },
       "2026-10-05": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-10-06": {
         "count": 0,
         "uniques": 0
       }
@@ -1085,10 +1093,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-09-21T11:23:31.842Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-09-21T17:22:58.342Z",
       "items": []
     },
@@ -1478,6 +1482,16 @@
     },
     {
       "collectedAt": "2026-10-07T03:14:11.559Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-07T12:16:29.542Z",
       "items": [
         {
           "referrer": "Google",
@@ -1489,17 +1503,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-21T11:23:31.842Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-21T17:22:58.342Z",
       "items": [
         {
@@ -2139,6 +2142,17 @@
     },
     {
       "collectedAt": "2026-10-07T03:14:11.559Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-07T12:16:29.542Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
