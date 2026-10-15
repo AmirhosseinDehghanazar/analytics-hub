@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-10-15T02:17:43.824Z",
+  "lastSyncedAt": "2026-10-15T10:32:21.018Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -335,6 +335,10 @@
       "2026-10-13": {
         "count": 81,
         "uniques": 26
+      },
+      "2026-10-14": {
+        "count": 69,
+        "uniques": 13
       }
     },
     "views": {
@@ -651,6 +655,10 @@
         "uniques": 0
       },
       "2026-10-13": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-10-14": {
         "count": 0,
         "uniques": 0
       }
@@ -1187,7 +1195,7 @@
     },
     {
       "date": "2026-10-15",
-      "stars": 7,
+      "stars": 8,
       "forks": 0,
       "watchers": 0,
       "openIssues": 0,
@@ -1196,16 +1204,6 @@
   ],
   "releases": [],
   "referrerSnapshots": [
-    {
-      "collectedAt": "2026-09-28T02:29:54.104Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
     {
       "collectedAt": "2026-09-28T12:18:53.390Z",
       "items": [
@@ -1608,6 +1606,16 @@
     },
     {
       "collectedAt": "2026-10-15T02:17:43.824Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-15T10:32:21.018Z",
       "items": [
         {
           "referrer": "github.com",
@@ -1619,17 +1627,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-09-28T02:29:54.104Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-09-28T12:18:53.390Z",
       "items": [
         {
@@ -2067,9 +2064,26 @@
           "uniques": 2
         }
       ]
+    },
+    {
+      "collectedAt": "2026-10-15T10:32:21.018Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 2
+        }
+      ]
     }
   ],
   "stargazers": [
+    {
+      "login": "nyaomaru",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/90489696?v=4",
+      "htmlUrl": "https://github.com/nyaomaru",
+      "starredAt": "2026-10-15T06:28:49Z"
+    },
     {
       "login": "SadraKhorami",
       "avatarUrl": "https://avatars.githubusercontent.com/u/30285010?v=4",
