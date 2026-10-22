@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-10-22T16:15:57.311Z",
+  "lastSyncedAt": "2026-10-22T20:57:51.205Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -1333,16 +1333,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-06T12:23:39.967Z",
-      "items": [
-        {
-          "referrer": "Bing",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-06T21:59:58.999Z",
       "items": [
         {
@@ -1852,6 +1842,16 @@
     },
     {
       "collectedAt": "2026-10-22T16:15:57.311Z",
+      "items": [
+        {
+          "referrer": "Bing",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-22T20:57:51.205Z",
       "items": [
         {
           "referrer": "Bing",
@@ -1863,17 +1863,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-06T12:23:39.967Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-06T21:59:58.999Z",
       "items": [
         {
@@ -2657,6 +2646,23 @@
     },
     {
       "collectedAt": "2026-10-22T16:15:57.311Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/README.md",
+          "title": "/blob/main/README.md",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-22T20:57:51.205Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/README.md",
