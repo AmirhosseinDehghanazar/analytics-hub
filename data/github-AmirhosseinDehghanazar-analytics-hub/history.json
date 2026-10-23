@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-10-23T16:05:33.283Z",
+  "lastSyncedAt": "2026-10-23T20:46:47.598Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -1333,10 +1333,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-07T22:25:08.642Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-08T03:29:34.385Z",
       "items": []
     },
@@ -1882,15 +1878,15 @@
     },
     {
       "collectedAt": "2026-10-23T16:05:33.283Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-10-23T20:46:47.598Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-07T22:25:08.642Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-08T03:29:34.385Z",
       "items": []
     },
@@ -2523,6 +2519,17 @@
     },
     {
       "collectedAt": "2026-10-23T16:05:33.283Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-23T20:46:47.598Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub",
