@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-10-23T02:28:50.944Z",
+  "lastSyncedAt": "2026-10-23T10:41:16.493Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -371,6 +371,10 @@
       "2026-10-21": {
         "count": 3,
         "uniques": 3
+      },
+      "2026-10-22": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -723,6 +727,10 @@
         "uniques": 0
       },
       "2026-10-21": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-10-22": {
         "count": 0,
         "uniques": 0
       }
@@ -1341,16 +1349,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-07T03:14:11.559Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-07T12:16:29.542Z",
       "items": [
         {
@@ -1947,6 +1945,16 @@
     },
     {
       "collectedAt": "2026-10-23T02:28:50.944Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-23T10:41:16.493Z",
       "items": [
         {
           "referrer": "github.com",
@@ -1958,17 +1966,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-07T03:14:11.559Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-07T12:16:29.542Z",
       "items": [
         {
@@ -2608,6 +2605,17 @@
     },
     {
       "collectedAt": "2026-10-23T02:28:50.944Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 2,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-23T10:41:16.493Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
