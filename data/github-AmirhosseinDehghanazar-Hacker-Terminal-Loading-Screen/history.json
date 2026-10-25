@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-10-25T10:21:42.766Z",
+  "lastSyncedAt": "2026-10-25T15:13:44.854Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -1381,16 +1381,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-10T03:16:01.526Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-10T11:33:12.566Z",
       "items": [
         {
@@ -1972,6 +1962,16 @@
     },
     {
       "collectedAt": "2026-10-25T10:21:42.766Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-25T15:13:44.854Z",
       "items": [
         {
           "referrer": "Google",
@@ -1983,17 +1983,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-10T03:16:01.526Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 5,
-          "uniques": 5
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-10T11:33:12.566Z",
       "items": [
         {
@@ -3401,6 +3390,41 @@
     },
     {
       "collectedAt": "2026-10-25T10:21:42.766Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 4,
+          "uniques": 4
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/.gitignore",
+          "title": "/blob/main/.gitignore",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/script.js",
+          "title": "/blob/main/src/script.js",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/styles.css",
+          "title": "/blob/main/src/styles.css",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/index.html",
+          "title": "/blob/main/src/index.html",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-25T15:13:44.854Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
