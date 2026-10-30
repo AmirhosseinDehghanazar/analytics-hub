@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-10-30T03:26:48.814Z",
+  "lastSyncedAt": "2026-10-30T11:50:17.554Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -395,6 +395,10 @@
       "2026-10-28": {
         "count": 57,
         "uniques": 6
+      },
+      "2026-10-29": {
+        "count": 71,
+        "uniques": 15
       }
     },
     "views": {
@@ -771,6 +775,10 @@
         "uniques": 0
       },
       "2026-10-28": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-10-29": {
         "count": 0,
         "uniques": 0
       }
@@ -1437,16 +1445,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-15T10:32:21.018Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-15T15:56:21.900Z",
       "items": [
         {
@@ -1842,22 +1840,15 @@
     },
     {
       "collectedAt": "2026-10-30T03:26:48.814Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-10-30T11:50:17.554Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-15T10:32:21.018Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-15T15:56:21.900Z",
       "items": [
         {
@@ -2392,6 +2383,10 @@
     },
     {
       "collectedAt": "2026-10-30T03:26:48.814Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-10-30T11:50:17.554Z",
       "items": []
     }
   ],

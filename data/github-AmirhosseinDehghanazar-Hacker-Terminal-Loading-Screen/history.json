@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-10-30T03:26:47.177Z",
+  "lastSyncedAt": "2026-10-30T11:50:17.645Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -399,6 +399,10 @@
       "2026-10-28": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-10-29": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -779,6 +783,10 @@
         "uniques": 1
       },
       "2026-10-28": {
+        "count": 1,
+        "uniques": 1
+      },
+      "2026-10-29": {
         "count": 1,
         "uniques": 1
       }
@@ -1453,16 +1461,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-15T10:32:19.562Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 3,
-          "uniques": 3
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-15T15:56:21.725Z",
       "items": [
         {
@@ -2067,6 +2065,21 @@
         },
         {
           "referrer": "aocr.org",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-30T11:50:17.645Z",
+      "items": [
+        {
+          "referrer": "aocr.org",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "referrer": "Google",
           "count": 1,
           "uniques": 1
         }
@@ -2075,17 +2088,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-15T10:32:19.562Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 8,
-          "uniques": 8
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-15T15:56:21.725Z",
       "items": [
         {
@@ -3955,6 +3957,41 @@
           "title": "Overview",
           "count": 3,
           "uniques": 3
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/.gitignore",
+          "title": "/blob/main/.gitignore",
+          "count": 3,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/script.js",
+          "title": "/blob/main/src/script.js",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/styles.css",
+          "title": "/blob/main/src/styles.css",
+          "count": 2,
+          "uniques": 1
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/index.html",
+          "title": "/blob/main/src/index.html",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-30T11:50:17.645Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 4,
+          "uniques": 4
         },
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/.gitignore",
