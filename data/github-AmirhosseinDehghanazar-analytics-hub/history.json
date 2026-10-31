@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-10-31T03:11:42.714Z",
+  "lastSyncedAt": "2026-10-31T11:24:08.195Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -399,6 +399,10 @@
       "2026-10-29": {
         "count": 71,
         "uniques": 15
+      },
+      "2026-10-30": {
+        "count": 79,
+        "uniques": 16
       }
     },
     "views": {
@@ -781,6 +785,10 @@
       "2026-10-29": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-10-30": {
+        "count": 1,
+        "uniques": 1
       }
     }
   },
@@ -1453,16 +1461,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-16T10:19:13.138Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-16T15:44:48.155Z",
       "items": [
         {
@@ -1835,21 +1833,20 @@
     {
       "collectedAt": "2026-10-31T03:11:42.714Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-10-31T11:24:08.195Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-16T10:19:13.138Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-16T15:44:48.155Z",
       "items": [
         {
@@ -2357,6 +2354,17 @@
     {
       "collectedAt": "2026-10-31T03:11:42.714Z",
       "items": []
+    },
+    {
+      "collectedAt": "2026-10-31T11:24:08.195Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
     }
   ],
   "stargazers": [

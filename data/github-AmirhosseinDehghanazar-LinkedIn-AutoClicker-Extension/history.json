@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-10-31T03:11:40.833Z",
+  "lastSyncedAt": "2026-10-31T11:24:06.682Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -403,6 +403,10 @@
       "2026-10-29": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-10-30": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -787,6 +791,10 @@
         "uniques": 0
       },
       "2026-10-29": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-10-30": {
         "count": 0,
         "uniques": 0
       }
@@ -1469,10 +1477,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-16T10:19:13.407Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-16T15:44:48.255Z",
       "items": []
     },
@@ -1988,6 +1992,16 @@
     },
     {
       "collectedAt": "2026-10-31T03:11:40.833Z",
+      "items": [
+        {
+          "referrer": "Bing",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-31T11:24:06.682Z",
       "items": [
         {
           "referrer": "Bing",
@@ -1999,17 +2013,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-16T10:19:13.407Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/README.md",
-          "title": "/blob/main/README.md",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-16T15:44:48.255Z",
       "items": [
         {
@@ -2841,6 +2844,17 @@
     },
     {
       "collectedAt": "2026-10-31T03:11:40.833Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-10-31T11:24:06.682Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
