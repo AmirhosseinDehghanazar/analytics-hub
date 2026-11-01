@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-11-01T03:07:57.292Z",
+  "lastSyncedAt": "2026-11-01T12:16:25.849Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -403,6 +403,10 @@
       "2026-10-30": {
         "count": 79,
         "uniques": 16
+      },
+      "2026-10-31": {
+        "count": 92,
+        "uniques": 24
       }
     },
     "views": {
@@ -789,6 +793,10 @@
       "2026-10-30": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-10-31": {
+        "count": 0,
+        "uniques": 0
       }
     }
   },
@@ -1469,16 +1477,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-17T09:52:48.527Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-17T14:37:10.446Z",
       "items": [
         {
@@ -1844,6 +1842,16 @@
     },
     {
       "collectedAt": "2026-11-01T03:07:57.292Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-01T12:16:25.849Z",
       "items": [
         {
           "referrer": "github.com",
@@ -1855,17 +1863,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-17T09:52:48.527Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-17T14:37:10.446Z",
       "items": [
         {
@@ -2365,6 +2362,17 @@
     },
     {
       "collectedAt": "2026-11-01T03:07:57.292Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-01T12:16:25.849Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub",
