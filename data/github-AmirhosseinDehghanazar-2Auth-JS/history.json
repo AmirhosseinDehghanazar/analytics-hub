@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.978Z"
   },
-  "lastSyncedAt": "2026-11-07T21:12:49.725Z",
+  "lastSyncedAt": "2026-11-08T03:16:17.090Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -1584,6 +1584,14 @@
       "watchers": 1,
       "openIssues": 0,
       "openPRs": 0
+    },
+    {
+      "date": "2026-11-08",
+      "stars": 5,
+      "forks": 0,
+      "watchers": 1,
+      "openIssues": 0,
+      "openPRs": 0
     }
   ],
   "releases": [
@@ -1597,10 +1605,6 @@
   ],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-22T02:24:42.757Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-22T10:48:58.387Z",
       "items": []
     },
@@ -2062,6 +2066,16 @@
     },
     {
       "collectedAt": "2026-11-07T21:12:49.725Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-08T03:16:17.090Z",
       "items": [
         {
           "referrer": "github.com",
@@ -2073,10 +2087,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-22T02:24:42.757Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-22T10:48:58.387Z",
       "items": []
     },
@@ -2576,6 +2586,17 @@
     },
     {
       "collectedAt": "2026-11-07T21:12:49.725Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/2Auth-JS",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-08T03:16:17.090Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/2Auth-JS",
