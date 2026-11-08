@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-11-08T03:16:22.434Z",
+  "lastSyncedAt": "2026-11-08T12:25:04.869Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -435,6 +435,10 @@
       "2026-11-06": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-11-07": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -851,6 +855,10 @@
         "uniques": 0
       },
       "2026-11-06": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-07": {
         "count": 0,
         "uniques": 0
       }
@@ -1597,16 +1605,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-22T10:48:59.768Z",
-      "items": [
-        {
-          "referrer": "github.com",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-22T16:15:43.567Z",
       "items": [
         {
@@ -1930,22 +1928,15 @@
     },
     {
       "collectedAt": "2026-11-08T03:16:22.434Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-11-08T12:25:04.869Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-22T10:48:59.768Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/3d-404-page",
-          "title": "Overview",
-          "count": 2,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-22T16:15:43.567Z",
       "items": [
         {
@@ -2284,6 +2275,10 @@
     },
     {
       "collectedAt": "2026-11-08T03:16:22.434Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-11-08T12:25:04.869Z",
       "items": []
     }
   ],

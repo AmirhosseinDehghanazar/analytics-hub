@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-11-08T03:16:15.703Z",
+  "lastSyncedAt": "2026-11-08T12:24:59.204Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -435,6 +435,10 @@
       "2026-11-06": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-11-07": {
+        "count": 2,
+        "uniques": 1
       }
     },
     "views": {
@@ -851,6 +855,10 @@
         "uniques": 0
       },
       "2026-11-06": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-07": {
         "count": 0,
         "uniques": 0
       }
@@ -1597,16 +1605,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-22T10:48:59.842Z",
-      "items": [
-        {
-          "referrer": "Bing",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-22T16:15:57.311Z",
       "items": [
         {
@@ -2092,28 +2090,15 @@
     },
     {
       "collectedAt": "2026-11-08T03:16:15.703Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-11-08T12:24:59.204Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-22T10:48:59.842Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension/blob/main/README.md",
-          "title": "/blob/main/README.md",
-          "count": 2,
-          "uniques": 2
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-22T16:15:57.311Z",
       "items": [
         {
@@ -2755,6 +2740,10 @@
     },
     {
       "collectedAt": "2026-11-08T03:16:15.703Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-11-08T12:24:59.204Z",
       "items": []
     }
   ],
