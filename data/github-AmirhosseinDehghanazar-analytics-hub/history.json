@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-11-09T03:36:19.878Z",
+  "lastSyncedAt": "2026-11-09T14:39:26.473Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -435,6 +435,10 @@
       "2026-11-07": {
         "count": 77,
         "uniques": 20
+      },
+      "2026-11-08": {
+        "count": 62,
+        "uniques": 14
       }
     },
     "views": {
@@ -851,6 +855,10 @@
         "uniques": 0
       },
       "2026-11-07": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-08": {
         "count": 0,
         "uniques": 0
       }
@@ -1597,10 +1605,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-23T02:28:45.046Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-23T10:41:15.310Z",
       "items": []
     },
@@ -1990,6 +1994,16 @@
     },
     {
       "collectedAt": "2026-11-09T03:36:19.878Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-09T14:39:26.473Z",
       "items": [
         {
           "referrer": "github.com",
@@ -2001,17 +2015,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-23T02:28:45.046Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-23T10:41:15.310Z",
       "items": [
         {
@@ -2511,6 +2514,17 @@
     },
     {
       "collectedAt": "2026-11-09T03:36:19.878Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-09T14:39:26.473Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub",
