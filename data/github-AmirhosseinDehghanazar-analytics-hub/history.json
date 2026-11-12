@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-10T17:37:50.413Z"
   },
-  "lastSyncedAt": "2026-11-12T14:12:53.824Z",
+  "lastSyncedAt": "2026-11-12T22:57:28.984Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -1653,10 +1653,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-25T10:21:44.265Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-25T15:13:48.426Z",
       "items": []
     },
@@ -2100,6 +2096,16 @@
     },
     {
       "collectedAt": "2026-11-12T14:12:53.824Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-12T22:57:28.984Z",
       "items": [
         {
           "referrer": "github.com",
@@ -2111,17 +2117,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-25T10:21:44.265Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/analytics-hub",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-25T15:13:48.426Z",
       "items": [
         {
@@ -2621,6 +2616,17 @@
     },
     {
       "collectedAt": "2026-11-12T14:12:53.824Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/analytics-hub",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-12T22:57:28.984Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/analytics-hub",
