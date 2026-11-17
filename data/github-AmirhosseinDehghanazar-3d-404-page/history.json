@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-11-17T01:15:57.443Z",
+  "lastSyncedAt": "2026-11-17T15:07:59.957Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -467,6 +467,14 @@
       "2026-11-14": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-11-15": {
+        "count": 1,
+        "uniques": 1
+      },
+      "2026-11-16": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -915,6 +923,14 @@
         "uniques": 0
       },
       "2026-11-14": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-15": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-16": {
         "count": 0,
         "uniques": 0
       }
@@ -1733,10 +1749,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-28T11:48:31.020Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-28T17:36:27.458Z",
       "items": []
     },
@@ -2042,6 +2054,16 @@
     },
     {
       "collectedAt": "2026-11-17T01:15:57.443Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-17T15:07:59.957Z",
       "items": [
         {
           "referrer": "github.com",
@@ -2053,10 +2075,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-28T11:48:31.020Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-10-28T17:36:27.458Z",
       "items": []
     },
@@ -2374,6 +2392,17 @@
     },
     {
       "collectedAt": "2026-11-17T01:15:57.443Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-17T15:07:59.957Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
