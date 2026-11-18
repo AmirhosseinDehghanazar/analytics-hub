@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:18.896Z"
   },
-  "lastSyncedAt": "2026-11-18T00:10:58.066Z",
+  "lastSyncedAt": "2026-11-18T14:45:48.198Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -475,6 +475,10 @@
       "2026-11-16": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-11-17": {
+        "count": 1,
+        "uniques": 1
       }
     },
     "views": {
@@ -931,6 +935,10 @@
         "uniques": 0
       },
       "2026-11-16": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-17": {
         "count": 0,
         "uniques": 0
       }
@@ -1757,16 +1765,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-28T21:59:25.533Z",
-      "items": [
-        {
-          "referrer": "Google",
-          "count": 2,
-          "uniques": 2
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-29T03:24:37.005Z",
       "items": [
         {
@@ -3003,6 +3001,26 @@
     },
     {
       "collectedAt": "2026-11-18T00:10:58.066Z",
+      "items": [
+        {
+          "referrer": "Google",
+          "count": 2,
+          "uniques": 2
+        },
+        {
+          "referrer": "Bing",
+          "count": 1,
+          "uniques": 1
+        },
+        {
+          "referrer": "aocr.org",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-18T14:45:48.198Z",
       "items": [
         {
           "referrer": "Google",
@@ -3024,41 +3042,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-28T21:59:25.533Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
-          "title": "Overview",
-          "count": 4,
-          "uniques": 4
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/.gitignore",
-          "title": "/blob/main/.gitignore",
-          "count": 3,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/script.js",
-          "title": "/blob/main/src/script.js",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/styles.css",
-          "title": "/blob/main/src/styles.css",
-          "count": 2,
-          "uniques": 1
-        },
-        {
-          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/blob/main/src/index.html",
-          "title": "/blob/main/src/index.html",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-29T03:24:37.005Z",
       "items": [
         {
@@ -4340,6 +4323,23 @@
     },
     {
       "collectedAt": "2026-11-18T00:10:58.066Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
+          "title": "Overview",
+          "count": 3,
+          "uniques": 3
+        },
+        {
+          "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen/commit/c2c58e51a566213d0ae007a3698d4771c4828af7",
+          "title": "/commit/c2c58e51a566213d0ae007a3698d4771c4828af7",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-18T14:45:48.198Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/Hacker-Terminal-Loading-Screen",
