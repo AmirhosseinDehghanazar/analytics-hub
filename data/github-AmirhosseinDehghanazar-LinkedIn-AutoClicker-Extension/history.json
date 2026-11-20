@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:21.093Z"
   },
-  "lastSyncedAt": "2026-11-20T06:15:38.908Z",
+  "lastSyncedAt": "2026-11-20T19:24:20.630Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -483,6 +483,10 @@
       "2026-11-18": {
         "count": 1,
         "uniques": 1
+      },
+      "2026-11-19": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -947,6 +951,10 @@
         "uniques": 0
       },
       "2026-11-18": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-19": {
         "count": 0,
         "uniques": 0
       }
@@ -1789,16 +1797,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-10-30T11:50:18.534Z",
-      "items": [
-        {
-          "referrer": "Bing",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-30T17:25:58.946Z",
       "items": [
         {
@@ -2092,22 +2090,15 @@
     },
     {
       "collectedAt": "2026-11-20T06:15:38.908Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-11-20T19:24:20.630Z",
       "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-10-30T11:50:18.534Z",
-      "items": [
-        {
-          "path": "/AmirhosseinDehghanazar/LinkedIn-AutoClicker-Extension",
-          "title": "Overview",
-          "count": 1,
-          "uniques": 1
-        }
-      ]
-    },
-    {
       "collectedAt": "2026-10-30T17:25:58.946Z",
       "items": [
         {
@@ -2411,6 +2402,10 @@
     },
     {
       "collectedAt": "2026-11-20T06:15:38.908Z",
+      "items": []
+    },
+    {
+      "collectedAt": "2026-11-20T19:24:20.630Z",
       "items": []
     }
   ],
