@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-11-25T01:43:35.928Z",
+  "lastSyncedAt": "2026-11-25T16:25:13.655Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -503,6 +503,10 @@
       "2026-11-23": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-11-24": {
+        "count": 0,
+        "uniques": 0
       }
     },
     "views": {
@@ -987,6 +991,10 @@
         "uniques": 0
       },
       "2026-11-23": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-24": {
         "count": 0,
         "uniques": 0
       }
@@ -1869,10 +1877,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-11-03T00:10:36.250Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-11-03T13:13:14.831Z",
       "items": []
     },
@@ -2298,6 +2302,16 @@
     },
     {
       "collectedAt": "2026-11-25T01:43:35.928Z",
+      "items": [
+        {
+          "referrer": "github.com",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-25T16:25:13.655Z",
       "items": [
         {
           "referrer": "github.com",
@@ -2309,10 +2323,6 @@
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-11-03T00:10:36.250Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-11-03T13:13:14.831Z",
       "items": []
     },
@@ -2770,6 +2780,17 @@
     },
     {
       "collectedAt": "2026-11-25T01:43:35.928Z",
+      "items": [
+        {
+          "path": "/AmirhosseinDehghanazar/3d-404-page",
+          "title": "Overview",
+          "count": 1,
+          "uniques": 1
+        }
+      ]
+    },
+    {
+      "collectedAt": "2026-11-25T16:25:13.655Z",
       "items": [
         {
           "path": "/AmirhosseinDehghanazar/3d-404-page",
