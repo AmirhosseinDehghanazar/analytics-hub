@@ -15,7 +15,7 @@
     "defaultBranch": "main",
     "trackingSince": "2026-08-09T22:28:20.040Z"
   },
-  "lastSyncedAt": "2026-11-26T01:17:29.584Z",
+  "lastSyncedAt": "2026-11-26T15:59:07.715Z",
   "lastSyncStatus": "ok",
   "lastSyncError": null,
   "daily": {
@@ -507,6 +507,10 @@
       "2026-11-24": {
         "count": 0,
         "uniques": 0
+      },
+      "2026-11-25": {
+        "count": 5,
+        "uniques": 3
       }
     },
     "views": {
@@ -995,6 +999,10 @@
         "uniques": 0
       },
       "2026-11-24": {
+        "count": 0,
+        "uniques": 0
+      },
+      "2026-11-25": {
         "count": 0,
         "uniques": 0
       }
@@ -1885,10 +1893,6 @@
   "releases": [],
   "referrerSnapshots": [
     {
-      "collectedAt": "2026-11-03T22:40:44.788Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-11-04T03:50:56.467Z",
       "items": []
     },
@@ -2333,14 +2337,14 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-11-26T15:59:07.715Z",
+      "items": []
     }
   ],
   "contentSnapshots": [
     {
-      "collectedAt": "2026-11-03T22:40:44.788Z",
-      "items": []
-    },
-    {
       "collectedAt": "2026-11-04T03:50:56.467Z",
       "items": []
     },
@@ -2820,6 +2824,10 @@
           "uniques": 1
         }
       ]
+    },
+    {
+      "collectedAt": "2026-11-26T15:59:07.715Z",
+      "items": []
     }
   ],
   "stargazers": [
